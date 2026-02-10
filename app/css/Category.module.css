@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+  width: 170px;
+  height: 300px;
+  border: 1px solid #000;
+  padding: 10px;
+}
+
+.item h3 {
+  font-size: 16px;
+}
+
+.price {
+  font-size: 14px;
+  color: #555;
+}
+
+.price_current {
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+}

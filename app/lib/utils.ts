@@ -1,0 +1,1 @@
+import { fetchSpirits } from "./data";
