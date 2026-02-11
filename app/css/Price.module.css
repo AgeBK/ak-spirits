@@ -1,0 +1,31 @@
+.container {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.container > div {
+  display: inline-block;
+}
+
+.normal:before {
+  background: #918f8f;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  top: 54%;
+  -webkit-transform: translate(-50%, -50%) rotate(-15deg);
+  transform: translate(-50%, -50%) rotate(-15deg);
+  width: 35px;
+}
+
+.normal {
+  color: #555;
+  position: relative;
+  margin-right: 10px;
+}
+
+.current {
+  font-weight: bold;
+}

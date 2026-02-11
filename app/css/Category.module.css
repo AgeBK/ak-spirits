@@ -1,4 +1,20 @@
 .container {
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; */
+}
+
+/* TODO */
+.sortBy {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.items {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

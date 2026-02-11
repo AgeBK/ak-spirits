@@ -1,0 +1,7 @@
+.sortBy {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 16px;
+  padding: 5px;
+}

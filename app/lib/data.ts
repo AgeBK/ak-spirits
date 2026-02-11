@@ -1,7 +1,6 @@
 import { neon } from "@neondatabase/serverless";
-import { DataProps } from "./definitions";
+import { SpiritProps } from "./definitions";
 import { unstable_noStore as noStore } from "next/cache";
-import { camelise, cameliseArr } from "./utils";
 const sql = neon(process.env.DATABASE_URL);
 
 export async function fetchSpirits() {
@@ -9,17 +8,18 @@ export async function fetchSpirits() {
   noStore();
 
   try {
-    const data = await sql<DataProps>`
+    const data = await sql`
       SELECT   
           id,
           brand,
+          category, 
+          sub_category,
           short_name,
           price_normal,
           price_current,
           price_2_for      
       FROM spirits
       `;
-    console.log(data);
     return data;
   } catch (err) {
     console.error("Database Error:", err);
@@ -31,7 +31,7 @@ export async function fetchSpiritById(query: string) {
   noStore();
 
   try {
-    const data = await sql<DataProps>`
+    const data = await sql`
       SELECT
           id,
           brand,
@@ -64,7 +64,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT *
 //       FROM spirits
 //       WHERE category=${query}
@@ -86,7 +86,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT *
 //       FROM spirits
 //       WHERE category=${category} AND variety=${variety}
@@ -105,7 +105,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT *
 //       FROM spirits
 //       WHERE price_two_for=${price}
@@ -124,7 +124,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT *
 //       FROM spirits
 //       WHERE price_current < price_normal
@@ -143,7 +143,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //     SELECT *
 //     FROM spirits
 //     WHERE name ILIKE ${`%${query}%`}
@@ -161,7 +161,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT *
 //       FROM spirits
 //       WHERE brand=${query}
@@ -179,7 +179,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT *
 //       FROM spirits
 //       WHERE price_two_for > 0
@@ -198,7 +198,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT *
 //       FROM spirits
 //       WHERE price_percent_off = 10
@@ -216,7 +216,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT *
 //       FROM spirits
 //       WHERE price_current <= 10 OR price_normal <= 10
@@ -234,7 +234,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT *
 //       FROM spirits
 //       WHERE price_ten_for = 100
@@ -251,7 +251,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT *
 //       FROM spirits
 //       WHERE price_current < price_normal
@@ -270,7 +270,7 @@ export async function fetchSpiritById(query: string) {
 
 //   // fetch 12 random spirits that are on sale
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT * FROM spirits
 //       WHERE price_current != price_normal
 //       ORDER BY RANDOM()
@@ -289,7 +289,7 @@ export async function fetchSpiritById(query: string) {
 //   noStore();
 
 //   try {
-//     const data = await sql<DataProps>`
+//     const data = await sql`
 //       SELECT * FROM spirits
 //       WHERE variety=${query}
 //       LIMIT 12

@@ -1,0 +1,11 @@
+.paging {
+  border: 1px solid #000;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.selected {
+  composes: paging;
+  font-weight: bold;
+}
