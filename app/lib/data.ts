@@ -1,6 +1,10 @@
 import { neon } from "@neondatabase/serverless";
 import { SpiritProps } from "./definitions";
 import { unstable_noStore as noStore } from "next/cache";
+console.log("data.ts");
+
+console.log(process.env.DATABASE_URL);
+
 const sql = neon(process.env.DATABASE_URL);
 
 export async function fetchSpirits() {
@@ -46,14 +50,14 @@ export async function fetchSpiritById(query: string) {
           unit,
           ratings_avg,
           ratings_tot,
-          packaging,
+          packaging
       FROM spirits
       WHERE id=${query}
       `;
 
-    // const product = data.rows[0];
+    const product = data[0];
     // return product ? camelise(product) : undefined; // convert db column names to camel case (eg: price_normal to priceNormal)
-    return data;
+    return product;
   } catch (err) {
     console.error("Database Error:", err);
     throw new Error("Failed to fetch spirit by id.");

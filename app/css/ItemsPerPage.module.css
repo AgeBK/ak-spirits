@@ -4,7 +4,12 @@
   border: 1px solid #000;
 }
 
-.itemsPerPage:hover {
+.selected {
   color: #fff;
   background-color: #000;
+}
+
+.itemsPerPage:hover {
+  color: #fff;
+  background-color: #555;
 }

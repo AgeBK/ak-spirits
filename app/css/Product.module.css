@@ -1,0 +1,13 @@
+.container {
+  padding: 20px;
+  border: 1px solid red;
+}
+
+.key {
+  margin-right: 10px;
+}
+
+.key,
+.value {
+  display: inline-block;
+}

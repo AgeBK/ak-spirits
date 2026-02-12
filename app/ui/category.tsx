@@ -13,7 +13,7 @@ import Link from "next/link";
 export default function Category({ arr }: { arr: SpiritProps[] }) {
   const [sortOrder, setSortOrder] = useState("");
   const [page, setPage] = useState(0);
-  const [perPage, setPerPage] = useState(80);
+  const [perPage, setPerPage] = useState(40);
   const totalPages = Math.ceil(arr.length / perPage);
   let pagedArr = [...arr];
   const imgPath = "/img/spirits/";
@@ -66,7 +66,7 @@ export default function Category({ arr }: { arr: SpiritProps[] }) {
             </div>
           );
         })}
-        <ItemsPerPage setPerPage={setPerPage}/>
+        <ItemsPerPage setPerPage={setPerPage} perPage={perPage} />
       </article>
     </div>
   );
