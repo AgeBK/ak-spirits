@@ -10,7 +10,7 @@ import ItemsPerPage from "./itemsPerPage";
 import styles from "@/app/css/Category.module.css";
 import Link from "next/link";
 
-export default function Category({ arr }: { arr: SpiritProps[] }) {
+export default function Category({ arr }) {
   const [sortOrder, setSortOrder] = useState("");
   const [page, setPage] = useState(0);
   const [perPage, setPerPage] = useState(40);
@@ -62,6 +62,7 @@ export default function Category({ arr }: { arr: SpiritProps[] }) {
               <Price
                 price_current={price_current}
                 price_normal={price_normal}
+                css=""
               />
             </div>
           );

@@ -7,7 +7,10 @@ export default async function Page({
 }: {
   params: { urlCategory: string; urlVariety: string; urlId: string };
 }) {
-  const p = await params;
+
+  const p = await params;  // TODO: 
+  console.log(p);
+
   const { urlId } = p;
 
   // const { urlCategory, urlVariety, urlId } = p;

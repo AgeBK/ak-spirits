@@ -21,11 +21,23 @@
 }
 
 .normal {
-  color: #555;
+  color: #777;
   position: relative;
   margin-right: 10px;
 }
 
 .current {
   font-weight: bold;
+}
+
+.product .normal {
+  color: #777;
+  position: relative;
+  margin-right: 10px;
+  font-size: 36px;
+}
+
+.product .current {
+  font-weight: bold;
+  font-size: 36px;
 }

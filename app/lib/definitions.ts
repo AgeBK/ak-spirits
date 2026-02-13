@@ -14,3 +14,11 @@ export type SpiritProps = {
   unit: string;
   volume: number;
 };
+
+export type ImgProps = {
+  imgSrc: string;
+  imgAlt: string;
+  imgWidth: number;
+  imgHeight: number;
+  imgPriority?: boolean;
+};
