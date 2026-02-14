@@ -22,3 +22,8 @@ export type ImgProps = {
   imgHeight: number;
   imgPriority?: boolean;
 };
+
+export type CategoryProps = {
+  arr: SpiritProps[];
+  setFilterCategory: (value: string) => void;
+};

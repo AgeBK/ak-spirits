@@ -1,8 +1,24 @@
 .container {
-  /* display: flex;
-  flex-wrap: wrap;
+  display: flex;
+  /* flex-wrap: wrap;
   justify-content: center;
   gap: 20px; */
+  color: #fff;
+}
+
+.filters {
+  min-width: 170px;
+}
+
+/* .filterType{
+  display: inline-block;
+} */
+
+.results {
+  color: #777;
+  margin-left: 5px;
+  display: inline-block;
+  font-size: 14px;
 }
 
 /* TODO */
@@ -29,12 +45,18 @@
   flex-grow: 1;
   width: 170px;
   height: 300px;
-  border: 1px solid #000;
+  border: 1px solid #850303;
   padding: 10px;
+  position: relative;
+}
+
+.brand {
+  color: #fff;
 }
 
 .item h3 {
   font-size: 16px;
+  color: #fff;
 }
 
 .price {
@@ -46,4 +68,9 @@
   font-size: 14px;
   color: #000;
   font-weight: bold;
+}
+
+.addCart {
+  position: absolute;
+  bottom: 5px;
 }

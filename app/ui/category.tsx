@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { SpiritProps } from "@/app/lib/definitions";
+import { SpiritProps, CategoryProps } from "@/app/lib/definitions";
+import { addToCart, filterData } from "../lib/utils";
+import FilterType from "./filters/filterType";
 import Price from "./price";
 import SortProducts from "./sortProducts";
 import Paging from "./paging";
@@ -10,65 +12,87 @@ import ItemsPerPage from "./itemsPerPage";
 import styles from "@/app/css/Category.module.css";
 import Link from "next/link";
 
-export default function Category({ arr }) {
+export default function Category({ arr }: CategoryProps) {
   const [sortOrder, setSortOrder] = useState("");
+  const [filterCategory, setFilterCategory] = useState("");
+
   const [page, setPage] = useState(0);
   const [perPage, setPerPage] = useState(40);
   const totalPages = Math.ceil(arr.length / perPage);
   let pagedArr = [...arr];
   const imgPath = "/img/spirits/";
+  console.log("filter Category: " + filterCategory);
 
-  pagedArr = arr.slice(page * perPage, page * perPage + perPage);
-  console.log(pagedArr);
+  if (filterCategory) {
+    pagedArr = filterData(arr, filterCategory);
+  }
+  pagedArr = pagedArr.slice(page * perPage, page * perPage + perPage);
 
   return (
     <div className={styles.container}>
-      <Paging totalPages={totalPages} setPage={setPage} page={page} />
-      <SortProducts arr={arr} setSortOrder={setSortOrder} />
-      <article className={styles.items}>
-        {pagedArr.map((item) => {
-          const {
-            id,
-            brand,
-            name,
-            short_name,
-            category,
-            sub_category,
-            price_normal,
-            price_current,
-            price_2_for,
-            volume,
-            unit,
-            ratings_avg,
-            ratings_tot,
-            packaging,
-          } = item;
+      <div className={styles.filters}>
+        <h2 className={styles.filterHdr}>Filters:</h2>
+        <FilterType arr={arr} setFilterCategory={setFilterCategory} />
+      </div>
+      <div className={styles.product}>
+        <Paging totalPages={totalPages} setPage={setPage} page={page} />
+        <SortProducts arr={arr} setSortOrder={setSortOrder} />
+        <h3 className={styles.filterType}>
+          {filterCategory}
+          <span className={styles.results}>({pagedArr.length} results)</span>
+        </h3>
 
-          return (
-            <div className={styles.item} key={id}>
-              <Link
-                href={`/${category.toLowerCase()}/${sub_category.toLowerCase()}/${id}`}
-                className={styles.itemCont}
-              >
-                <Image
-                  src={`${imgPath}${id}.webp`}
-                  alt={short_name}
-                  width={50}
-                  height={150}
+        <article className={styles.items}>
+          {pagedArr.map((item) => {
+            const {
+              id,
+              brand,
+              name,
+              short_name,
+              category,
+              sub_category,
+              price_normal,
+              price_current,
+              price_2_for,
+              volume,
+              unit,
+              ratings_avg,
+              ratings_tot,
+              packaging,
+            } = item;
+
+            return (
+              <div className={styles.item} key={id}>
+                <Link
+                  href={`/${category.toLowerCase()}/${sub_category.toLowerCase()}/${id}`}
+                  className={styles.itemCont}
+                >
+                  <Image
+                    src={`${imgPath}${id}.webp`}
+                    alt={short_name}
+                    width={50}
+                    height={150}
+                  />
+                  <h2 className={styles.brand}>{brand}</h2>
+                  <h3 className={styles.sName}>{short_name}</h3>
+                </Link>
+                <Price
+                  price_current={price_current}
+                  price_normal={price_normal}
+                  css=""
                 />
-                <h2 className={styles.brand}>{brand}</h2>
-                <h3 className={styles.sName}>{short_name}</h3>
-              </Link>
-              <Price
-                price_current={price_current}
-                price_normal={price_normal}
-                css=""
-              />
-            </div>
-          );
-        })}
-        <ItemsPerPage setPerPage={setPerPage} perPage={perPage} />
-      </article>
+                <button
+                  className={styles.addCart}
+                  onClick={() => addToCart(id, name, price_current)}
+                >
+                  ADD TO CART
+                </button>
+              </div>
+            );
+          })}
+          <ItemsPerPage setPerPage={setPerPage} perPage={perPage} />
+        </article>
+      </div>
     </div>
   );
 }

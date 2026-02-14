@@ -11,7 +11,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: #850303;
 }
 
 ul {
@@ -33,6 +33,7 @@ h2,
 h3 {
   margin: 0;
   padding: 0;
+  color: #fff;
 }
 
 button {
@@ -43,6 +44,7 @@ button {
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  background-color: #f00;
+  background-color: #850303;
   color: #fff;
+  padding: 5px;
 }

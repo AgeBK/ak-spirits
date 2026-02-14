@@ -1,0 +1,15 @@
+.container {
+}
+
+.category {
+}
+
+.category li {
+  margin: 3px 0;
+  font-size: 18px;
+}
+
+.category label,
+.category input {
+  cursor: pointer;
+}

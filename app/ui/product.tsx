@@ -2,6 +2,7 @@ import { SpiritProps } from "../lib/definitions";
 import appData from "../lib/appData.json";
 import Img from "./image";
 import ImgFill from "./image-fill";
+import ProductCart from "./productCart";
 import Price from "./price";
 import styles from "@/app/css/Product.module.css";
 
@@ -60,6 +61,9 @@ export default async function Product({ prod }: SpiritProps) {
             //   imgPriority={false}
             // />
           ))}
+          {/* <div className={styles.productCart}> */}
+          <ProductCart prod={prod} />
+          {/* </div> */}
         </div>
       </div>
 
