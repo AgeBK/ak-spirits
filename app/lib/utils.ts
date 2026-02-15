@@ -5,7 +5,7 @@ export const addToCart = (id, name, price_current) => {
   console.log(id, name, price_current);
 };
 
-export const filterData = (arr: CategoryProps[], filter: string) => {
+export const filterData = (arr: SpiritProps[], filter: string) => {
   console.log("filter function");
   arr = arr.filter((val: SpiritProps) => {
     console.log(val.sub_category);

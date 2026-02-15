@@ -9,17 +9,29 @@ export default function Paging({
   setPage: (value: number) => void;
   page: number;
 }) {
+  console.log(totalPages, page);
+
   return (
     <div className={styles.container}>
-      {Array.from({ length: totalPages }, (_, i) => (
-        <button
-          key={i}
-          onClick={() => setPage(i)}
-          className={`${i === page ? styles.selected : styles.paging}`}
-        >
-          {i + 1}
-        </button>
-      ))}
+      <button onClick={() => setPage(0)} disabled={page === 0}>
+        &lt;&lt;
+      </button>
+      <button onClick={() => setPage(page - 1)} disabled={page === 0}>
+        &lt;
+      </button>
+      <div className={styles.currentPage}>{page + 1}</div>
+      <button
+        onClick={() => setPage(page + 1)}
+        disabled={page === totalPages - 1}
+      >
+        &gt;
+      </button>
+      <button
+        onClick={() => setPage(totalPages - 1)}
+        disabled={page === totalPages - 1}
+      >
+        &gt;&gt;
+      </button>
     </div>
   );
 }

@@ -1,4 +1,19 @@
-.paging {
+.container > * {
+  display: inline-block;
+  font-size: 24px;
+  background-color: transparent;
+}
+
+.container button:disabled {
+  color: #555;
+}
+
+.currentPage {
+  padding: 10px;
+  border: 1px solid #555;
+}
+
+/* .paging {
   border: 1px solid #000;
   padding: 10px;
   text-align: center;
@@ -8,4 +23,4 @@
 .selected {
   composes: paging;
   font-weight: bold;
-}
+} */

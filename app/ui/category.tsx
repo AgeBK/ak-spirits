@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { SpiritProps, CategoryProps } from "@/app/lib/definitions";
+import { useCartStore } from "@/app/store";
+import { SpiritProps, CategoryProps } from "../lib/definitions";
+import { imgPath } from "@/app/lib/appData.json";
 import { addToCart, filterData } from "../lib/utils";
 import FilterType from "./filters/filterType";
 import Price from "./price";
@@ -11,20 +13,32 @@ import Paging from "./paging";
 import ItemsPerPage from "./itemsPerPage";
 import styles from "@/app/css/Category.module.css";
 import Link from "next/link";
+import { validateHeaderName } from "http";
 
 export default function Category({ arr }: CategoryProps) {
   const [sortOrder, setSortOrder] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
-
   const [page, setPage] = useState(0);
   const [perPage, setPerPage] = useState(40);
-  const totalPages = Math.ceil(arr.length / perPage);
+  const { items, total, removeItem } = useCartStore();
+
+  let totalPages = Math.ceil(arr.length / perPage);
+  let totalFiltered = 0;
   let pagedArr = [...arr];
-  const imgPath = "/img/spirits/";
   console.log("filter Category: " + filterCategory);
+
+  console.log(useCartStore);
+
+  // const increasePopulation = useCartStore((state) => state.increasePopulation);
+  // const bears = useCartStore((state) => state.bears);
+
+  const addCartItem = useCartStore((state) => state.addCartItem);
+  const cartItems = useCartStore((state) => state.cartItems);
 
   if (filterCategory) {
     pagedArr = filterData(arr, filterCategory);
+    totalFiltered = pagedArr.length;
+    totalPages = Math.ceil(pagedArr.length / perPage);
   }
   pagedArr = pagedArr.slice(page * perPage, page * perPage + perPage);
 
@@ -32,16 +46,32 @@ export default function Category({ arr }: CategoryProps) {
     <div className={styles.container}>
       <div className={styles.filters}>
         <h2 className={styles.filterHdr}>Filters:</h2>
-        <FilterType arr={arr} setFilterCategory={setFilterCategory} />
+        <FilterType
+          arr={arr}
+          setFilterCategory={setFilterCategory}
+          filterCategory={filterCategory}
+        />
+        <br />
+
+        <br />
+        <p>
+          <b>Cart Items</b>
+          {/* {cartItems.map((val) => {
+            console.log(val);
+            return <div key={val.id}>{val.id}</div>;
+          })} */}
+        </p>
       </div>
+
       <div className={styles.product}>
         <Paging totalPages={totalPages} setPage={setPage} page={page} />
         <SortProducts arr={arr} setSortOrder={setSortOrder} />
-        <h3 className={styles.filterType}>
-          {filterCategory}
-          <span className={styles.results}>({pagedArr.length} results)</span>
-        </h3>
-
+        {filterCategory ? (
+          <h3 className={styles.filterType}>
+            {filterCategory}
+            <span className={styles.results}>({totalFiltered} results)</span>
+          </h3>
+        ) : null}
         <article className={styles.items}>
           {pagedArr.map((item) => {
             const {
@@ -83,15 +113,16 @@ export default function Category({ arr }: CategoryProps) {
                 />
                 <button
                   className={styles.addCart}
-                  onClick={() => addToCart(id, name, price_current)}
+                  // onClick={() => addToCart(id, name, price_current)}
+                  onClick={() => addCartItem(item)}
                 >
                   ADD TO CART
                 </button>
               </div>
             );
           })}
-          <ItemsPerPage setPerPage={setPerPage} perPage={perPage} />
         </article>
+        <ItemsPerPage setPerPage={setPerPage} perPage={perPage} />
       </div>
     </div>
   );

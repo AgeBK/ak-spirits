@@ -25,5 +25,22 @@ export type ImgProps = {
 
 export type CategoryProps = {
   arr: SpiritProps[];
+};
+
+export type FilterTypeProps = {
+  arr: SpiritProps[];
   setFilterCategory: (value: string) => void;
+  filterCategory: string;
+};
+
+export type CartProps = {
+  arr: SpiritProps;
+  brand: string;
+  category: string;
+  id: string;
+  price_2_for: number;
+  price_current: number;
+  qty: number;
+  short_name: string;
+  sub_category: string;
 };

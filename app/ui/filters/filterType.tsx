@@ -1,8 +1,12 @@
 import React from "react";
-import { SpiritProps, CategoryProps } from "@/app/lib/definitions";
+import { SpiritProps, CategoryProps, FilterTypeProps } from "@/app/lib/definitions";
 import styles from "@/app/css/FilterType.module.css";
 
-export default function FilterType({ arr, setFilterCategory }: CategoryProps) {
+export default function FilterType({
+  arr,
+  setFilterCategory,
+  filterCategory,
+}: FilterTypeProps) {
   const distinctSpirits: string[] = arr.reduce(
     (acc: string[], val: SpiritProps) => {
       const subCat: string = val.sub_category;
@@ -29,6 +33,14 @@ export default function FilterType({ arr, setFilterCategory }: CategoryProps) {
               name="cat"
             />
             <label htmlFor={val}>{val}</label>
+            {filterCategory && filterCategory === val && (
+              <button
+                onClick={() => setFilterCategory("")}
+                className={styles.clear}
+              >
+                clear
+              </button>
+            )}
           </li>
         ))}
       </ul>

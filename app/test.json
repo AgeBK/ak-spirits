@@ -1,0 +1,18 @@
+{
+  "8923204": {
+    "brand": "Jim Beam",
+    "short_name": "White Bourbon 1 Litre",
+    "category": "Spirits",
+    "sub_category": "Bourbon",
+    "price_normal": 68,
+    "qty": 1
+  },
+  "83850": {
+    "brand": "Absolut",
+    "short_name": "Vodka 1 Litre",
+    "category": "Spirits",
+    "sub_category": "Vodka",
+    "price_normal": 76,
+    "qty": 1
+  }
+}
