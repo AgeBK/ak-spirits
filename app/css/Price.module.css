@@ -42,3 +42,20 @@
   font-weight: bold;
   font-size: 36px;
 }
+
+/* .cart .normal {
+  color: #777;
+  position: relative;
+  margin-right: 10px;
+   font-size: 36px; 
+} */
+
+.cart .current {
+  font-weight: bold;
+  color: #fff;
+  font-size: 18px;
+}
+
+.container.cart {
+  margin: 0;
+}

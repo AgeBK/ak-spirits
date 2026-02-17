@@ -1,0 +1,35 @@
+.container {
+}
+
+.cartItem {
+  display: flex;
+  padding: 10px;
+  border: 1px solid #999;
+  border-bottom: 0;
+}
+
+.cartItem:last-child {
+  border: 1px solid #999;
+}
+
+.img {
+  margin-right: 10px;
+  padding: 5px;
+  background-color: #fff;
+}
+
+.details {
+  padding: 5px;
+  max-width: 170px;
+}
+
+.brand {
+  /* text-align: center; */
+}
+
+.sName {
+  font-size: 14px;
+}
+
+.price {
+}

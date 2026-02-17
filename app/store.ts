@@ -5,13 +5,11 @@ console.log("store");
 // checkCartExisting(state.cartItems, item.id);
 
 const checkCartExisting = (arr: CartProps[], item: CartProps) => {
-  const exists = arr.find((val: CartProps) => val.id === item.id);
+  const itemExists = arr.find((val: CartProps) => val.id === item.id);
 
-  if (exists) {
-    // item already exists in cart, increase qty
-    exists.qty += 1;
+  if (itemExists) {
+    itemExists.qty += 1;
   } else {
-    // add new item to cart
     item.qty = 1;
     arr.push(item);
   }
@@ -20,22 +18,22 @@ const checkCartExisting = (arr: CartProps[], item: CartProps) => {
 };
 
 export const useCartStore = create((set) => ({
-  cartItems: [],
-  addCartItem: (item) => {
-    console.log("Add Item:");
-    set((state) => ({ cartItems: checkCartExisting(state.cartItems, item) }));
+  cartItems: [], // TODO: how to add types??
+  addCartItem: (item: CartProps) => {
+    set((state: { cartItems: CartProps[] }) => ({
+      cartItems: checkCartExisting(state.cartItems, item),
+    }));
   },
-  removeItem: (itemId) =>
-    set((state) => ({
-      cartItems: state.cartItems.filter((item) => item.id !== itemId),
+  removeItem: (itemId: string) =>
+    set((state: { cartItems: CartProps[] }) => ({
+      cartItems: state.cartItems.filter(
+        (item: CartProps) => item.id !== itemId,
+      ),
     })),
-  bears: 0,
-  count: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
   clearCart: () => set({ cartItems: [] }),
   total: 0,
-  updateTotal: () =>
-    set((state) => ({
-      total: state.cartItems.reduce((sum, item) => sum + item.price, 0),
-    })),
+  // updateTotal: () =>
+  //   set((state) => ({
+  //     total: state.cartItems.reduce((sum, item) => sum + item.price, 0),
+  //   })),
 }));

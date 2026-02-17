@@ -27,11 +27,6 @@ export default function Category({ arr }: CategoryProps) {
   let pagedArr = [...arr];
   console.log("filter Category: " + filterCategory);
 
-  console.log(useCartStore);
-
-  // const increasePopulation = useCartStore((state) => state.increasePopulation);
-  // const bears = useCartStore((state) => state.bears);
-
   const addCartItem = useCartStore((state) => state.addCartItem);
   const cartItems = useCartStore((state) => state.cartItems);
 

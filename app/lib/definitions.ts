@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type SpiritProps = {
   brand: string;
   category: string;
@@ -43,4 +45,12 @@ export type CartProps = {
   qty: number;
   short_name: string;
   sub_category: string;
+};
+
+export type ButtonProps = {
+  children: ReactNode;
+  onClick: () => void;
+  css?: string;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 };

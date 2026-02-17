@@ -9,8 +9,6 @@ export default function Paging({
   setPage: (value: number) => void;
   page: number;
 }) {
-  console.log(totalPages, page);
-
   return (
     <div className={styles.container}>
       <button onClick={() => setPage(0)} disabled={page === 0}>
