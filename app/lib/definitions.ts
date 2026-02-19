@@ -48,7 +48,7 @@ export type CartProps = {
 };
 
 export type ButtonProps = {
-  children: ReactNode;
+  children?: ReactNode;
   onClick: () => void;
   css?: string;
   disabled?: boolean;

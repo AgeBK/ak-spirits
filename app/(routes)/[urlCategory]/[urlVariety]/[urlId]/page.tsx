@@ -7,8 +7,7 @@ export default async function Page({
 }: {
   params: { urlCategory: string; urlVariety: string; urlId: string };
 }) {
-
-  const p = await params;  // TODO: 
+  const p = await params; // TODO:
   console.log(p);
 
   const { urlId } = p;
@@ -16,6 +15,6 @@ export default async function Page({
   // const { urlCategory, urlVariety, urlId } = p;
   // console.log(urlCategory, urlVariety, urlId);
 
-  const prod = await fetchSpiritById(urlId);
-  return <Product prod={prod} />;
+  const arr = await fetchSpiritById(urlId);
+  return <Product arr={arr} />;
 }

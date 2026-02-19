@@ -1,5 +1,5 @@
 import { useCartStore } from "@/app/store";
-// import styles from "@/app/css/Button.module.css";
+import styles from "@/app/css/Button.module.css";
 import { ButtonProps } from "../lib/definitions";
 
 export default function Button({
@@ -9,12 +9,12 @@ export default function Button({
   disabled,
   type = "button",
 }: ButtonProps) {
-  const className = css ? `btn${css}` : "btn"; // TODO: standard button??
+  const className = css ? css: "btn"; // TODO: standard button??
 
   return (
     <button
       type={type}
-      className={className}
+      className={styles[className]}
       onClick={onClick}
       disabled={disabled}
     >

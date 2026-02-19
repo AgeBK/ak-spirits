@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useCartStore } from "@/app/store";
 import { SpiritProps, CategoryProps } from "../lib/definitions";
 import { imgPath } from "@/app/lib/appData.json";
-import { addToCart, filterData } from "../lib/utils";
+import { filterData } from "../lib/utils";
 import FilterType from "./filters/filterType";
 import Price from "./price";
 import SortProducts from "./sortProducts";
@@ -13,14 +13,14 @@ import Paging from "./paging";
 import ItemsPerPage from "./itemsPerPage";
 import styles from "@/app/css/Category.module.css";
 import Link from "next/link";
-import { validateHeaderName } from "http";
+import Button from "./button";
 
 export default function Category({ arr }: CategoryProps) {
   const [sortOrder, setSortOrder] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
   const [page, setPage] = useState(0);
   const [perPage, setPerPage] = useState(40);
-  const { items, total, removeItem } = useCartStore();
+  // const { total, deleteItem } = useCartStore();
 
   let totalPages = Math.ceil(arr.length / perPage);
   let totalFiltered = 0;
@@ -46,18 +46,7 @@ export default function Category({ arr }: CategoryProps) {
           setFilterCategory={setFilterCategory}
           filterCategory={filterCategory}
         />
-        <br />
-
-        <br />
-        <p>
-          <b>Cart Items</b>
-          {/* {cartItems.map((val) => {
-            console.log(val);
-            return <div key={val.id}>{val.id}</div>;
-          })} */}
-        </p>
       </div>
-
       <div className={styles.product}>
         <Paging totalPages={totalPages} setPage={setPage} page={page} />
         <SortProducts arr={arr} setSortOrder={setSortOrder} />
@@ -106,13 +95,9 @@ export default function Category({ arr }: CategoryProps) {
                   price_normal={price_normal}
                   css=""
                 />
-                <button
-                  className={styles.addCart}
-                  // onClick={() => addToCart(id, name, price_current)}
-                  onClick={() => addCartItem(item)}
-                >
+                <Button onClick={() => addCartItem(item)} css="itemAddCart">
                   ADD TO CART
-                </button>
+                </Button>
               </div>
             );
           })}

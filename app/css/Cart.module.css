@@ -1,8 +1,20 @@
 .container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 350px;
+  background-color: #fff;
+  cursor: default;
+  border: 2px solid #000;
+  max-height: 100vh;
+  z-index: 11;
+  overflow-y: auto;
+  color: #000;
 }
 
 .cartItem {
   display: flex;
+  justify-content: space-around;
   padding: 10px;
   border: 1px solid #999;
   border-bottom: 0;
@@ -13,14 +25,16 @@
 }
 
 .img {
-  margin-right: 10px;
-  padding: 5px;
+  margin: 10px 10px 0 0;
+  /* padding: 5px; */
   background-color: #fff;
 }
 
 .details {
   padding: 5px;
   max-width: 170px;
+  margin-right: 10px;
+  flex-grow: 1;
 }
 
 .brand {
@@ -29,7 +43,43 @@
 
 .sName {
   font-size: 14px;
+  height: 18px;
+  overflow: hidden; /* TODO */
+}
+
+.qty {
+  /* font-size: 18px; */
+}
+
+.qtyCont {
+  display: flex;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+  margin-top: 10px;
+}
+
+.qtyCont > * {
+  flex-grow: 1;
+  font-size: 20px;
+}
+
+.qtyCont span {
+  /* background-color: #000;
+  border-radius: 20px;
+  color: #fff; */
 }
 
 .price {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.total {
+  display: flex;
+  border-top: 1px solid #d3d3d3;
+  padding: 5px;
+}
+
+.total b:first-child {
+  flex-grow: 1;
 }

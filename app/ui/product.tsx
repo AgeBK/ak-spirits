@@ -1,4 +1,4 @@
-import { SpiritProps } from "../lib/definitions";
+import { CategoryProps, SpiritProps } from "../lib/definitions";
 import appData from "../lib/appData.json";
 import Img from "./image";
 import ImgFill from "./image-fill";
@@ -6,10 +6,11 @@ import ProductCart from "./productCart";
 import Price from "./price";
 import styles from "@/app/css/Product.module.css";
 
-export default async function Product({ prod }: SpiritProps) {
-  console.log(prod);
+// TODO: 2 for??
 
-  console.log(appData);
+export default async function Product({ arr }: CategoryProps) {
+  console.log(arr);
+  // console.log(appData);
 
   const {
     id,
@@ -26,7 +27,12 @@ export default async function Product({ prod }: SpiritProps) {
     ratings_avg,
     ratings_tot,
     packaging,
-  } = prod;
+  } = arr;
+  const subCatLow = sub_category.toLowerCase();
+  const spiritType = appData[subCatLow];
+  const spiritReview = appData[`${subCatLow}Review`];
+  const productDesc = spiritType.replaceAll("[xxxx]", brand);
+
   return (
     <div className={styles.container}>
       <div className={styles.product}>
@@ -41,63 +47,31 @@ export default async function Product({ prod }: SpiritProps) {
         <div className={styles.details}>
           <h2 className={styles.hdr}>{brand}</h2>
           <div className={styles.name}>{short_name}</div>
-          <div className={styles.desc}>Description here</div>
+          <div className={styles.desc}>{productDesc}</div>
           <Price
             price_current={price_current}
             price_normal={price_normal}
             css="product"
           />
-          <div className={styles.rateAvg}>{ratings_avg}</div>
-          <div className={styles.rateTot}>{ratings_tot} reviews</div>
+          <div className={styles.rateTot}>{ratings_tot} reviews</div>{" "}
+          {/* <div className={styles.rateAvg}>{ratings_avg}</div> */}
           {Array.from({ length: ratings_avg }, (v, i) => (
             <div className={styles.star} key={i}></div>
-
-            // <Img
-            //
-            //   imgSrc={`redstar.png`}
-            //   imgAlt="ratings"
-            //   imgWidth={20}
-            //   imgHeight={20}
-            //   imgPriority={false}
-            // />
           ))}
           {/* <div className={styles.productCart}> */}
-          <ProductCart prod={prod} />
+          <ProductCart arr={arr} />
           {/* </div> */}
         </div>
       </div>
-
-      {/* <h1 className={styles.hdr}>Product</h1> */}
+      <div className={styles.reviewCont}>
+        <h3 className={styles.hdr}>Product Review:</h3>
+        <div className={styles.review}>{spiritReview}</div>
+        <i className={styles.reviewSource}>
+          Source *Spirits Monthly: August 2025 - Author: Sir Roger Braithwaite
+          III
+        </i>
+      </div>
+      <h3 className={styles.hdr}>Similar Products:</h3>
     </div>
   );
 }
-
-/* <Img
-          imgSrc={`spirits/${id}.webp`}
-          imgAlt="AK spirits"
-          imgWidth={80}
-          imgHeight={80}
-          imgPriority={true}
-        /> */
-
-// export default async function Product({
-//   params: { urlCategory, urlSubCategory, urlId },
-// }: {
-//   params: { urlCategory: string; urlSubCategory: string; urlId: string };
-// }) {
-
-// {Object.entries(prod).map(([key, value]) => {
-//     console.log(key);
-//     console.log(value);
-
-//     return (
-//       <>
-
-//         <div className={styles.key}>
-//           <b>{key}</b>
-//         </div>
-//         <div className={styles.value}>{value}</div>
-//         <br />
-//       </>
-//     );
-//   })}

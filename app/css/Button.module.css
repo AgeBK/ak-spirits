@@ -1,0 +1,42 @@
+.btn {
+  padding: 5px 20px;
+  border: 1px solid #999;
+}
+
+.cartAdd {
+  background: url("/img/btn/plus1.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+}
+
+.cartAdd:hover {
+  background: url("/img/btn/plus.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+}
+
+.cartMinus {
+  background: url("/img/btn/minus1.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+}
+
+.cartMinus:hover {
+  background: url("/img/btn/minus.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+}
+
+.cartDel {
+  background-color: transparent;
+}
+
+.itemAddCart {
+  position: absolute;
+  bottom: 5px;
+  padding: 5px 20px;
+}

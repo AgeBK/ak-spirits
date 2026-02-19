@@ -1,16 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { addToCart } from "@/app/lib/utils";
-import { SpiritProps } from "../lib/definitions";
+import { useCartStore } from "../store";
+
+// import { addToCart } from "@/app/lib/utils";
+import { CategoryProps, SpiritProps } from "../lib/definitions";
 import Img from "@/app/ui/image";
 import styles from "@/app/css/ProductCart.module.css";
+import Button from "./button";
 
-export default function ProductCart({ prod }: SpiritProps) {
+export default function ProductCart({ arr }: CategoryProps) {
   // product page cart
   const [count, setCount] = useState<number>(1);
+  const { cartItems, removeItem, deleteItem, addCartItem, total } =
+    useCartStore();
+  const itemCnt = cartItems.length;
+  const cartTotal = total();
 
-  console.log(addToCart);
+  // console.log(addToCart);
 
   const {
     id,
@@ -27,7 +34,7 @@ export default function ProductCart({ prod }: SpiritProps) {
     ratings_avg,
     ratings_tot,
     packaging,
-  } = prod;
+  } = arr;
 
   const handleCount = (e: React.MouseEvent<Element, MouseEvent>) => {
     const { textContent } = e.currentTarget;
@@ -70,19 +77,16 @@ export default function ProductCart({ prod }: SpiritProps) {
           </div>
         </div>
         <div className={styles.cartAmt}>
-          <button onClick={handleCount} disabled={count < 2}>
+          <Button onClick={handleCount} disabled={count < 2}>
             -
-          </button>
+          </Button>
           <span className={styles.count}>{count}</span>
-          <button onClick={handleCount}>+</button>
+          <Button onClick={handleCount}>+</Button>
         </div>
         <div className={styles.cartAdd}>
-          <button
-            className={styles.addCart}
-            onClick={() => addToCart(id, name, price_current)}
-          >
+          <Button onClick={() => addCartItem(item, count)} css="">
             ADD TO CART
-          </button>
+          </Button>
         </div>
       </div>
     </div>

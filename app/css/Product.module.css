@@ -1,5 +1,5 @@
 .container {
-  /* padding: 20px; */
+  padding: 20px;
   border: 1px solid red;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .desc {
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 20px;
 }
 
@@ -63,4 +63,20 @@
     2% 35%,
     39% 35%
   );
+}
+
+.hdr {
+  font-size: 24px;
+}
+
+.reviewCont {
+  margin: 20px 0;
+}
+
+.review {
+  margin: 15px 0;
+}
+
+.reviewSource {
+  color: #888;
 }

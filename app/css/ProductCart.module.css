@@ -1,7 +1,7 @@
 .cartTableCont {
   position: absolute;
-  bottom: 0;
-  width: 95%;
+  bottom: 10px;
+  width: 80%;
   color: #fff;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .count {
-  font-size: 40px;
+  font-size: 30px;
   display: inline-block;
   margin: 0 15px;
 }

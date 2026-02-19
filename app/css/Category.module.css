@@ -59,6 +59,8 @@
 .item h3 {
   font-size: 16px;
   color: #000;
+  height: 42px;
+  overflow: hidden; /* TODO; */
 }
 
 .price {
@@ -71,9 +73,9 @@
   color: #000;
   font-weight: bold;
 }
-
+/* 
 .addCart {
   position: absolute;
   bottom: 5px;
   padding: 5px 20px;
-}
+} */
