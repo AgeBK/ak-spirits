@@ -1,6 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 import { SpiritProps } from "./definitions";
 import { unstable_noStore as noStore } from "next/cache";
+import { capitalizeFirstLetter } from "./utils";
 // console.log("data.ts");
 
 // console.log(process.env.DATABASE_URL);
@@ -88,7 +89,30 @@ export async function fetchDistinctSpirits() {
   }
 }
 
-// export async function fetchspiritsByCategory(query: string) {
+export async function fetchSpiritsBySubCategory(query: string, id: string) {
+  noStore();
+
+  try {
+    const data = await sql`
+      SELECT *
+        FROM spirits
+        WHERE sub_category=${capitalizeFirstLetter(query)}
+        AND id <> ${id}
+        ORDER BY RANDOM()
+        LIMIT 6
+      `;
+
+    const spirits = data;
+    console.log(spirits);
+
+    return spirits; // convert db column names to camel case (eg: price_normal to priceNormal)
+  } catch (err) {
+    console.error("Database Error:", err);
+    throw new Error("Failed to fetch spirits by category.");
+  }
+}
+
+// export async function fetchSpiritsByCategory(query: string) {
 //   noStore();
 
 //   try {
@@ -107,7 +131,7 @@ export async function fetchDistinctSpirits() {
 //   }
 // }
 
-// export async function fetchspiritsByCategoryAndVariety(
+// export async function fetchSpiritsByCategoryAndVariety(
 //   category: string,
 //   variety: string,
 // ) {
@@ -129,7 +153,7 @@ export async function fetchDistinctSpirits() {
 //   }
 // }
 
-// export async function fetchspiritsPriceTwoFor(price: number) {
+// export async function fetchSpiritsPriceTwoFor(price: number) {
 //   noStore();
 
 //   try {
@@ -148,7 +172,7 @@ export async function fetchDistinctSpirits() {
 //   }
 // }
 
-// export async function fetchspiritsOnSpecial() {
+// export async function fetchSpiritsOnSpecial() {
 //   noStore();
 
 //   try {
@@ -167,7 +191,7 @@ export async function fetchDistinctSpirits() {
 //   }
 // }
 
-// export async function fetchspiritsBySearchTerm(query: string) {
+// export async function fetchSpiritsBySearchTerm(query: string) {
 //   noStore();
 
 //   try {
@@ -185,7 +209,7 @@ export async function fetchDistinctSpirits() {
 //   }
 // }
 
-// export async function fetchspiritsByBrand(query: string) {
+// export async function fetchSpiritsByBrand(query: string) {
 //   noStore();
 
 //   try {
@@ -203,7 +227,7 @@ export async function fetchDistinctSpirits() {
 //   }
 // }
 
-// export async function fetchspiritsPriceTwoForDeals() {
+// export async function fetchSpiritsPriceTwoForDeals() {
 //   noStore();
 
 //   try {
@@ -222,7 +246,7 @@ export async function fetchDistinctSpirits() {
 //   }
 // }
 
-// export async function fetchspiritsPriceTenPercentOff() {
+// export async function fetchSpiritsPriceTenPercentOff() {
 //   noStore();
 
 //   try {
@@ -240,7 +264,7 @@ export async function fetchDistinctSpirits() {
 //   }
 // }
 
-// export async function fetchspiritsTenAndLess() {
+// export async function fetchSpiritsTenAndLess() {
 //   noStore();
 
 //   try {
@@ -258,7 +282,7 @@ export async function fetchDistinctSpirits() {
 //   }
 // }
 
-// export async function fetchspiritsPriceTenFor100() {
+// export async function fetchSpiritsPriceTenFor100() {
 //   noStore();
 
 //   try {
@@ -275,7 +299,7 @@ export async function fetchDistinctSpirits() {
 //     throw new Error("Failed to fetch spirits ten for 100.");
 //   }
 // }
-// export async function fetchspiritsPriceDrop() {
+// export async function fetchSpiritsPriceDrop() {
 //   noStore();
 
 //   try {

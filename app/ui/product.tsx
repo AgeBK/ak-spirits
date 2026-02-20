@@ -4,12 +4,15 @@ import Img from "./image";
 import ImgFill from "./image-fill";
 import ProductCart from "./productCart";
 import Price from "./price";
+import ListItem from "./listItem";
 import styles from "@/app/css/Product.module.css";
 
 // TODO: 2 for??
 
-export default async function Product({ arr }: CategoryProps) {
+export default async function Product({ arr, similarArr }: CategoryProps) {
   console.log(arr);
+  console.log(similarArr);
+
   // console.log(appData);
 
   const {
@@ -72,6 +75,7 @@ export default async function Product({ arr }: CategoryProps) {
         </i>
       </div>
       <h3 className={styles.hdr}>Similar Products:</h3>
+      <ListItem arr={similarArr} css="similar" />
     </div>
   );
 }

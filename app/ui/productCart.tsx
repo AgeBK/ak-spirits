@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import { useCartStore } from "../store";
-
-// import { addToCart } from "@/app/lib/utils";
-import { CategoryProps, SpiritProps } from "../lib/definitions";
+import { CategoryProps } from "../lib/definitions";
 import Img from "@/app/ui/image";
-import styles from "@/app/css/ProductCart.module.css";
 import Button from "./button";
+import styles from "@/app/css/ProductCart.module.css";
 
 export default function ProductCart({ arr }: CategoryProps) {
   // product page cart
@@ -68,8 +66,8 @@ export default function ProductCart({ arr }: CategoryProps) {
             <Img
               imgSrc={`icons/${packagingImg}`}
               imgAlt=""
-              imgWidth={18}
-              imgHeight={40}
+              imgWidth={16}
+              imgHeight={36}
             />
           </div>
           <div className={styles.price}>
@@ -84,7 +82,7 @@ export default function ProductCart({ arr }: CategoryProps) {
           <Button onClick={handleCount}>+</Button>
         </div>
         <div className={styles.cartAdd}>
-          <Button onClick={() => addCartItem(item, count)} css="">
+          <Button onClick={() => addCartItem(arr, count)} css="">
             ADD TO CART
           </Button>
         </div>

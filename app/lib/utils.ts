@@ -14,3 +14,6 @@ export const filterData = (arr: SpiritProps[], filter: string) => {
   });
   return arr;
 };
+
+export const capitalizeFirstLetter = (val: string) =>
+  val.charAt(0).toUpperCase() + val.slice(1);

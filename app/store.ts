@@ -18,7 +18,7 @@ const checkCartExisting = (
 
 export const useCartStore = create<{
   cartItems: CartProps[];
-  addCartItem: (item: CartProps, qty?: number) => void;
+  addCartItem: (arr: CartProps, qty?: number) => void;
   removeItem: (itemId: string) => void;
   deleteItem: (itemId: string) => void;
   clearCart: () => void;

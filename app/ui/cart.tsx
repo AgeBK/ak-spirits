@@ -15,7 +15,9 @@ export default function Cart() {
   return (
     <div className={styles.container}>
       <div className={styles.itemCnt}>
-        {itemCnt ? `You have ${itemCnt} item${itemCnt !== 1 ? "s" : ""}` : null}
+        {itemCnt
+          ? `You have ${itemCnt} item${itemCnt !== 1 ? "s" : ""} in your shopping cart`
+          : null}
       </div>
       {cartItems.map((item: CartProps) => {
         const {

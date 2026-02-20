@@ -27,6 +27,7 @@ export type ImgProps = {
 
 export type CategoryProps = {
   arr: SpiritProps[];
+  similarArr?: SpiritProps[];
 };
 
 export type FilterTypeProps = {
