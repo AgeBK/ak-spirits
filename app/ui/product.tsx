@@ -8,13 +8,16 @@ import ListItem from "./listItem";
 import styles from "@/app/css/Product.module.css";
 
 // TODO: 2 for??
+// TODO: update readme
+// TODO: Theme switcher?
 
-export default async function Product({ arr, similarArr }: CategoryProps) {
-  console.log(arr);
-  console.log(similarArr);
-
+export default async function Product({
+  productObj,
+  similarArr,
+}: CategoryProps) {
+  // console.log(productObj);
+  // console.log(similarArr);
   // console.log(appData);
-
   const {
     id,
     brand,
@@ -30,11 +33,17 @@ export default async function Product({ arr, similarArr }: CategoryProps) {
     ratings_avg,
     ratings_tot,
     packaging,
-  } = arr;
-  const subCatLow = sub_category.toLowerCase();
-  const spiritType = appData[subCatLow];
-  const spiritReview = appData[`${subCatLow}Review`];
-  const productDesc = spiritType.replaceAll("[xxxx]", brand);
+  }: SpiritProps = productObj;
+
+  const subCatLow: string = sub_category.toLowerCase();
+  const spiritType: string = appData[subCatLow];
+  const spiritReview: string = appData[`${subCatLow}Review`];
+  const productDesc: string = spiritType
+    ? spiritType.replaceAll("[xxxx]", brand)
+    : "";
+  const productReview: string = spiritReview
+    ? spiritReview.replaceAll("[xxxx]", brand)
+    : "";
 
   return (
     <div className={styles.container}>
@@ -62,13 +71,13 @@ export default async function Product({ arr, similarArr }: CategoryProps) {
             <div className={styles.star} key={i}></div>
           ))}
           {/* <div className={styles.productCart}> */}
-          <ProductCart arr={arr} />
+          <ProductCart productObj={productObj} />
           {/* </div> */}
         </div>
       </div>
       <div className={styles.reviewCont}>
         <h3 className={styles.hdr}>Product Review:</h3>
-        <div className={styles.review}>{spiritReview}</div>
+        <div className={styles.review}>{productReview}</div>
         <i className={styles.reviewSource}>
           Source *Spirits Monthly: August 2025 - Author: Sir Roger Braithwaite
           III

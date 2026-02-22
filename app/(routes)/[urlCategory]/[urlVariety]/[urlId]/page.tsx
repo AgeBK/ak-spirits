@@ -14,11 +14,12 @@ export default async function Page({
 
   // const { urlCategory, urlVariety, urlId } = p;
   // console.log(urlCategory, urlVariety, urlId);
-
   //  const [products, user] = await Promise.all([fetchProducts(), getUser()]);
 
-  const arr = await fetchSpiritById(urlId);
+  const productObj = await fetchSpiritById(urlId);
+  console.log(productObj);
+
   const similarArr = await fetchSpiritsBySubCategory(urlVariety, urlId);
 
-  return <Product arr={arr} similarArr={similarArr}/>;
+  return <Product productObj={productObj} similarArr={similarArr} />;
 }

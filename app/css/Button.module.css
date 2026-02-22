@@ -35,8 +35,15 @@
   background-color: transparent;
 }
 
+.cartToggle {
+  font-size: 24px;
+  background-color: #000;
+  padding: 0px;
+}
+
 .itemAddCart {
   position: absolute;
   bottom: 5px;
   padding: 5px 20px;
+  background-color: transparent;
 }

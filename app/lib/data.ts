@@ -3,17 +3,18 @@ import { SpiritProps } from "./definitions";
 import { unstable_noStore as noStore } from "next/cache";
 import { capitalizeFirstLetter } from "./utils";
 // console.log("data.ts");
-
 // console.log(process.env.DATABASE_URL);
 
 const sql = neon(process.env.DATABASE_URL);
 
+// Promise<Record<string, string | number>>[]
 export async function fetchSpirits() {
   // noStore() prevents the response from being cached. (good for dev) TODO
   noStore();
 
   try {
-    const data = await sql`
+    // const data: Record<string, string | number>[] = await sql`
+    const data: Record<string, SpiritProps>[] = await sql`
       SELECT   
           id,
           brand,
@@ -37,7 +38,7 @@ export async function fetchSpiritById(query: string) {
   noStore();
 
   try {
-    const data = await sql`
+    const data: Record<string, SpiritProps> = await sql`
       SELECT
           id,
           brand,

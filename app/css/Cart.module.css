@@ -1,9 +1,8 @@
 .container {
   position: absolute;
+  display: flex;
   top: 0;
   right: 0;
-  width: 350px;
-  background-color: #fff;
   cursor: default;
   border: 2px solid #000;
   max-height: 100vh;
@@ -12,11 +11,24 @@
   color: #000;
 }
 
-.itemCnt {
+.cartDetails {
   text-align: center;
   background-color: #000;
   color: #fff;
   border: 1px solid #555;
+  display: none;
+  position: relative;
+}
+
+.showCart {
+  display: block;
+}
+
+.close {
+  /* position: absolute;
+  right: 10px; */
+  /* font-size: 24px; */
+  margin-left: 25px;
 }
 
 .cartItem {
@@ -24,7 +36,11 @@
   justify-content: space-around;
   padding: 10px;
   border: 1px solid #999;
+  color: #000;
+  background-color: #fff;
   border-bottom: 0;
+  width: 330px;
+  text-align: left;
 }
 
 .cartItem:last-child {

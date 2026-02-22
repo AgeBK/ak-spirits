@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import Header from "./header";
+import Footer from "./footer";
 import styles from "@/app/css/Container.module.css";
 
 type ContainerProps = {
@@ -11,7 +12,7 @@ export default function Container({ children }: ContainerProps) {
     <div className={styles.container}>
       <Header />
       <main>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

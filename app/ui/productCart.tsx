@@ -7,7 +7,7 @@ import Img from "@/app/ui/image";
 import Button from "./button";
 import styles from "@/app/css/ProductCart.module.css";
 
-export default function ProductCart({ arr }: CategoryProps) {
+export default function ProductCart({ productObj }: CategoryProps) {
   // product page cart
   const [count, setCount] = useState<number>(1);
   const { cartItems, removeItem, deleteItem, addCartItem, total } =
@@ -32,7 +32,7 @@ export default function ProductCart({ arr }: CategoryProps) {
     ratings_avg,
     ratings_tot,
     packaging,
-  } = arr;
+  } = productObj;
 
   const handleCount = (e: React.MouseEvent<Element, MouseEvent>) => {
     const { textContent } = e.currentTarget;
@@ -43,16 +43,17 @@ export default function ProductCart({ arr }: CategoryProps) {
     }
   };
 
+  // TODO: images
   let packagingImg = "";
   switch (packaging) {
     case "Bottle":
-      packagingImg = "wineSil.png";
+      packagingImg = "bottle.jpg";
       break;
     case "Can":
-      packagingImg = "barrelSil.png";
+      packagingImg = "can.png";
       break;
     case "Box":
-      packagingImg = "barrelSil.png";
+      packagingImg = "box.png"; // TODO: check image
       break;
     default:
       break;
@@ -82,7 +83,7 @@ export default function ProductCart({ arr }: CategoryProps) {
           <Button onClick={handleCount}>+</Button>
         </div>
         <div className={styles.cartAdd}>
-          <Button onClick={() => addCartItem(arr, count)} css="">
+          <Button onClick={() => addCartItem(productObj, count)} css="">
             ADD TO CART
           </Button>
         </div>

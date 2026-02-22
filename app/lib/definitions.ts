@@ -55,3 +55,28 @@ export type ButtonProps = {
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
 };
+
+export type ProductItemProps = {
+  arr: CategoryProps[];
+  css: string;
+};
+
+export interface ListItemProps {
+  arr: Array<{
+    id: string;
+    brand: string;
+    name: string;
+    short_name: string;
+    category: string;
+    sub_category: string;
+    price_normal: number;
+    price_current: number;
+    price_2_for?: number;
+    volume?: number;
+    unit?: string;
+    ratings_avg?: number;
+    ratings_tot?: number;
+    packaging?: string;
+  }>;
+  css: string;
+}

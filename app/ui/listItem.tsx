@@ -1,22 +1,17 @@
 "use client";
 
-import styles from "@/app/css/ListItem.module.css";
-import { CategoryProps } from "../lib/definitions";
+import { CategoryProps, ListItemProps, SpiritProps } from "../lib/definitions";
 import { imgPath } from "@/app/lib/appData.json";
+import { useCartStore } from "../store";
 import Image from "next/image";
 import Link from "next/link";
-import { useCartStore } from "../store";
 import Button from "./button";
 import Price from "./price";
+import styles from "@/app/css/ListItem.module.css";
 
-type ListItemProps = {
-  arr: CategoryProps;
-  css: string;
-};
-
-export default function LitItem({ arr, css }: ListItemProps) {
+export default function ListItem({ arr, css }: ListItemProps) {
   const addCartItem = useCartStore((state) => state.addCartItem);
-  const cartItems = useCartStore((state) => state.cartItems);
+  // const cartItems = useCartStore((state) => state.cartItems);
 
   return (
     <article className={`${styles.items} ${styles[css]}`}>
@@ -24,18 +19,18 @@ export default function LitItem({ arr, css }: ListItemProps) {
         const {
           id,
           brand,
-          name,
+          // name,
           short_name,
           category,
           sub_category,
           price_normal,
           price_current,
-          price_2_for,
-          volume,
-          unit,
-          ratings_avg,
-          ratings_tot,
-          packaging,
+          // price_2_for,
+          // volume,
+          // unit,
+          // ratings_avg,
+          // ratings_tot,
+          // packaging,
         } = item;
 
         return (

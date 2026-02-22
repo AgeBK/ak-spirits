@@ -12,7 +12,7 @@ import ItemsPerPage from "./itemsPerPage";
 import styles from "@/app/css/Category.module.css";
 import Link from "next/link";
 import Button from "./button";
-import ListItem from "./listItem";
+import ProductItem from "./listItem";
 
 export default function Category({ arr }: CategoryProps) {
   const [sortOrder, setSortOrder] = useState("");
@@ -52,7 +52,7 @@ export default function Category({ arr }: CategoryProps) {
             <span className={styles.results}>({totalFiltered} results)</span>
           </h3>
         ) : null}
-        <ListItem arr={pagedArr} css="" />
+        <ProductItem arr={pagedArr} css="" />
         <ItemsPerPage setPerPage={setPerPage} perPage={perPage} />
       </div>
     </div>
