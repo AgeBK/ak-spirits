@@ -8,11 +8,22 @@
 
 .filters {
   min-width: 170px;
+  padding-right: 20px;
 }
 
 /* .filterType{
   display: inline-block;
 } */
+
+.productsHdr {
+  display: flex;
+  padding-right: 20px;
+  color: #999;
+}
+
+.productsTotal {
+  flex-grow: 1;
+}
 
 .results {
   color: #777;
@@ -34,6 +45,16 @@
   font-size: 14px;
   color: #000;
   font-weight: bold;
+}
+
+.pageCont {
+  display: flex;
+  padding: 15px 5px;
+}
+
+.pageCont div:first-child {
+  flex-grow: 1;
+  text-align: center;
 }
 /* 
 .addCart {

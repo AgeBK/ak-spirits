@@ -10,6 +10,7 @@ import styles from "@/app/css/Product.module.css";
 // TODO: 2 for??
 // TODO: update readme
 // TODO: Theme switcher?
+// TODO: page length
 
 export default async function Product({
   productObj,

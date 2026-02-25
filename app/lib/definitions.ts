@@ -32,8 +32,8 @@ export type CategoryProps = {
 
 export type FilterTypeProps = {
   arr: SpiritProps[];
-  setFilterCategory: (value: string) => void;
-  filterCategory: string;
+  setFilters: (value: string) => void;
+  filters: { [key: string]: string | number };
 };
 
 export type CartProps = {

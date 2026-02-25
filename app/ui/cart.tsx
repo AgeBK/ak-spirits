@@ -10,13 +10,13 @@ import { useState } from "react";
 export default function Cart() {
   const { cartItems, removeItem, deleteItem, addCartItem, total } =
     useCartStore();
-  const [showCart, setShowCart] = useState(true);
+  const [showCart, setShowCart] = useState(false);
   const itemCnt = cartItems.length;
   const cartTotal = total();
 
   return (
     <div className={styles.container}>
-      {itemCnt > 0 ? (
+      {showCart ? (
         <div className={`${styles.cartDetails} ${showCart && styles.showCart}`}>
           <div className={styles.cartHdr}>
             You have {itemCnt} item {itemCnt !== 1 ? "s" : ""} in your shopping
@@ -96,8 +96,10 @@ export default function Cart() {
           )} */}
         </div>
       ) : (
-        <div className={styles.cartCont}>
-          <span className={styles.Items}>{itemCnt}</span>
+        <div
+          className={styles.cartCont}
+          onClick={() => (itemCnt ? setShowCart(!showCart) : null)}
+        >
           {itemCnt ? (
             <Img
               imgSrc={`icons/cart.jpg`}
@@ -114,7 +116,8 @@ export default function Cart() {
               imgWidth={30}
               imgHeight={30}
             />
-          )}
+          )}{" "}
+          <span className={styles.itemCnt}>{itemCnt}</span>
         </div>
       )}
     </div>

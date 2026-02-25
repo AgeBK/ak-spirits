@@ -1,11 +1,17 @@
 import React from "react";
-import { SpiritProps, CategoryProps, FilterTypeProps } from "@/app/lib/definitions";
+import {
+  SpiritProps,
+  CategoryProps,
+  FilterTypeProps,
+} from "@/app/lib/definitions";
 import styles from "@/app/css/FilterType.module.css";
+
+// TODO: similar styles in price?
 
 export default function FilterType({
   arr,
-  setFilterCategory,
-  filterCategory,
+  setFilters,
+  filters,
 }: FilterTypeProps) {
   const distinctSpirits: string[] = arr.reduce(
     (acc: string[], val: SpiritProps) => {
@@ -17,11 +23,12 @@ export default function FilterType({
   );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void =>
-    setFilterCategory(e.target.value);
+    setFilters({ ...filters, category: e.target.value });
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.filterHdr}>Category</h3>
+      <hr />
+      <h3 className={styles.filterHdr}>Category:</h3>
       <ul className={styles.category}>
         {distinctSpirits.map((val) => (
           <li key={val}>
@@ -33,9 +40,9 @@ export default function FilterType({
               name="cat"
             />
             <label htmlFor={val}>{val}</label>
-            {filterCategory && filterCategory === val && (
+            {filters && filters.category === val && (
               <button
-                onClick={() => setFilterCategory("")}
+                onClick={() => setFilters({ ...filters, category: "" })}
                 className={styles.clear}
               >
                 clear
