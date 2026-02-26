@@ -1,5 +1,5 @@
 import React, { SetStateAction, useState } from "react";
-import { filterBrand, filterItemByBrand } from "@/app/lib/utils";
+import { filterBrand, filterByBrand } from "@/app/lib/utils";
 import styles from "@/app/css/FilterBrand.module.css";
 import { FilterTypeProps, SpiritProps } from "@/app/lib/definitions";
 
@@ -9,6 +9,7 @@ export default function FilterBrand({
   filters,
 }: FilterTypeProps) {
   const [filteredBrands, setFilteredBrands] = useState([]);
+
   const distinctBrands: string[] = arr.reduce(
     (acc: string[], val: SpiritProps) => {
       const brand: string = val.brand;
@@ -22,17 +23,18 @@ export default function FilterBrand({
   );
   console.log(distinctBrands);
   console.log(distinctBrands.brands);
-  console.log(distinctBrands.items);
+  // console.log(distinctBrands.items);
 
   const handleChange = (e) => {
-    const brandArr = filterBrand(distinctBrands.brands, e.target.value);
-    const itemByBrand = filterItemByBrand(distinctBrands.items, brandArr);
+    const { value } = e.target;
+    const brandArr = filterBrand(distinctBrands.brands, value);
+    // const itemByBrand = filterByBrand(distinctBrands.items, brandArr);
     setFilteredBrands(brandArr);
-    setFilters(brandArr);
+    setFilters({ ...filters, brand: value });
 
     console.log("handleChange");
     console.log(brandArr);
-    console.log(itemByBrand);
+    // console.log(itemByBrand);
   };
 
   return (

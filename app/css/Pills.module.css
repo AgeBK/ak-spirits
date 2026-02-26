@@ -1,0 +1,8 @@
+.container {
+  /* border: 1px solid red; */
+}
+
+.pill {
+  display: inline-block;
+  margin-right: 5px;
+}

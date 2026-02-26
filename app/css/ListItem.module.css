@@ -12,6 +12,7 @@
   text-align: center;
   flex-grow: 1;
   width: 170px;
+  max-width: 230px;
   height: 300px;
   border: 1px solid #850303;
   padding: 10px;

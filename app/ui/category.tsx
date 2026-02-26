@@ -3,11 +3,12 @@
 import { useState } from "react";
 import { useCartStore } from "@/app/store";
 import { CategoryProps } from "../lib/definitions";
-import { filterByCat, filterItemByBrand, filterPrice } from "../lib/utils";
+import { filterByCat, filterByBrand, filterByPrice } from "../lib/utils";
 import appData from "../lib/appData.json";
 import FilterType from "./filters/filterType";
 import FilterPrice from "./filters/filterPrice";
 import Price from "./price";
+import Pills from "./Pills";
 import SortProducts from "./sortProducts";
 import Paging from "./paging";
 import ItemsPerPage from "./itemsPerPage";
@@ -16,6 +17,8 @@ import Link from "next/link";
 import Button from "./button";
 import ProductItem from "./listItem";
 import FilterBrand from "./filters/filterBrand";
+
+// TODO: category? products?
 
 export default function Category({ arr }: CategoryProps) {
   const [sortOrder, setSortOrder] = useState("");
@@ -34,7 +37,6 @@ export default function Category({ arr }: CategoryProps) {
   // console.log("filter Category: " + filters);
 
   const keys: string[] = Object.keys(filters);
-  // console.log(keys);
 
   keys.map((key) => {
     const value = filters[key as keyof typeof filters];
@@ -46,12 +48,12 @@ export default function Category({ arr }: CategoryProps) {
           totalPages = Math.ceil(pagedArr.length / perPage);
           break;
         case "brand":
-          pagedArr = filterItemByBrand(pagedArr, value as number);
+          pagedArr = filterByBrand(pagedArr, value as string);
           totalFiltered = pagedArr.length;
           totalPages = Math.ceil(pagedArr.length / perPage);
           break;
         case "price":
-          pagedArr = filterPrice(pagedArr, value as number);
+          pagedArr = filterByPrice(pagedArr, value as number);
           totalFiltered = pagedArr.length;
           totalPages = Math.ceil(pagedArr.length / perPage);
           break;
@@ -73,7 +75,7 @@ export default function Category({ arr }: CategoryProps) {
     <div className={styles.container}>
       <div className={styles.filters}>
         <h2 className={styles.filterHdr}>Refine:</h2>
-        <FilterType arr={arr} setFilters={setFilters} filters={filters} />{" "}
+        <FilterType arr={arr} setFilters={setFilters} filters={filters} />
         <FilterPrice
           // arr={arr}
           setFilters={setFilters}
@@ -83,6 +85,10 @@ export default function Category({ arr }: CategoryProps) {
       </div>
       <div className={styles.products}>
         <div className={styles.productsHdr}>
+          <div className={styles.pillsCont}>
+            <Pills setFilters={setFilters} filters={filters} />
+          </div>
+
           <div className={styles.productsTotal}>
             ({totalFiltered}) Available:
           </div>

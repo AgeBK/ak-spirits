@@ -15,10 +15,19 @@
   display: inline-block;
 } */
 
+.products {
+  position: relative;
+  width: 100%;
+}
+
 .productsHdr {
   display: flex;
   padding-right: 20px;
   color: #999;
+}
+
+.pillsCont {
+  border: 1px solid blue;
 }
 
 .productsTotal {
@@ -49,7 +58,11 @@
 
 .pageCont {
   display: flex;
+  align-items: center;
   padding: 15px 5px;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
 }
 
 .pageCont div:first-child {

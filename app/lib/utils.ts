@@ -16,7 +16,7 @@ export const filterByCat = (arr: SpiritProps[], filter: string) => {
   return arr;
 };
 
-export const filterPrice = (arr: SpiritProps[], filter: number) => {
+export const filterByPrice = (arr: SpiritProps[], filter: number) => {
   console.log("filter Price function");
   console.log(filter);
 
@@ -29,7 +29,7 @@ export const filterPrice = (arr: SpiritProps[], filter: number) => {
 };
 
 export const filterBrand = (arr: string[], filter: string) => {
-  // let filtered: SetStateAction<string[]> = [];
+  // return list of brand names starting with search term
   console.log(arr);
 
   let filtered: string[] = [];
@@ -40,10 +40,12 @@ export const filterBrand = (arr: string[], filter: string) => {
   return filtered;
 };
 
-export const filterItemByBrand = (arr: string[], brandArr: string[]) => {
-  arr = arr.filter((val) => brandArr.indexOf(val.brand) > -1);
-  console.log("filterItemByBrand");
-  console.log(arr);
+export const filterByBrand = (arr: SpiritProps[], brand: string) => {
+  // return items starting with search term
+  arr = arr.filter((val) =>
+    val.brand.toLowerCase().startsWith(brand.toLowerCase()),
+  );
+
   return arr;
 };
 

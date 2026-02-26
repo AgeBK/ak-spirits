@@ -47,3 +47,9 @@
   padding: 5px 20px;
   background-color: transparent;
 }
+
+.pillDel {
+  background-color: #555;
+  color: #000;
+  border-radius: 15px;
+}

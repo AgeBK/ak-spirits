@@ -9,6 +9,9 @@ export default function FilterPrice({
 }: FilterTypeProps) {
   const { priceArr } = appData;
 
+  // console.log("FilterPrice");
+  // console.log(priceArr);
+
   return (
     <div className={styles.container}>
       <hr /> <h3 className={styles.filterHdr}>Price:</h3>
