@@ -1,18 +1,30 @@
-import React, { SetStateAction, useState } from "react";
-import { filterBrand, filterByBrand } from "@/app/lib/utils";
+"use client";
+
+import { ChangeEvent, useState } from "react";
+import { filterBrand } from "@/app/lib/utils";
+import {
+  accBrandProps,
+  distinctBrandsProps,
+  FilterTypeProps,
+  SpiritProps,
+} from "@/app/lib/definitions";
+import Button from "../button";
 import styles from "@/app/css/FilterBrand.module.css";
-import { FilterTypeProps, SpiritProps } from "@/app/lib/definitions";
 
 export default function FilterBrand({
   arr,
   setFilters,
   filters,
 }: FilterTypeProps) {
-  const [filteredBrands, setFilteredBrands] = useState([]);
+  const [filteredBrands, setFilteredBrands] = useState<string[]>([]);
+  const [text, setText] = useState("");
 
-  const distinctBrands: string[] = arr.reduce(
-    (acc: string[], val: SpiritProps) => {
+  // console.log("Filter Brand Component:");
+
+  const distinctBrands: distinctBrandsProps = arr.reduce(
+    (acc: accBrandProps, val: SpiritProps) => {
       const brand: string = val.brand;
+      // && val.brand.indexOf(brand) > -1
       if (acc.brands.indexOf(brand) === -1) {
         acc.brands.push(brand);
         acc.items.push(val);
@@ -21,36 +33,85 @@ export default function FilterBrand({
     },
     { brands: [], items: [] },
   );
-  console.log(distinctBrands);
-  console.log(distinctBrands.brands);
-  // console.log(distinctBrands.items);
 
-  const handleChange = (e) => {
-    const { value } = e.target;
+  const handleChange = ({
+    target: { value },
+  }: ChangeEvent<HTMLInputElement>) => {
+    // console.log(e);
+    // console.log(value);
+    // const brand: string = e.target.value;
     const brandArr = filterBrand(distinctBrands.brands, value);
-    // const itemByBrand = filterByBrand(distinctBrands.items, brandArr);
     setFilteredBrands(brandArr);
     setFilters({ ...filters, brand: value });
+    setText(value);
+  };
 
-    console.log("handleChange");
-    console.log(brandArr);
-    // console.log(itemByBrand);
+  const handleClick = ({
+    currentTarget: { id },
+  }: React.MouseEvent<Element, MouseEvent>) => {
+    // console.log(id);
+
+    const brandArr: string[] = filterBrand(distinctBrands.brands, id);
+    setFilteredBrands(brandArr);
+    setText(id);
+    setFilters({ ...filters, brand: id });
+  };
+
+  const clearData = () => {
+    setText("");
+    setFilters({ ...filters, brand: "" });
   };
 
   return (
     <div className={styles.container}>
       <hr />
       <h3 className={styles.filterHdr}>Brand:</h3>
-      <input
-        type="text"
-        onChange={handleChange}
-        placeholder="Enter brand name:"
-      ></input>
+      <div className={styles.inputCont}>
+        <input
+          type="text"
+          onChange={handleChange}
+          placeholder="Enter brand"
+          value={text}
+        />
+        <span onClick={clearData} className={styles.clearInput}>
+          &times;
+        </span>
+      </div>
       <ul>
-        {filteredBrands.map((brand: string) => (
-          <li key={brand}>{brand}</li>
-        ))}
+        <div>
+          {filteredBrands.map((brand: string) => (
+            <Button
+              key={brand}
+              id={brand}
+              onClick={(e: React.MouseEvent<Element, MouseEvent>) =>
+                handleClick(e)
+              }
+              css="brand"
+            >
+              <li value={brand}>{brand}</li>
+            </Button>
+          ))}
+
+          {/* <label htmlFor={val}>{val}</label> */}
+          {/* {filters && filters.brand.startsWith(text) && (
+            <button onClick={() => clearData()} className={styles.clear}>
+              clear
+            </button>
+          )} */}
+        </div>
       </ul>
     </div>
   );
 }
+
+// const handleClick = (e: { currentTarget: { id: string } }) => {
+//   console.log(e);
+
+//   const brand: string = e.currentTarget.id;
+//   const brandArr: string[] = filterBrand(distinctBrands.brands, brand);
+//   setFilteredBrands(brandArr);
+//   setText(brand);
+//   setFilters({ ...filters, brand });
+
+//   console.log(brand);
+// };

@@ -1,4 +1,5 @@
 import styles from "@/app/css/ItemsPerPage.module.css";
+import Button from "./button";
 
 export default function ItemsPerPage({
   setPerPage,
@@ -8,16 +9,19 @@ export default function ItemsPerPage({
   perPage: number;
 }) {
   const itemsArr = [20, 40, 60, 80];
+  // TODO: need a way to pass 2 styles
   return (
-    <div className={styles.container}>
+    <div className={styles.itemsPerPageCont}>
+      <div className={styles.results}>Results per page:</div>
       {itemsArr.map((val) => (
-        <button
+        <Button
           key={val}
-          className={`${styles.itemsPerPage} ${val === perPage ? styles.selected : ""}`}
+          css={val === perPage ? "itemsPP" : "selected"}
+          // css={`${styles.itemsPerPage} ${val === perPage ? styles.selected : ""}`}
           onClick={() => setPerPage(val)}
         >
           {val}
-        </button>
+        </Button>
       ))}
     </div>
   );

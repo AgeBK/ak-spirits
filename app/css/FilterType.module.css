@@ -29,16 +29,4 @@
   color: #999;
 }
 
-.clear {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  color: #888;
-  text-decoration: underline;
-  font-size: 0.7rem;
-  border-radius: 0;
-  box-shadow: none;
-  text-shadow: none;
-  display: inline-block;
-  margin-left: 5px;
-}
+

@@ -24,9 +24,11 @@ export async function fetchSpirits() {
           short_name,
           price_normal,
           price_current,
-          price_2_for      
+          price_2_for,
+          price_special
       FROM spirits
       `;
+
     return data;
   } catch (err) {
     console.error("Database Error:", err);
@@ -53,7 +55,8 @@ export async function fetchSpiritById(query: string) {
           unit,
           ratings_avg,
           ratings_tot,
-          packaging
+          packaging,
+          price_special
       FROM spirits
       WHERE id=${query}
       `;

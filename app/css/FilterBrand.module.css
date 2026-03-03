@@ -9,3 +9,15 @@
 .filterHdr {
   margin-bottom: 10px;
 }
+
+.inputCont {
+  position: relative;
+}
+
+.clearInput {
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+  color: #000;
+  top: 0px;
+}

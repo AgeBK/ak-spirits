@@ -9,6 +9,7 @@
 .filters {
   min-width: 170px;
   padding-right: 20px;
+  text-transform: capitalize;
 }
 
 /* .filterType{
@@ -26,9 +27,9 @@
   color: #999;
 }
 
-.pillsCont {
+/* .pillsCont {
   border: 1px solid blue;
-}
+} */
 
 .productsTotal {
   flex-grow: 1;
@@ -60,6 +61,7 @@
   display: flex;
   align-items: center;
   padding: 15px 5px;
+  width: 100%;
   position: absolute;
   bottom: 0;
   right: 20px;

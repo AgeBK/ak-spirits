@@ -2,8 +2,13 @@
 
 import { useState } from "react";
 import { useCartStore } from "@/app/store";
-import { CategoryProps } from "../lib/definitions";
-import { filterByCat, filterByBrand, filterByPrice } from "../lib/utils";
+import { CategoryProps, FilterProps } from "../lib/definitions";
+import {
+  filterByCat,
+  filterByBrand,
+  filterByPrice,
+  filterByOffer,
+} from "../lib/utils";
 import appData from "../lib/appData.json";
 import FilterType from "./filters/filterType";
 import FilterPrice from "./filters/filterPrice";
@@ -17,18 +22,21 @@ import Link from "next/link";
 import Button from "./button";
 import ProductItem from "./listItem";
 import FilterBrand from "./filters/filterBrand";
+import FilterOffers from "./filters/filterOffers";
 
 // TODO: category? products?
+// TODO: need to reset paging when you click a new filter
 
 export default function Category({ arr }: CategoryProps) {
-  const [sortOrder, setSortOrder] = useState("");
-  const [filters, setFilters] = useState({
+  const [sortOrder, setSortOrder] = useState<string>("");
+  const [filters, setFilters] = useState<FilterProps>({
+    offer: [],
     category: "",
     brand: "",
-    price: 0,
+    price: "",
   });
-  const [page, setPage] = useState(0);
-  const [perPage, setPerPage] = useState(40);
+  const [page, setPage] = useState<number>(0);
+  const [perPage, setPerPage] = useState<number>(40);
   // console.log(appData);
 
   let totalPages = Math.ceil(arr.length / perPage);
@@ -42,6 +50,11 @@ export default function Category({ arr }: CategoryProps) {
     const value = filters[key as keyof typeof filters];
     if (value) {
       switch (key) {
+        case "offer":
+          pagedArr = filterByOffer(pagedArr, value as string[]);
+          totalFiltered = pagedArr.length;
+          totalPages = Math.ceil(pagedArr.length / perPage);
+          break;
         case "category":
           pagedArr = filterByCat(pagedArr, value as string);
           totalFiltered = pagedArr.length;
@@ -53,7 +66,7 @@ export default function Category({ arr }: CategoryProps) {
           totalPages = Math.ceil(pagedArr.length / perPage);
           break;
         case "price":
-          pagedArr = filterByPrice(pagedArr, value as number);
+          pagedArr = filterByPrice(pagedArr, value as string);
           totalFiltered = pagedArr.length;
           totalPages = Math.ceil(pagedArr.length / perPage);
           break;
@@ -74,13 +87,10 @@ export default function Category({ arr }: CategoryProps) {
   return (
     <div className={styles.container}>
       <div className={styles.filters}>
-        <h2 className={styles.filterHdr}>Refine:</h2>
+        {/* <h2 className={styles.filterHdr}>Refine:</h2> */}
+        <FilterOffers setFilters={setFilters} filters={filters} />
         <FilterType arr={arr} setFilters={setFilters} filters={filters} />
-        <FilterPrice
-          // arr={arr}
-          setFilters={setFilters}
-          filters={filters}
-        />
+        <FilterPrice setFilters={setFilters} filters={filters} />
         <FilterBrand arr={arr} setFilters={setFilters} filters={filters} />
       </div>
       <div className={styles.products}>

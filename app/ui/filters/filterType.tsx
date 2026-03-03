@@ -5,6 +5,7 @@ import {
   FilterTypeProps,
 } from "@/app/lib/definitions";
 import styles from "@/app/css/FilterType.module.css";
+import Button from "../button";
 
 // TODO: similar styles in price?
 
@@ -41,12 +42,12 @@ export default function FilterType({
             />
             <label htmlFor={val}>{val}</label>
             {filters && filters.category === val && (
-              <button
+              <Button
                 onClick={() => setFilters({ ...filters, category: "" })}
-                className={styles.clear}
+                css="clear"
               >
                 clear
-              </button>
+              </Button>
             )}
           </li>
         ))}

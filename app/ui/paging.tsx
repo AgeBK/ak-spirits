@@ -1,3 +1,4 @@
+import Button from "./button";
 import styles from "@/app/css/Paging.module.css";
 
 export default function Paging({
@@ -11,25 +12,32 @@ export default function Paging({
 }) {
   return (
     <div className={styles.container}>
-      <button onClick={() => setPage(0)} disabled={page === 0}>
+      <Button onClick={() => setPage(0)} disabled={page === 0} css="paging">
         &lt;&lt;
-      </button>
-      <button onClick={() => setPage(page - 1)} disabled={page === 0}>
+      </Button>
+      <Button
+        onClick={() => setPage(page - 1)}
+        disabled={page === 0}
+        css="paging"
+      >
         &lt;
-      </button>
-      <div className={styles.currentPage}>{page + 1}</div>
-      <button
+      </Button>
+      <div className={styles.currentPage}>{page + 1}</div>{" "}
+      {totalPages > 1 && <span className={styles.total}>of {totalPages}</span>}
+      <Button
         onClick={() => setPage(page + 1)}
         disabled={page === totalPages - 1}
+        css="paging"
       >
         &gt;
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => setPage(totalPages - 1)}
         disabled={page === totalPages - 1}
+        css="paging"
       >
         &gt;&gt;
-      </button>
+      </Button>
     </div>
   );
 }

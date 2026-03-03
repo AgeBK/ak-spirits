@@ -1,6 +1,8 @@
 .btn {
   padding: 5px 20px;
   border: 1px solid #999;
+  background-color: #850303;
+  color: #fff;
 }
 
 .cartAdd {
@@ -49,7 +51,62 @@
 }
 
 .pillDel {
-  background-color: #555;
+  background-color: #777;
   color: #000;
-  border-radius: 15px;
+  border-radius: 35px;
+  border: 1px solid #850303;
+  padding: 5px 10px;
+  text-transform: capitalize;
+}
+
+.brand {
+  display: block;
+  padding: 3px;
+  text-decoration: underline;
+}
+
+.clear {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: #888;
+  text-decoration: underline;
+  font-size: 0.7rem;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* .itemsPerPage {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #000;
+} */
+
+.selected {
+  color: #fff;
+  background-color: #000;
+  padding: 3px;
+}
+
+.paging {
+  padding: 5px;
+}
+
+.paging:disabled {
+  color: #555;
+}
+
+.itemsPP {
+  composes: btn;
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid #000;
+}
+
+.itemsPP:hover {
+  color: #fff;
+  background-color: #555;
 }

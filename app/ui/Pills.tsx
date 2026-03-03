@@ -1,45 +1,24 @@
-import React, { FC } from "react";
-import styles from "@/app/css/Pills.module.css";
+import { PillsProps } from "../lib/definitions";
 import Button from "./button";
 import Img from "./image";
-
-interface PillsProps {
-  filters: Record<string, boolean>;
-  setFilters: (filters: Record<string, boolean>) => void;
-}
+import styles from "@/app/css/Pills.module.css";
 
 export default function Pills({ filters, setFilters }: PillsProps) {
-  console.log("Pills");
-  console.log(filters);
+  // console.log("Pills");
+  // console.log(filters);
 
-  const handleClick = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    key: string,
-  ): void => {
-    const { innerText } = e.target;
-    console.log(innerText);
-    console.log(key);
+  const handleClick = ({ currentTarget: { id } }: { id: string }) => {
+    setFilters({ ...filters, [id]: "" });
   };
-
-  const checkValue = (val) => {
-    // format price
-    
-  }
 
   return (
     <div className={styles.container}>
       {Object.entries(filters).map(
         ([key, value]: [string, boolean], index: number) =>
-          value ? (
+          value.toString() ? (
             <div className={styles.pill} key={index}>
-              <Button
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                  handleClick(e, key)
-                }
-                id={key}
-                css="pillDel"
-              >
-                <span>{String(value)}</span>
+              <Button id={key} onClick={handleClick} css="pillDel">
+                {key}
                 <Img
                   imgSrc={`close2.png`}
                   imgAlt={"close"}

@@ -1,9 +1,9 @@
 import { FilterTypeProps } from "@/app/lib/definitions";
 import appData from "../../lib/appData.json";
 import styles from "@/app/css/FilterPrice.module.css";
+import Button from "../button";
 
 export default function FilterPrice({
-  //   arr,
   setFilters,
   filters,
 }: FilterTypeProps) {
@@ -33,12 +33,12 @@ export default function FilterPrice({
                 {text}
               </label>
               {filters && filters.price === value && (
-                <button
+                <Button
                   onClick={() => setFilters({ ...filters, price: 0 })}
-                  className={styles.clear}
+                  css={styles.clear}
                 >
                   clear
-                </button>
+                </Button>
               )}
             </li>
           );

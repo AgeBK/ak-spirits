@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 
 export type SpiritProps = {
   brand: string;
@@ -15,6 +15,7 @@ export type SpiritProps = {
   sub_category: string;
   unit: string;
   volume: number;
+  price_special: boolean;
 };
 
 export type ImgProps = {
@@ -30,10 +31,31 @@ export type CategoryProps = {
   similarArr?: SpiritProps[];
 };
 
+export type FilterProps = {
+  offer: string[];
+  category: string;
+  brand: string;
+  price: string;
+};
+
 export type FilterTypeProps = {
   arr: SpiritProps[];
-  setFilters: (value: string) => void;
-  filters: { [key: string]: string | number };
+  setFilters: Dispatch<
+    SetStateAction<{
+      // arr: string[];
+      offer: string[];
+      category: string;
+      brand: string;
+      price: string;
+    }>
+  >; // Dispatch<SetStateAction<{ category: string; brand: string; price: string; }>>'
+  filters: {
+    // arr: string[];
+    offer: string[];
+    category: string;
+    brand: string;
+    price: string;
+  };
 };
 
 export type CartProps = {
@@ -48,12 +70,21 @@ export type CartProps = {
   sub_category: string;
 };
 
+// export type ButtonProps = {
+//   children?: ReactNode;
+//   onClick: () => void;
+//   css?: string;
+//   disabled?: boolean;
+//   type?: "button" | "submit" | "reset";
+// };
+
 export type ButtonProps = {
   children?: ReactNode;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<Element, MouseEvent>) => void;
+  id?: string;
   css?: string;
   disabled?: boolean;
-  type?: "button" | "submit" | "reset";
+  type?: "button" | "submit" | "reset" | undefined;
 };
 
 export type ProductItemProps = {
@@ -77,6 +108,31 @@ export interface ListItemProps {
     ratings_avg?: number;
     ratings_tot?: number;
     packaging?: string;
+    price_special?: boolean;
   }>;
   css: string;
 }
+
+export type PillsProps = {
+  filters: {
+    // arr: string[];
+    category: string;
+    brand: string;
+    price: string;
+  };
+  setFilters: Dispatch<
+    SetStateAction<{
+      // arr: string[];
+      category: string;
+      brand: string;
+      price: string;
+    }>
+  >;
+};
+
+export type distinctBrandsProps = {
+  brands: string[];
+  items: SpiritProps[];
+};
+
+export type accBrandProps = { brands: string[]; items: SpiritProps[] };

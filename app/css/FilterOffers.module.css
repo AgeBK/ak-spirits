@@ -1,0 +1,49 @@
+/* .filterOffers {
+  padding-right: 20px;
+} */
+
+.filterOffers hr {
+  margin: 20px 0;
+}
+
+.container h3 {
+  font-size: 18px;
+}
+
+.filterHdr {
+  margin-bottom: 10px;
+}
+
+.offer {
+}
+
+.offer li {
+  margin: 3px 0;
+  font-size: 18px;
+}
+
+.offer label,
+.offer input {
+  cursor: pointer;
+  font-size: 16px;
+  color: #999;
+}
+
+/* 
+.offer label {
+  text-transform: capitalize; 
+} */
+
+.clear {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: #888;
+  text-decoration: underline;
+  font-size: 0.7rem;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  display: inline-block;
+  margin-left: 5px;
+}
