@@ -28,7 +28,7 @@ import FilterOffers from "./filters/filterOffers";
 // TODO: need to reset paging when you click a new filter
 
 export default function Category({ arr }: CategoryProps) {
-  const [sortOrder, setSortOrder] = useState<string>("");
+  const [, setSortOrder] = useState<string>("");
   const [filters, setFilters] = useState<FilterProps>({
     offer: [],
     category: "",
@@ -82,6 +82,7 @@ export default function Category({ arr }: CategoryProps) {
   //   totalFiltered = pagedArr.length;
   //   totalPages = Math.ceil(pagedArr.length / perPage);
   // }
+
   pagedArr = pagedArr.slice(page * perPage, page * perPage + perPage);
 
   return (

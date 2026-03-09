@@ -18,12 +18,15 @@ export default function SortProducts({
     });
   };
 
+  const rating = () => {};
+
   const sortBy = ["--- Select ---", "$", "$$$", "rating", "A-Z", "Z-A"];
 
   const handleChange = (e) => {
     const { value } = e.target;
     setSortOrder(value);
     console.log("Selection changed to:", value);
+    // TODO: rating??
 
     switch (value) {
       case "$":
@@ -34,6 +37,7 @@ export default function SortProducts({
         break;
       case "rating":
         console.log("Sorting by rating");
+        arr.sort((a, b) => b.ratings_avg - a.ratings_avg);
         break;
       case "A-Z":
         console.log("Sorting by name ascending");

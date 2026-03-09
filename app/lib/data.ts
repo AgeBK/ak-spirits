@@ -25,7 +25,8 @@ export async function fetchSpirits() {
           price_normal,
           price_current,
           price_2_for,
-          price_special
+          price_special,
+          ratings_avg
       FROM spirits
       `;
 

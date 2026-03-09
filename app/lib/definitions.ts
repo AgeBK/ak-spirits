@@ -102,7 +102,7 @@ export interface ListItemProps {
     sub_category: string;
     price_normal: number;
     price_current: number;
-    price_2_for?: number;
+    price_2_for: number;
     volume?: number;
     unit?: string;
     ratings_avg?: number;

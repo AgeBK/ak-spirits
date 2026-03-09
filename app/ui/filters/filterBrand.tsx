@@ -1,5 +1,3 @@
-"use client";
-
 import { ChangeEvent, useState } from "react";
 import { filterBrand } from "@/app/lib/utils";
 import {
@@ -57,9 +55,10 @@ export default function FilterBrand({
     setFilters({ ...filters, brand: id });
   };
 
-  const clearData = () => {
+  const clearInput = () => {
     setText("");
     setFilters({ ...filters, brand: "" });
+    setFilteredBrands([]);
   };
 
   return (
@@ -73,7 +72,7 @@ export default function FilterBrand({
           placeholder="Enter brand"
           value={text}
         />
-        <span onClick={clearData} className={styles.clearInput}>
+        <span onClick={clearInput} className={styles.clearInput}>
           &times;
         </span>
       </div>
@@ -91,13 +90,6 @@ export default function FilterBrand({
               <li value={brand}>{brand}</li>
             </Button>
           ))}
-
-          {/* <label htmlFor={val}>{val}</label> */}
-          {/* {filters && filters.brand.startsWith(text) && (
-            <button onClick={() => clearData()} className={styles.clear}>
-              clear
-            </button>
-          )} */}
         </div>
       </ul>
     </div>

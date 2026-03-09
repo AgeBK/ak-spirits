@@ -35,7 +35,7 @@ export default function FilterPrice({
               {filters && filters.price === value && (
                 <Button
                   onClick={() => setFilters({ ...filters, price: 0 })}
-                  css={styles.clear}
+                  css="clear"
                 >
                   clear
                 </Button>

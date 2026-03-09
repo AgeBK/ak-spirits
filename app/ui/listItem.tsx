@@ -35,11 +35,13 @@ export default function ListItem({ arr, css }: ListItemProps) {
           price_2_for,
           // volume,
           // unit,
-          // ratings_avg,
+          ratings_avg,
           // ratings_tot,
           // packaging,
           price_special,
         } = item;
+
+        // console.log(item);
 
         return (
           <div className={styles.item} key={id}>
@@ -66,6 +68,7 @@ export default function ListItem({ arr, css }: ListItemProps) {
               />
               <h2 className={styles.brand}>{brand}</h2>
               <h3 className={styles.sName}>{short_name}</h3>
+              <div>{ratings_avg}</div>
             </Link>
             <Price
               price_current={price_current}
