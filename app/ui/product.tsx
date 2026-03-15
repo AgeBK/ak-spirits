@@ -6,6 +6,8 @@ import ProductCart from "./productCart";
 import Price from "./price";
 import ListItem from "./listItem";
 import styles from "@/app/css/Product.module.css";
+import Rating from "./rating";
+import Review from "./review";
 
 // TODO: 2 for??
 // TODO: update readme
@@ -66,24 +68,13 @@ export default async function Product({
             price_normal={price_normal}
             css="product"
           />
-          <div className={styles.rateTot}>{ratings_tot} reviews</div>{" "}
-          {/* <div className={styles.rateAvg}>{ratings_avg}</div> */}
-          {Array.from({ length: ratings_avg }, (v, i) => (
-            <div className={styles.star} key={i}></div>
-          ))}
+          <Rating ratingsAvg={ratings_avg} ratingsTot={ratings_tot} />
           {/* <div className={styles.productCart}> */}
           <ProductCart productObj={productObj} />
           {/* </div> */}
         </div>
       </div>
-      <div className={styles.reviewCont}>
-        <h3 className={styles.hdr}>Product Review:</h3>
-        <div className={styles.review}>{productReview}</div>
-        <i className={styles.reviewSource}>
-          Source *Spirits Monthly: August 2025 - Author: Sir Roger Braithwaite
-          III
-        </i>
-      </div>
+      <Review sub_category={sub_category} brand={brand} />
       <h3 className={styles.hdr}>Similar Products:</h3>
       <ListItem arr={similarArr} css="similar" />
     </div>

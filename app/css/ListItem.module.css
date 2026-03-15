@@ -14,7 +14,7 @@
   flex-grow: 1;
   width: 170px;
   max-width: 230px;
-  height: 300px;
+  height: 320px;
   border: 1px solid #850303;
   padding: 10px;
   position: relative;
@@ -22,8 +22,18 @@
   /* color: #000; */
 }
 
+.btnCart {
+  margin-left: 10px;
+  display: inline-block;
+}
+
 .brand {
   color: #000;
+  font-size: 20px;
+}
+
+.sName {
+  font-weight: normal;
 }
 
 .item h3 {

@@ -39,7 +39,7 @@ export type FilterProps = {
 };
 
 export type FilterTypeProps = {
-  arr: SpiritProps[];
+  arr?: SpiritProps[];
   setFilters: Dispatch<
     SetStateAction<{
       // arr: string[];
@@ -120,14 +120,11 @@ export type PillsProps = {
     brand: string;
     price: string;
   };
-  setFilters: Dispatch<
-    SetStateAction<{
-      // arr: string[];
-      category: string;
-      brand: string;
-      price: string;
-    }>
-  >;
+  setFilters: Dispatch<SetStateAction<FilterProps>>;
+  // arr: string[];
+  // category: string;
+  // brand: string;
+  // price: string;
 };
 
 export type distinctBrandsProps = {

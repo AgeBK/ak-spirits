@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useCartStore } from "@/app/store";
 import { CategoryProps, FilterProps } from "../lib/definitions";
 import {
   filterByCat,
@@ -9,17 +8,14 @@ import {
   filterByPrice,
   filterByOffer,
 } from "../lib/utils";
-import appData from "../lib/appData.json";
+// import appData from "../lib/appData.json";
 import FilterType from "./filters/filterType";
 import FilterPrice from "./filters/filterPrice";
-import Price from "./price";
 import Pills from "./Pills";
 import SortProducts from "./sortProducts";
 import Paging from "./paging";
 import ItemsPerPage from "./itemsPerPage";
 import styles from "@/app/css/Category.module.css";
-import Link from "next/link";
-import Button from "./button";
 import ProductItem from "./listItem";
 import FilterBrand from "./filters/filterBrand";
 import FilterOffers from "./filters/filterOffers";
@@ -99,13 +95,11 @@ export default function Category({ arr }: CategoryProps) {
           <div className={styles.pillsCont}>
             <Pills setFilters={setFilters} filters={filters} />
           </div>
-
           <div className={styles.productsTotal}>
             ({totalFiltered}) Available:
           </div>
           <SortProducts arr={arr} setSortOrder={setSortOrder} />
         </div>
-
         <ProductItem arr={pagedArr} css="" />
         <div className={styles.pageCont}>
           <Paging totalPages={totalPages} setPage={setPage} page={page} />

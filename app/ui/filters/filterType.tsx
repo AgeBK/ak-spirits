@@ -1,19 +1,20 @@
 import React from "react";
 import {
   SpiritProps,
-  CategoryProps,
   FilterTypeProps,
 } from "@/app/lib/definitions";
 import styles from "@/app/css/FilterType.module.css";
 import Button from "../button";
 
 // TODO: similar styles in price?
+// TODO: need to unselect radio button when handleClick handleClick/delete pill
 
 export default function FilterType({
   arr,
   setFilters,
   filters,
 }: FilterTypeProps) {
+  // const [radio, setRadio] = useState("");
   const distinctSpirits: string[] = arr.reduce(
     (acc: string[], val: SpiritProps) => {
       const subCat: string = val.sub_category;
@@ -23,8 +24,12 @@ export default function FilterType({
     [],
   );
 
+  // console.log(filters);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void =>
     setFilters({ ...filters, category: e.target.value });
+
+  const handleClick = () => setFilters({ ...filters, category: "" });
 
   return (
     <div className={styles.container}>
@@ -39,13 +44,11 @@ export default function FilterType({
               onChange={handleChange}
               id={val}
               name="cat"
+              checked={filters.category === val}
             />
             <label htmlFor={val}>{val}</label>
             {filters && filters.category === val && (
-              <Button
-                onClick={() => setFilters({ ...filters, category: "" })}
-                css="clear"
-              >
+              <Button onClick={handleClick} css="clear">
                 clear
               </Button>
             )}
