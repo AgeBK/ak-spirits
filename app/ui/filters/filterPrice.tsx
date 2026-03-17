@@ -1,12 +1,9 @@
-import { FilterTypeProps } from "@/app/lib/definitions";
+import { FilterProps } from "@/app/lib/definitions";
 import appData from "../../lib/appData.json";
 import styles from "@/app/css/FilterPrice.module.css";
 import Button from "../button";
 
-export default function FilterPrice({
-  setFilters,
-  filters,
-}: FilterTypeProps) {
+export default function FilterPrice({ setFilters, filters }: FilterProps) {
   const { priceArr } = appData;
 
   // console.log("FilterPrice");

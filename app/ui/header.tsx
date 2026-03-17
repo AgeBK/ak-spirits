@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Nav from "./nav";
+// import Nav from "./nav";
 import Img from "./image";
 import Cart from "./cart";
 import styles from "@/app/css/Header.module.css";
@@ -24,7 +24,7 @@ export default async function Header() {
         </h1>
       </div>
       <Cart />
-      <Nav />
+      {/* <Nav /> */}
     </header>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CategoryProps, FilterProps } from "../lib/definitions";
+import { CategoryProps, FilterStateProps } from "../lib/definitions";
 import {
   filterByCat,
   filterByBrand,
@@ -9,27 +9,26 @@ import {
   filterByOffer,
 } from "../lib/utils";
 // import appData from "../lib/appData.json";
-import FilterType from "./filters/filterType";
-import FilterPrice from "./filters/filterPrice";
+
 import Pills from "./Pills";
 import SortProducts from "./sortProducts";
 import Paging from "./paging";
 import ItemsPerPage from "./itemsPerPage";
 import styles from "@/app/css/Category.module.css";
 import ProductItem from "./listItem";
-import FilterBrand from "./filters/filterBrand";
-import FilterOffers from "./filters/filterOffers";
+
+import Filters from "./filters/filters";
 
 // TODO: category? products?
 // TODO: need to reset paging when you click a new filter
 
 export default function Category({ arr }: CategoryProps) {
   const [, setSortOrder] = useState<string>("");
-  const [filters, setFilters] = useState<FilterProps>({
+  const [filters, setFilters] = useState<FilterStateProps>({
     offer: [],
     category: "",
     brand: "",
-    price: "",
+    price: 0,
   });
   const [page, setPage] = useState<number>(0);
   const [perPage, setPerPage] = useState<number>(40);
@@ -85,10 +84,7 @@ export default function Category({ arr }: CategoryProps) {
     <div className={styles.container}>
       <div className={styles.filters}>
         {/* <h2 className={styles.filterHdr}>Refine:</h2> */}
-        <FilterOffers setFilters={setFilters} filters={filters} />
-        <FilterType arr={arr} setFilters={setFilters} filters={filters} />
-        <FilterPrice setFilters={setFilters} filters={filters} />
-        <FilterBrand arr={arr} setFilters={setFilters} filters={filters} />
+        <Filters arr={arr} setFilters={setFilters} filters={filters} />
       </div>
       <div className={styles.products}>
         <div className={styles.productsHdr}>

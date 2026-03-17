@@ -3,17 +3,13 @@ import { filterBrand } from "@/app/lib/utils";
 import {
   accBrandProps,
   distinctBrandsProps,
-  FilterTypeProps,
+  FilterProps,
   SpiritProps,
 } from "@/app/lib/definitions";
 import Button from "../button";
 import styles from "@/app/css/FilterBrand.module.css";
 
-export default function FilterBrand({
-  arr,
-  setFilters,
-  filters,
-}: FilterTypeProps) {
+export default function FilterBrand({ arr, setFilters, filters }: FilterProps) {
   const [filteredBrands, setFilteredBrands] = useState<string[]>([]);
   const [text, setText] = useState("");
 

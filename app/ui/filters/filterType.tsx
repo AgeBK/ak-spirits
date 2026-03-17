@@ -1,19 +1,12 @@
 import React from "react";
-import {
-  SpiritProps,
-  FilterTypeProps,
-} from "@/app/lib/definitions";
+import { SpiritProps, FilterProps } from "@/app/lib/definitions";
 import styles from "@/app/css/FilterType.module.css";
 import Button from "../button";
 
 // TODO: similar styles in price?
 // TODO: need to unselect radio button when handleClick handleClick/delete pill
 
-export default function FilterType({
-  arr,
-  setFilters,
-  filters,
-}: FilterTypeProps) {
+export default function FilterType({ arr, setFilters, filters }: FilterProps) {
   // const [radio, setRadio] = useState("");
   const distinctSpirits: string[] = arr.reduce(
     (acc: string[], val: SpiritProps) => {

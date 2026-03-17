@@ -6,6 +6,7 @@ import Button from "./button";
 import { CartProps } from "../lib/definitions";
 import styles from "@/app/css/Cart.module.css";
 import { useState } from "react";
+import { formatCurrency } from "../lib/utils";
 
 export default function Cart() {
   const { cartItems, removeItem, deleteItem, addCartItem, total } =
@@ -96,29 +97,36 @@ export default function Cart() {
           )} */}
         </div>
       ) : (
-        <div
-          className={styles.cartCont}
-          onClick={() => (itemCnt ? setShowCart(!showCart) : null)}
-        >
-          {itemCnt ? (
-            <Img
-              imgSrc={`icons/cart.jpg`}
-              imgAlt="cart"
-              // imgWidth={packaging === "Cask" ? 40 : 20}
-              imgWidth={30}
-              imgHeight={30}
-            />
-          ) : (
-            <Img
-              imgSrc={`icons/cartEmpty.jpg`}
-              imgAlt="cart empty"
-              // imgWidth={packaging === "Cask" ? 40 : 20}
-              imgWidth={30}
-              imgHeight={30}
-            />
-          )}{" "}
-          <span className={styles.itemCnt}>{itemCnt}</span>
-        </div>
+        <>
+          <div
+            className={styles.cartCont}
+            onClick={() => (itemCnt ? setShowCart(!showCart) : null)}
+          >
+            {itemCnt ? (
+              <Img
+                imgSrc={`icons/cart.jpg`}
+                imgAlt="cart"
+                // imgWidth={packaging === "Cask" ? 40 : 20}
+                imgWidth={30}
+                imgHeight={30}
+              />
+            ) : (
+              <Img
+                imgSrc={`icons/cartEmpty.jpg`}
+                imgAlt="cart empty"
+                // imgWidth={packaging === "Cask" ? 40 : 20}
+                imgWidth={30}
+                imgHeight={30}
+              />
+            )}
+            <span className={styles.itemCnt}>{itemCnt}</span>
+          </div>
+          {cartTotal && (
+            <span className={styles.cartTotal}>
+              {formatCurrency(cartTotal)}
+            </span>
+          )}
+        </>
       )}
     </div>
   );

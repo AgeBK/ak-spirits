@@ -79,3 +79,11 @@ export const filterByBrand = (arr: SpiritProps[], brand: string) => {
 
 export const capitalizeFirstLetter = (val: string) =>
   val.charAt(0).toUpperCase() + val.slice(1);
+
+export const formatCurrency = (amount: number) => {
+  return (amount / 100).toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+};
+

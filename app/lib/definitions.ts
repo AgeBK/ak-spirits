@@ -31,22 +31,22 @@ export type CategoryProps = {
   similarArr?: SpiritProps[];
 };
 
-export type FilterProps = {
+export type FilterStateProps = {
   offer: string[];
   category: string;
   brand: string;
-  price: string;
+  price: number;
 };
 
-export type FilterTypeProps = {
-  arr?: SpiritProps[];
+export type FilterProps = {
+  //arr?: SpiritProps[];
   setFilters: Dispatch<
     SetStateAction<{
       // arr: string[];
       offer: string[];
       category: string;
       brand: string;
-      price: string;
+      price: number;
     }>
   >; // Dispatch<SetStateAction<{ category: string; brand: string; price: string; }>>'
   filters: {
@@ -54,9 +54,13 @@ export type FilterTypeProps = {
     offer: string[];
     category: string;
     brand: string;
-    price: string;
+    price: number;
   };
 };
+
+export interface FilterArrProps extends FilterProps {
+  arr: SpiritProps[];
+}
 
 export type CartProps = {
   arr: SpiritProps;
@@ -120,7 +124,7 @@ export type PillsProps = {
     brand: string;
     price: string;
   };
-  setFilters: Dispatch<SetStateAction<FilterProps>>;
+  setFilters: Dispatch<SetStateAction<FilterStateProps>>;
   // arr: string[];
   // category: string;
   // brand: string;
