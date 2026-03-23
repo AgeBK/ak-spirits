@@ -1,13 +1,17 @@
-import React from "react";
-import { SpiritProps, FilterProps } from "@/app/lib/definitions";
-import styles from "@/app/css/FilterType.module.css";
+import React, { ChangeEvent } from "react";
+import { SpiritProps, FilterArrProps } from "@/app/lib/definitions";
 import Button from "../button";
+import styles from "@/app/css/FilterType.module.css";
 
 // TODO: similar styles in price?
 // TODO: need to unselect radio button when handleClick handleClick/delete pill
 
-export default function FilterType({ arr, setFilters, filters }: FilterProps) {
-  // const [radio, setRadio] = useState("");
+export default function FilterType({
+  arr,
+  setFilters,
+  filters,
+}: FilterArrProps) {
+  
   const distinctSpirits: string[] = arr.reduce(
     (acc: string[], val: SpiritProps) => {
       const subCat: string = val.sub_category;
@@ -17,9 +21,7 @@ export default function FilterType({ arr, setFilters, filters }: FilterProps) {
     [],
   );
 
-  // console.log(filters);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void =>
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void =>
     setFilters({ ...filters, category: e.target.value });
 
   const handleClick = () => setFilters({ ...filters, category: "" });

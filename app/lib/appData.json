@@ -1,5 +1,6 @@
 {
   "imgPath": "/img/spirits/",
+  "defaultTheme": "light",
   "paymentArr": ["amex", "applePay", "mc", "paypal", "visa", "zip", "afterPay"],
   "paymentImgWidths": [33, 48, 48, 50, 48, 49, 54],
   "priceArr": [

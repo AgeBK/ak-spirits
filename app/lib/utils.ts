@@ -43,7 +43,8 @@ export const filterByPrice = (arr: SpiritProps[], filter: string) => {
     // console.log(val.sub_category);
     // console.log(val.sub_category === filter);
     return (
-      val.price_current >= filterArr[0] && val.price_current <= filterArr[1]
+      val.price_current >= Number(filterArr[0]) &&
+      val.price_current <= Number(filterArr[1])
     );
   });
   return arr;
@@ -81,9 +82,8 @@ export const capitalizeFirstLetter = (val: string) =>
   val.charAt(0).toUpperCase() + val.slice(1);
 
 export const formatCurrency = (amount: number) => {
-  return (amount / 100).toLocaleString("en-US", {
+  return amount.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
   });
 };
-

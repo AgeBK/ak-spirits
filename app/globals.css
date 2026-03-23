@@ -1,3 +1,39 @@
+/* :root {
+  --background: red;
+  --foreground: black;
+  --display: block;
+  --border: yellow;
+  --pad: 10px;
+}
+[data-theme="light"] {
+  --background: black;
+  --foreground: red;
+  --display: none;
+  --border: red;
+  --pad: 2px;
+} */
+
+.light {
+  --dark-text: #333;
+  --accent: #dbe7e4;
+  --button-border: #5e4b56;
+  --background: #fff;
+    --light-text: #5e4b56;
+    --light-display: none;
+  --dark-display: block;
+}
+
+/* --light-text is fine on on the first 3, --dark-text is fine on all of them, --dark-text and dark-background are fine as text on --accent */
+.dark {
+  --dark-text: #292929;
+  --background: #000;
+  --accent: #b8dbd9;
+  --button-border: #b8dbd9;
+  --light-text: #fff;
+  --light-display: block;
+  --dark-display: none;
+}
+
 body {
   margin: 0;
   font-family:
@@ -5,9 +41,24 @@ body {
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #000;
-  color: #f0eded;
+  background-color: var(--background);
+  color: var(--light-text);
 }
+
+/* Styles for users who prefer a dark scheme */
+/* @media (color-scheme: light) {
+  body {
+    background-color: #000000;
+    color: #ffffff;
+  }
+}
+
+@media (color-scheme: dark) {
+  body {
+    background-color: #fff;
+    color: #000;
+  }
+} */
 
 a {
   text-decoration: none;

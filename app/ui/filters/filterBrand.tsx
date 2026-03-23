@@ -3,17 +3,19 @@ import { filterBrand } from "@/app/lib/utils";
 import {
   accBrandProps,
   distinctBrandsProps,
-  FilterProps,
+  FilterArrProps,
   SpiritProps,
 } from "@/app/lib/definitions";
 import Button from "../button";
 import styles from "@/app/css/FilterBrand.module.css";
 
-export default function FilterBrand({ arr, setFilters, filters }: FilterProps) {
+export default function FilterBrand({
+  arr,
+  setFilters,
+  filters,
+}: FilterArrProps) {
   const [filteredBrands, setFilteredBrands] = useState<string[]>([]);
   const [text, setText] = useState("");
-
-  // console.log("Filter Brand Component:");
 
   const distinctBrands: distinctBrandsProps = arr.reduce(
     (acc: accBrandProps, val: SpiritProps) => {
@@ -31,9 +33,6 @@ export default function FilterBrand({ arr, setFilters, filters }: FilterProps) {
   const handleChange = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>) => {
-    // console.log(e);
-    // console.log(value);
-    // const brand: string = e.target.value;
     const brandArr = filterBrand(distinctBrands.brands, value);
     setFilteredBrands(brandArr);
     setFilters({ ...filters, brand: value });
@@ -43,8 +42,6 @@ export default function FilterBrand({ arr, setFilters, filters }: FilterProps) {
   const handleClick = ({
     currentTarget: { id },
   }: React.MouseEvent<Element, MouseEvent>) => {
-    // console.log(id);
-
     const brandArr: string[] = filterBrand(distinctBrands.brands, id);
     setFilteredBrands(brandArr);
     setText(id);
