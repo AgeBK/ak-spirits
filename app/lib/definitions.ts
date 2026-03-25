@@ -122,7 +122,7 @@ export type PillsProps = {
     // arr: string[];
     category: string;
     brand: string;
-    price: string;
+    price: number;
   };
   setFilters: Dispatch<SetStateAction<FilterStateProps>>;
   // arr: string[];

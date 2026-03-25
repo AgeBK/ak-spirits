@@ -10,7 +10,7 @@ import {
 } from "../lib/utils";
 // import appData from "../lib/appData.json";
 
-import Pills from "./Pills";
+import Pills from "./pills";
 import SortProducts from "./sortProducts";
 import Paging from "./paging";
 import ItemsPerPage from "./itemsPerPage";

@@ -103,21 +103,47 @@ export default function Cart() {
             onClick={() => (itemCnt ? setShowCart(!showCart) : null)}
           >
             {itemCnt ? (
-              <Img
-                imgSrc={`icons/cart.jpg`}
-                imgAlt="cart"
-                // imgWidth={packaging === "Cask" ? 40 : 20}
-                imgWidth={30}
-                imgHeight={30}
-              />
+              <>
+                <span className={styles.cartLight}>
+                  <Img
+                    imgSrc={`icons/cart.jpg`}
+                    imgAlt="cart"
+                    // imgWidth={packaging === "Cask" ? 40 : 20}
+                    imgWidth={30}
+                    imgHeight={30}
+                  />
+                </span>
+                <span className={styles.cartDark}>
+                  <Img
+                    imgSrc={`icons/cartD.jpg`}
+                    imgAlt="cart"
+                    // imgWidth={packaging === "Cask" ? 40 : 20}
+                    imgWidth={30}
+                    imgHeight={30}
+                  />
+                </span>
+              </>
             ) : (
-              <Img
-                imgSrc={`icons/cartEmpty.jpg`}
-                imgAlt="cart empty"
-                // imgWidth={packaging === "Cask" ? 40 : 20}
-                imgWidth={30}
-                imgHeight={30}
-              />
+              <>
+                <span className={styles.cartLight}>
+                  <Img
+                    imgSrc={`icons/cartEmpty.jpg`}
+                    imgAlt="cart empty"
+                    // imgWidth={packaging === "Cask" ? 40 : 20}
+                    imgWidth={30}
+                    imgHeight={30}
+                  />
+                </span>{" "}
+                <span className={styles.cartDark}>
+                  <Img
+                    imgSrc={`icons/cartEmptyD.jpg`}
+                    imgAlt="cart empty"
+                    // imgWidth={packaging === "Cask" ? 40 : 20}
+                    imgWidth={30}
+                    imgHeight={30}
+                  />
+                </span>
+              </>
             )}
             <span className={styles.itemCnt}>{itemCnt}</span>
           </div>

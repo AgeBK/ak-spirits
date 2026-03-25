@@ -23,12 +23,12 @@
   margin: 5px 0 0px 15px;
 }
 
-.logo a img:first-of-type {
-  display: var(--dark-display);
+.logoLight {
+  display: var(--light-display);
 }
 
-.logo a img:last-of-type {
-  display: var(--light-display);
+.logoDark {
+  display: var(--dark-display);
 }
 
 .items {

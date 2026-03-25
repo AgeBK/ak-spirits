@@ -4,7 +4,7 @@
   padding: 3px;
   border-top: 1px solid #d3d3d3;
   margin-top: auto;
-  background-color: #000;
+  /* background-color: #000; */
 }
 
 .ak {
@@ -28,6 +28,14 @@
   color: #888;
   font-weight: normal;
   margin-left: 5px;
+}
+
+.lightDisplay {
+  display: var(--light-display);
+}
+
+.darkDisplay {
+  display: var(--dark-display);
 }
 
 @media screen and (max-width: 650px) {

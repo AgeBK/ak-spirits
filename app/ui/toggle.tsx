@@ -9,16 +9,14 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  // useEffect runs only on the client side after hydration
+  // useEffect runs only on the client side after hydration TODO:
   useEffect(() => setMounted(true), []);
 
-  // Avoids rendering the button on the server to prevent hydration errors
+  // Avoids rendering the button on the server to prevent hydration errors TODO:
   if (!mounted) return null;
 
   // Function to handle the theme change
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
   return (
     <>

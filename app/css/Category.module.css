@@ -2,19 +2,15 @@
   display: flex;
   /* flex-wrap: wrap;
   justify-content: center;
-  gap: 20px; */
-  color: #fff;
+  gap: 20px;
+  color: #fff; */
 }
 
 .filters {
   min-width: 170px;
-  padding-right: 20px;
+  padding: 0 20px 0 10px;
   text-transform: capitalize;
 }
-
-/* .filterType{
-  display: inline-block;
-} */
 
 .products {
   position: relative;
@@ -26,10 +22,6 @@
   padding-right: 20px;
   color: #999;
 }
-
-/* .pillsCont {
-  border: 1px solid blue;
-} */
 
 .productsTotal {
   flex-grow: 1;

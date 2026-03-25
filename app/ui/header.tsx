@@ -6,31 +6,33 @@ import Img from "./image";
 import Cart from "./cart";
 import styles from "@/app/css/Header.module.css";
 import ThemeToggle from "./toggle";
-import { useTheme } from "next-themes";
 
 export default function Header() {
-  const { theme } = useTheme();
-  console.log(theme);
+  // logos switch based on theme with css (or you get flicker)
 
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
         <div className={styles.logo}>
           <Link href="/">
-            <Img
-              imgSrc={"logos/AK.png"}
-              imgAlt="AK spirits"
-              imgWidth={80}
-              imgHeight={80}
-              imgPriority={true}
-            />
-            <Img
-              imgSrc={"logos/AKD.png"}
-              imgAlt="AK spirits"
-              imgWidth={80}
-              imgHeight={80}
-              imgPriority={true}
-            />
+            <span className={styles.logoLight}>
+              <Img
+                imgSrc={"logos/AK.png"}
+                imgAlt="AK spirits"
+                imgWidth={80}
+                imgHeight={80}
+                imgPriority={true}
+              />
+            </span>
+            <span className={styles.logoDark}>
+              <Img
+                imgSrc={"logos/AKD.png"}
+                imgAlt="AK spirits"
+                imgWidth={80}
+                imgHeight={80}
+                imgPriority={true}
+              />
+            </span>
           </Link>
         </div>
         <h1 className={styles.hdr}>

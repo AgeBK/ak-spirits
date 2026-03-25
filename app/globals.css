@@ -14,24 +14,24 @@
 } */
 
 .light {
-  --dark-text: #333;
-  --accent: #dbe7e4;
+  --filter-text: #333;
   --button-border: #5e4b56;
   --background: #fff;
-    --light-text: #5e4b56;
-    --light-display: none;
-  --dark-display: block;
+  --light-text: #5e4b56;
+  --spirits-red: #850303;
+  --light-display: block;
+  --dark-display: none;
 }
 
 /* --light-text is fine on on the first 3, --dark-text is fine on all of them, --dark-text and dark-background are fine as text on --accent */
 .dark {
-  --dark-text: #292929;
-  --background: #000;
-  --accent: #b8dbd9;
+  --filter-text: #999;
   --button-border: #b8dbd9;
+  --background: #000;
   --light-text: #fff;
-  --light-display: block;
-  --dark-display: none;
+  --spirits-red: #850303;
+  --light-display: none;
+  --dark-display: block;
 }
 
 body {

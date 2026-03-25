@@ -37,12 +37,22 @@ export default function Footer() {
         ))}
       </ul> */}
       <div className={styles.payment}>
-        <Img
-          imgSrc={`payment/payment.png`}
-          imgAlt="payment methods"
-          imgWidth={256}
-          imgHeight={32}
-        />
+        <div className={styles.lightDisplay}>
+          <Img
+            imgSrc={`payment/payment2.png`}
+            imgAlt="payment methods"
+            imgWidth={256}
+            imgHeight={32}
+          />
+        </div>
+        <div className={styles.darkDisplay}>
+          <Img
+            imgSrc={`payment/payment2D.png`}
+            imgAlt="payment methods"
+            imgWidth={256}
+            imgHeight={32}
+          />
+        </div>
       </div>
     </footer>
   );
