@@ -41,7 +41,7 @@ export async function fetchSpiritById(query: string) {
   noStore();
 
   try {
-    const data: Record<string, SpiritProps> = await sql`
+    const data: Record<string, SpiritProps>[] = await sql`
       SELECT
           id,
           brand,
@@ -114,6 +114,27 @@ export async function fetchSpiritsBySubCategory(query: string, id: string) {
   } catch (err) {
     console.error("Database Error:", err);
     throw new Error("Failed to fetch spirits by category.");
+  }
+}
+
+export async function fetchSales6Bot() {
+  noStore();
+
+  // fetch 6 random spirits that are on sale
+  try {
+    // const data: Record<string, SpiritProps>[] = await sql`
+    const data: Record<string, SpiritProps>[] = await sql`
+      SELECT * FROM spirits
+      WHERE price_current != price_normal
+      AND packaging = 'Bottle'
+      ORDER BY RANDOM()
+      LIMIT 6
+      `;
+    // const spirits = data;
+    return data as unknown as SpiritProps;
+  } catch (err) {
+    console.error("Database Error:", err);
+    throw new Error("Failed to fetch sales 6 bottles.");
   }
 }
 

@@ -21,6 +21,11 @@
   --spirits-red: #850303;
   --light-display: block;
   --dark-display: none;
+  /* --toggle-bg: linear-gradient(
+    90deg,
+    rgba(80, 80, 80, 1) 0%,
+    rgba(255, 255, 255, 1) 50%
+  ); */
 }
 
 /* --light-text is fine on on the first 3, --dark-text is fine on all of them, --dark-text and dark-background are fine as text on --accent */
@@ -32,6 +37,11 @@
   --spirits-red: #850303;
   --light-display: none;
   --dark-display: block;
+  /* --toggle-bg: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(255, 255, 255, 1) 49%
+  ); */
 }
 
 body {

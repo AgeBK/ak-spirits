@@ -15,32 +15,39 @@ export default function Pills({ filters, setFilters }: PillsProps) {
   console.log(filters);
   // : [string, boolean], index: number
 
-  const hasValue = (val: string[] | string | number) => {
+  const checkValue = (val: string[] | string | number) => {
     let validated = false;
+    console.log("checkValue");
+    console.log(val);
+    const valType = typeof val;
+
     if (val) {
-      if (val === "string" || Array.isArray(val)) {
+      if (valType === "string" || Array.isArray(val)) {
         validated = Boolean(val.toString());
-      } else if (val === "number" && !Number.isNaN(val)) {
+      } else if (valType === "number" && !Number.isNaN(val)) {
         validated = Boolean(0);
-      } else if (typeof val === "object" && !Array.isArray(val)) {
+      } else if (valType === "object" && !Array.isArray(val)) {
         validated = Boolean(Object.keys.length);
       }
     }
+    console.log(validated);
+
     return validated;
   };
 
   return (
     <div className={styles.container}>
       {Object.entries(filters).map(([key, value], index) =>
-        hasValue(value) ? (
+        checkValue(value) ? (
           <div className={styles.pill} key={index}>
             <Button id={key} onClick={handleClick} css="pillDel">
-              {key} - {value} - {typeof value}
+              {/* {key}  */}
+              {value}
               <Img
                 imgSrc={`close2.png`}
                 imgAlt={"close"}
-                imgWidth={22}
-                imgHeight={22}
+                imgWidth={18}
+                imgHeight={18}
               />
             </Button>
           </div>

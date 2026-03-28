@@ -16,11 +16,11 @@ import Paging from "./paging";
 import ItemsPerPage from "./itemsPerPage";
 import styles from "@/app/css/Category.module.css";
 import ProductItem from "./listItem";
-
 import Filters from "./filters/filters";
 
 // TODO: category? products?
 // TODO: need to reset paging when you click a new filter
+// TODO: http://localhost:3000/spirits/brandy/462280 (brandy styling on cat page?)
 
 export default function Category({ arr }: CategoryProps) {
   const [, setSortOrder] = useState<string>("");
@@ -65,7 +65,6 @@ export default function Category({ arr }: CategoryProps) {
           totalFiltered = pagedArr.length;
           totalPages = Math.ceil(pagedArr.length / perPage);
           break;
-
         default:
           break;
       }

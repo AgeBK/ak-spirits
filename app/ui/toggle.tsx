@@ -20,12 +20,15 @@ export default function ThemeToggle() {
 
   return (
     <>
-      <label className={styles.switch} htmlFor="togBtn">
-        <input type="checkbox" id="togBtn" onChange={toggleTheme} />
-        <div className={`${styles.slider} ${styles.round}`}>
-          <span className={styles.on}>dark</span>
-          <span className={styles.off}>light</span>
-        </div>
+      <input
+        type="checkbox"
+        className={styles.toggle}
+        id="tog"
+        onChange={toggleTheme}
+      />
+      <label htmlFor="tog">
+        <span className={styles.sw}></span>
+        <span className={styles.small}></span>
       </label>
     </>
   );
