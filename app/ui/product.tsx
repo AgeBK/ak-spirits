@@ -75,7 +75,7 @@ export default async function Product({
         </div>
       </div>
       <Review sub_category={sub_category} brand={brand} />
-      <h3 className={styles.hdr}>Similar Products:</h3>
+      <h3 className={styles.similar}>Similar Products:</h3>
       <ListItem arr={similarArr} css="similar" />
     </div>
   );

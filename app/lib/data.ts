@@ -26,7 +26,8 @@ export async function fetchSpirits() {
           price_current,
           price_2_for,
           price_special,
-          ratings_avg
+          ratings_avg,
+          packaging
       FROM spirits
       `;
 
@@ -83,18 +84,33 @@ export async function fetchDistinctSpirits() {
         ORRDER BY sub_category
       `;
 
-    const product = data;
-    console.log(product);
-
     // return product ? camelise(product) : undefined; // convert db column names to camel case (eg: price_normal to priceNormal)
-    return product;
+    return data;
   } catch (err) {
     console.error("Database Error:", err);
     throw new Error("Failed to fetch distinct spirits.");
   }
 }
 
-export async function fetchSpiritsBySubCategory(query: string, id: string) {
+export async function fetch6Bot() {
+  noStore();
+
+  try {
+    const data = await sql`
+      SELECT *
+        FROM spirits
+        ORDER BY RANDOM()
+        LIMIT 6
+      `;
+
+    return data; // convert db column names to camel case (eg: price_normal to priceNormal)
+  } catch (err) {
+    console.error("Database Error:", err);
+    throw new Error("Failed to fetch 6 bottles by subcategory.");
+  }
+}
+
+export async function fetch6BotBySubCategory(query: string, id: string) {
   noStore();
 
   try {
@@ -107,17 +123,14 @@ export async function fetchSpiritsBySubCategory(query: string, id: string) {
         LIMIT 6
       `;
 
-    const spirits = data;
-    console.log(spirits);
-
-    return spirits; // convert db column names to camel case (eg: price_normal to priceNormal)
+    return data; // convert db column names to camel case (eg: price_normal to priceNormal)
   } catch (err) {
     console.error("Database Error:", err);
-    throw new Error("Failed to fetch spirits by category.");
+    throw new Error("Failed to fetch 6 bottles by subcategory.");
   }
 }
 
-export async function fetchSales6Bot() {
+export async function fetchSalesItems(query: number) {
   noStore();
 
   // fetch 6 random spirits that are on sale
@@ -126,9 +139,8 @@ export async function fetchSales6Bot() {
     const data: Record<string, SpiritProps>[] = await sql`
       SELECT * FROM spirits
       WHERE price_current != price_normal
-      AND packaging = 'Bottle'
       ORDER BY RANDOM()
-      LIMIT 6
+      LIMIT ${query}
       `;
     // const spirits = data;
     return data as unknown as SpiritProps;

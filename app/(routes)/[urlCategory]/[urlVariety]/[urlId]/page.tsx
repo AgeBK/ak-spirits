@@ -1,4 +1,4 @@
-import { fetchSpiritById, fetchSpiritsBySubCategory } from "@/app/lib/data";
+import { fetchSpiritById, fetch6BotBySubCategory } from "@/app/lib/data";
 import Product from "@/app/ui/product";
 
 // The 'params' object contains dynamic segments from the URL
@@ -17,9 +17,7 @@ export default async function Page({
   //  const [products, user] = await Promise.all([fetchProducts(), getUser()]);
 
   const productObj = await fetchSpiritById(urlId);
-  console.log(productObj);
-
-  const similarArr = await fetchSpiritsBySubCategory(urlVariety, urlId);
+  const similarArr = await fetch6BotBySubCategory(urlVariety, urlId);
 
   return <Product productObj={productObj} similarArr={similarArr} />;
 }

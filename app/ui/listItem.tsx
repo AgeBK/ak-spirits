@@ -38,11 +38,12 @@ export default function ListItem({ arr, css }: ListItemProps) {
           // unit,
           ratings_avg,
           // ratings_tot,
-          // packaging,
+          packaging,
           price_special,
         } = item;
 
         // console.log(item);
+        const isBottle = packaging === "Bottle";
 
         return (
           <div className={styles.item} key={id}>
@@ -63,7 +64,7 @@ export default function ListItem({ arr, css }: ListItemProps) {
               <Image
                 src={`${imgPath}${id}.webp`}
                 alt={short_name}
-                width={45}
+                width={isBottle ? 45 : 65}
                 height={165}
               />
               <h2 className={styles.brand}>{brand}</h2>
