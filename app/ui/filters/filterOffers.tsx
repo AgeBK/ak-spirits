@@ -10,7 +10,11 @@ export default function FilterOffers({ setFilters, filters }: FilterProps) {
     Specials: false,
     "Multi Buy": false,
   });
-  console.log("isChecked: " + isChecked);
+  console.log("isChecked: ");
+  console.log(isChecked);
+
+  console.log(filters.offer);
+
   const { offers } = appData;
 
   // TODO: Check specials and multi buy together and against DB??
@@ -20,12 +24,14 @@ export default function FilterOffers({ setFilters, filters }: FilterProps) {
     target: { value, checked },
   }: ChangeEvent<HTMLInputElement>) => {
     // value either 'Specials' or 'Multi Buy'
-    
-    const offerArr = [...filters.offer]; // copy state
+    console.log("handleChange OFFER");
+    console.log(checked);
+
+    let offerArr = [...filters.offer]; // copy state
     if (checked) {
       offerArr.push(value);
     } else {
-      offerArr.filter((val) => val == value);
+      offerArr = offerArr.filter((val) => val !== value);
     }
     setIsChecked({ ...isChecked, [value]: checked });
     setFilters({ ...filters, offer: offerArr });

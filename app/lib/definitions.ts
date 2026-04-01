@@ -18,6 +18,10 @@ export type SpiritProps = {
   price_special: boolean;
 };
 
+export type DataProps = {
+  data: SpiritProps[];
+};
+
 export type ImgProps = {
   imgSrc: string;
   imgAlt: string;
@@ -115,6 +119,7 @@ export interface ListItemProps {
     price_special?: boolean;
   }>;
   css: string;
+  hdr?: string;
 }
 
 export type PillsProps = {

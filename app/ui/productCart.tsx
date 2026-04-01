@@ -45,6 +45,7 @@ export default function ProductCart({ productObj }: CategoryProps) {
 
   // TODO: images
   let packagingImg = "";
+  let imgWidth = 16;
   switch (packaging) {
     case "Bottle":
       packagingImg = "bottle.jpg";
@@ -54,6 +55,7 @@ export default function ProductCart({ productObj }: CategoryProps) {
       break;
     case "Box":
       packagingImg = "box.png"; // TODO: check image
+      imgWidth = 36;
       break;
     default:
       break;
@@ -66,8 +68,8 @@ export default function ProductCart({ productObj }: CategoryProps) {
           <div className={styles.packImg}>
             <Img
               imgSrc={`icons/${packagingImg}`}
-              imgAlt=""
-              imgWidth={16}
+              imgAlt={packaging}
+              imgWidth={imgWidth}
               imgHeight={36}
             />
           </div>
