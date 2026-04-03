@@ -14,12 +14,13 @@ export default function Sale6Bot({ data }) {
         <div key={val} className={styles.item}>
           <div className={styles.details}>
             <h2 className={styles.hdr}>{sale6Bot[i]}</h2>
+            todo br
             <br />
             <div className={styles.shop}>Shop now</div>
           </div>
           <div className={styles.products}>
             {dataArr[i].map((val: SpiritProps) => {
-              const { id, price_current, short_name, brand } = val;
+              const { id, price_current, short_name, brand, packaging } = val;
               return (
                 <div key={id} className={styles.product}>
                   <div className={styles.price}>
@@ -29,8 +30,8 @@ export default function Sale6Bot({ data }) {
                   <Img
                     imgSrc={`spirits/${id}.webp`}
                     imgAlt={brand}
-                    imgWidth={30}
-                    imgHeight={90}
+                    imgWidth={packaging === "Box" ? 80 : 50}
+                    imgHeight={160}
                   />
                 </div>
               );

@@ -20,9 +20,9 @@ export default function ListItem({ arr, css, hdr }: ListItemProps) {
   // TODO: SEO, articles, sections, check box/gift images
 
   return (
-    <div className={styles.itemsContainer}>
+    <section className={styles[css]}>
       {hdr && <h3 className={styles.hdr}>{hdr}:</h3>}
-      <section className={`${styles.items} ${styles[css]}`}>
+      <div className={styles.items}>
         {arr.map((item) => {
           const {
             id,
@@ -65,7 +65,7 @@ export default function ListItem({ arr, css, hdr }: ListItemProps) {
                 <Image
                   src={`${imgPath}${id}.webp`}
                   alt={short_name}
-                  width={isBottle ? 45 : 65}
+                  width={isBottle ? 45 : 80}
                   height={165}
                 />
                 <h2 className={styles.brand}>{brand}</h2>
@@ -93,7 +93,7 @@ export default function ListItem({ arr, css, hdr }: ListItemProps) {
             </div>
           );
         })}
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

@@ -11,7 +11,6 @@
 
 /* HOME BANNER */
 .homeBannerContainer {
-  /* background-image: url(./img/bg/banner.webp); */
   position: relative;
 }
 
@@ -39,9 +38,5 @@
   text-align: center;
   font-size: 42px;
   color: white; /* Text color */
-  -webkit-text-stroke-width: 2px; /* Outline width */
-  -webkit-text-stroke-color: var(--spirits-red); /* Outline color */
-  /* -webkit-text-stroke-color: #555;  */
-  /* Also include the standard property if it gains more support */
-  text-stroke: 2px black;
+  -webkit-text-stroke: 2px var(--spirits-red); /* Outline */
 }

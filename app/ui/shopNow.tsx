@@ -1,8 +1,7 @@
-import React from "react";
-import Img from "./image";
 import appData from "../lib/appData.json";
-import styles from "@/app/css/ShopNow.module.css";
+import Img from "./image";
 import Link from "next/link";
+import styles from "@/app/css/ShopNow.module.css";
 
 export default function ShopNow() {
   const { shopNow } = appData;
@@ -12,9 +11,8 @@ export default function ShopNow() {
       {shopNow.map((val, i) => (
         <div key={val} className={styles.shop}>
           <Link
-            href={`/`}
+            href={`/spirits`}
             className={styles.itemCont}
-            // {price_special && <div >On special</div>}
           >
             <Img
               imgSrc={`shop/${i + 1}.jpg`}

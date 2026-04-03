@@ -7,8 +7,8 @@
 
 .item {
   display: flex;
-  font-size: 16px;
-  padding: 15px;
+  font-size: 20px;
+  padding: 20px;
   border: 1px solid #000;
   width: 40%;
   /* background-color: #000; */
@@ -20,11 +20,6 @@
     rgba(136, 136, 136, 1) 0%,
     rgba(255, 255, 255, 1) 35%
   );
-  /* padding: 15px; */
-  /* background-image: url("/img/bg/b_r_bg.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #fff; */
 }
 
 .details {
@@ -38,7 +33,7 @@
 
 .hdr {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 28px;
   /* text-align: left; */
 }
 

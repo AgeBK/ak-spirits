@@ -21,8 +21,8 @@ export default function Home({ data }: DataProps) {
         <Sale3Bot data={dataArr1} />
       </div>
       <div className={styles.carousel}>
-        <h3 className={styles.other}>Other Great Buys:</h3>
-        <ListItem arr={dataArr2} css="similar" />
+        {/* <h3 className={styles.other}>:</h3> */}
+        <ListItem arr={dataArr2} css="similar" hdr="Other Great Buys" />
       </div>
       <div className={styles.showNow}>
         <ShopNow />

@@ -12,7 +12,7 @@
   align-items: center;
   text-align: center;
   flex-grow: 1;
-  width: 170px;
+  width: 175px;
   max-width: 230px;
   height: 320px;
   border: 1px solid #850303;
@@ -34,6 +34,8 @@
 .brand {
   color: #000;
   font-size: 20px;
+  height: 24px;
+  overflow: hidden;
 }
 
 .sName {
@@ -53,7 +55,7 @@
 }
 
 .similar {
-  height: 330px;
+  height: 380px;
   overflow: hidden;
 }
 

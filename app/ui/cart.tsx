@@ -14,14 +14,18 @@ export default function Cart() {
   const [showCart, setShowCart] = useState(false);
   const itemCnt = cartItems.length;
   const cartTotal = total();
+  console.log("Cart");
+  console.log(cartTotal);
+
+  // console.log(showCart);
 
   return (
     <div className={styles.container}>
-      {showCart ? (
+      {showCart && itemCnt ? (
         <div className={`${styles.cartDetails} ${showCart && styles.showCart}`}>
           <div className={styles.cartHdr}>
             You have {itemCnt} item {itemCnt !== 1 ? "s" : ""} in your shopping
-            cart{" "}
+            cart
             <span className={styles.close}>
               <Button onClick={() => setShowCart(!showCart)} css="cartToggle">
                 X
@@ -115,7 +119,7 @@ export default function Cart() {
                 </span>
                 <span className={styles.cartDark}>
                   <Img
-                    imgSrc={`icons/cartD.jpg`}
+                    imgSrc={`icons/cartEmptyD.jpg`}
                     imgAlt="cart"
                     // imgWidth={packaging === "Cask" ? 40 : 20}
                     imgWidth={30}
@@ -133,10 +137,10 @@ export default function Cart() {
                     imgWidth={30}
                     imgHeight={30}
                   />
-                </span>{" "}
+                </span>
                 <span className={styles.cartDark}>
                   <Img
-                    imgSrc={`icons/cartEmptyD.jpg`}
+                    imgSrc={`icons/cartD.jpg`}
                     imgAlt="cart empty"
                     // imgWidth={packaging === "Cask" ? 40 : 20}
                     imgWidth={30}
@@ -147,7 +151,7 @@ export default function Cart() {
             )}
             <span className={styles.itemCnt}>{itemCnt}</span>
           </div>
-          {cartTotal && (
+          {cartTotal > 0 && (
             <span className={styles.cartTotal}>
               {formatCurrency(cartTotal)}
             </span>
