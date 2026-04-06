@@ -18,9 +18,9 @@ export type SpiritProps = {
   price_special: boolean;
 };
 
-export type DataProps = {
+export interface DataProps extends SpiritProps {
   data: SpiritProps[];
-};
+}
 
 export type ImgProps = {
   imgSrc: string;
@@ -31,7 +31,7 @@ export type ImgProps = {
 };
 
 export type CategoryProps = {
-  arr: SpiritProps[];
+  data: SpiritProps;
   similarArr?: SpiritProps[];
 };
 

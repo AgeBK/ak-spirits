@@ -9,14 +9,8 @@ export default async function Page({
 }) {
   const p = await params; // TODO:
   console.log(p);
-
   const { urlId, urlVariety } = p;
-
-  // const { urlCategory, urlVariety, urlId } = p;
-  // console.log(urlCategory, urlVariety, urlId);
-  //  const [products, user] = await Promise.all([fetchProducts(), getUser()]);
-
-  const productObj = await fetchSpiritById(urlId);
+  const productObj = await fetchSpiritById(urlId); // TODO: change to data
   const similarArr = await fetch6BotBySubCategory(urlVariety, urlId);
 
   return <Product productObj={productObj} similarArr={similarArr} />;

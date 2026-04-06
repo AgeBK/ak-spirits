@@ -5,9 +5,10 @@
 
 .product {
   display: flex;
-  background-color: #fff;
-  color: #000;
+  /* background-color: #fff;
+  color: #000; */
   position: relative;
+  gap: 80px;
 }
 
 .imgCont {
@@ -21,10 +22,10 @@
 
 .details {
   display: inline-block;
-  background-color: #000;
-  color: #fff;
+  /* background-color: #000;
+  color: #fff; */
   width: 100%;
-  padding-left: 80px;
+  /* padding-left: 80px; */
   position: relative;
 }
 
@@ -45,4 +46,10 @@
 
 .similar {
   margin-bottom: 15px;
+}
+
+@media screen and (max-width: 750px) {
+  .product {
+    flex-direction: column;
+  }
 }

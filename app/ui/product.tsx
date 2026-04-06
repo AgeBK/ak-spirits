@@ -1,6 +1,5 @@
 import { CategoryProps, SpiritProps } from "../lib/definitions";
 import appData from "../lib/appData.json";
-import Img from "./image";
 import ImgFill from "./image-fill";
 import ProductCart from "./productCart";
 import Price from "./price";
@@ -10,7 +9,7 @@ import Rating from "./rating";
 import Review from "./review";
 
 // TODO: 2 for??
-// TODO: update readme
+// TODO: update readme, product descriptions (only have main spirits)
 // TODO: Theme switcher?
 // TODO: page length
 
@@ -53,10 +52,10 @@ export default async function Product({
       <div className={styles.product}>
         <div className={styles.imgCont}>
           <ImgFill
-            imgSrc={`spirits/${id}.webp`}
-            imgAlt={short_name}
-            imgStyle="product520h"
-            imgPriority={false} // priority = max in view onload
+            src={`spirits/${id}.webp`}
+            alt={short_name}
+            css="product520h"
+            priority={false} // priority = max in view onload
           />
         </div>
         <div className={styles.details}>

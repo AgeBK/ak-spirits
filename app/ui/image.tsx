@@ -1,5 +1,6 @@
-import Image from "next/image";
+import { imgPath } from "@/app/lib/appData.json";
 import { ImgProps } from "../lib/definitions";
+import Image from "next/image";
 
 export default function Img({
   imgSrc,
@@ -8,15 +9,17 @@ export default function Img({
   imgHeight,
   imgPriority,
 }: ImgProps) {
-  // main image component used across site
-  const imgPath = "/img/";
+  // use this for images with set height/width
+  // TODO: priority?
+  // const imgPath = "/img/";
   return (
     <Image
       src={`${imgPath}${imgSrc}`}
       alt={imgAlt}
       width={imgWidth}
       height={imgHeight}
-      priority={imgPriority || false}
+      // priority={imgPriority || false}
+      loading="eager"
     />
   );
 }

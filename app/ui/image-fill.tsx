@@ -1,18 +1,23 @@
 import Image from "next/image";
-import styles from "@/app/css/Image.module.css";
+import { imgPath } from "@/app/lib/appData.json";
+import styles from "@/app/css/ImageFill.module.css";
 
 // Created this because product images are all different sizes (doesn't look good with set height/width)
-export default function ImgFill({ imgSrc, imgAlt, imgStyle, imgPriority }) {
-  const imgPath = "/img/";
+export default function ImgFill({ src, alt, css, priority }) {
+  // const imgPath = "/img/"; // TODO: imgPath in mulitple places
+
+  // console.log(imgPath);
+  // console.log(src);
+
   return (
-    <div className={styles[imgStyle]}>
+    <div className={styles[css]}>
       <Image
-        src={`${imgPath}${imgSrc}`}
-        alt={imgAlt}
+        src={`${imgPath}${src}`}
+        alt={alt}
         fill
         style={{ objectFit: "contain" }}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        priority={imgPriority || false}
+        priority={priority || false}
       />
     </div>
   );

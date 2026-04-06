@@ -10,21 +10,21 @@
   font-size: 20px;
   padding: 20px;
   border: 1px solid #000;
-  width: 40%;
+  width: 45%;
   /* background-color: #000; */
   text-align: center;
   margin-bottom: 15px;
-  background: #888;
-  background: linear-gradient(
-    90deg,
-    rgba(136, 136, 136, 1) 0%,
-    rgba(255, 255, 255, 1) 35%
-  );
+  background: #d3d3d3;
+  background: linear-gradient(90deg, #d3d3d3 0%, rgba(255, 255, 255, 1) 35%);
+  box-shadow: 2px 2px 5px #999;
 }
 
 .details {
   text-align: left;
-  width: 50%;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .item > div {
@@ -33,11 +33,13 @@
 
 .hdr {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 24px;
+  flex-grow: 1;
   /* text-align: left; */
 }
 
 .shop {
+  margin-top: 20px;
   padding: 5px 10px;
   background-color: var(--spirits-red);
   color: #fff;
@@ -60,7 +62,7 @@
 
 .price {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .price span {

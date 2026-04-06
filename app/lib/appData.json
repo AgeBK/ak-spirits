@@ -1,8 +1,10 @@
 {
-  "imgPath": "/img/spirits/",
+  "imgPath": "/img/",
+  "imgSpiritsPath": "/img/spirits/",
+  "imgHeightListItem": 165,
   "defaultTheme": "light",
   "homePageItems": 12,
-  "bannerBlurb": "Spirits are distilled to perfection and contain an ABV ranging anywhere from 20 to 90%. The most popular spirits drunks drink are bourbon, rum, gin, tequila, and whisky. Also, known as rocket fuel don&apos;t miss out on these iconic beverages that are perfect ice-breakers.",
+  "bannerBlurb": "Spirits are distilled to perfection and contain an ABV ranging anywhere from 20 to 90%. The most popular spirits drunks drink are bourbon, rum, gin, tequila, and whisky. Also, known as rocket fuel don't miss out on these iconic beverages that are perfect ice-breakers.",
   "paymentArr": ["amex", "applePay", "mc", "paypal", "visa", "zip", "afterPay"],
   "paymentImgWidths": [33, 48, 48, 50, 48, 49, 54],
   "priceArr": [

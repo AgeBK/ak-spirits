@@ -135,8 +135,10 @@ export async function fetchSalesItems(query: number) {
     // const data: Record<string, SpiritProps>[] = await sql`
     const data: Record<string, SpiritProps>[] = await sql`
       SELECT * FROM spirits
-      WHERE price_special=true
-      OR price_2_for > 0
+      WHERE price_special = true
+      AND packaging <> 'Box'
+      OR price_2_for > 0 
+      AND packaging = 'Box'
       ORDER BY RANDOM()
       LIMIT ${query}
       `;

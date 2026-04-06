@@ -1,15 +1,16 @@
 "use client";
 
 import { ListItemProps } from "../lib/definitions";
-import { imgPath } from "@/app/lib/appData.json";
 import { useCartStore } from "../store";
 import { Dancing_Script } from "next/font/google";
-import Image from "next/image";
+import { imgHeightListItem } from "@/app/lib/appData.json";
+import ImgAutoWidth from "./image-auto-width";
 import Link from "next/link";
 import Button from "./button";
 import Price from "./price";
 import Img from "./image";
 import styles from "@/app/css/ListItem.module.css";
+import ImgFill from "./image-fill";
 const dancingScript = Dancing_Script({
   variable: "--font-dancing-script",
   subsets: ["latin"],
@@ -42,9 +43,6 @@ export default function ListItem({ arr, css, hdr }: ListItemProps) {
             // price_special,
           } = item;
 
-          // console.log(item);
-          const isBottle = packaging === "Bottle";
-
           return (
             <div className={styles.item} key={id}>
               <Link
@@ -61,12 +59,11 @@ export default function ListItem({ arr, css, hdr }: ListItemProps) {
                     ${price_2_for}
                   </div>
                 )}
-                {/* // TODO:  */}
-                <Image
-                  src={`${imgPath}${id}.webp`}
+                <ImgFill
+                  src={`spirits/${id}.webp`}
                   alt={short_name}
-                  width={isBottle ? 45 : 80}
-                  height={165}
+                  css="product160h"
+                  priority={false} // priority = max in view onload
                 />
                 <h2 className={styles.brand}>{brand}</h2>
                 <h3 className={styles.sName}>{short_name}</h3>
@@ -81,10 +78,8 @@ export default function ListItem({ arr, css, hdr }: ListItemProps) {
                 ADD TO CART
                 <span className={styles.btnCart}>
                   <Img
-                    // imgSrc={`icons/${itemAdded ? "cartNotEmpty" : "cartEmpty"}.svg`}
                     imgSrc={`icons/cartEmpty.svg`}
                     imgAlt="cart empty"
-                    // imgWidth={packaging === "Cask" ? 40 : 20}
                     imgWidth={20}
                     imgHeight={20}
                   />

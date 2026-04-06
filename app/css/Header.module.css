@@ -34,6 +34,7 @@
 .items {
   display: flex;
   flex-direction: column;
+  align-items: end;
 }
 
 .light .darkLogo {

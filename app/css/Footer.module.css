@@ -30,14 +30,6 @@
   margin-left: 5px;
 }
 
-.lightDisplay {
-  display: var(--light-display);
-}
-
-.darkDisplay {
-  display: var(--dark-display);
-}
-
 @media screen and (max-width: 650px) {
   .container {
     flex-direction: column;

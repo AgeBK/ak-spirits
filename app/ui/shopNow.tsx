@@ -5,15 +5,12 @@ import styles from "@/app/css/ShopNow.module.css";
 
 export default function ShopNow() {
   const { shopNow } = appData;
-
+  // TODO: Image ratios (4:3ish)
   return (
     <div className={styles.shopContainer}>
       {shopNow.map((val, i) => (
         <div key={val} className={styles.shop}>
-          <Link
-            href={`/spirits`}
-            className={styles.itemCont}
-          >
+          <Link href={`/spirits`} className={styles.itemCont}>
             <Img
               imgSrc={`shop/${i + 1}.jpg`}
               imgAlt={val}
