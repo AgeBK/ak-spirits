@@ -22,6 +22,10 @@ export interface DataProps extends SpiritProps {
   data: SpiritProps[];
 }
 
+export type ContainerProps = {
+  children: ReactNode;
+};
+
 export type ImgProps = {
   imgSrc: string;
   imgAlt: string;
@@ -40,6 +44,7 @@ export type FilterStateProps = {
   category: string;
   brand: string;
   price: number;
+  // search: string;
 };
 
 export type FilterProps = {
@@ -142,3 +147,7 @@ export type distinctBrandsProps = {
 };
 
 export type accBrandProps = { brands: string[]; items: SpiritProps[] };
+
+export type KeyStringProps = { [key: string]: string };
+
+export type StringPair = [string, string];

@@ -10,6 +10,7 @@ export default function Paging({
   setPage: (value: number) => void;
   page: number;
 }) {
+  // TODO: need to attach to bottom when minimal products
   return (
     <div className={styles.container}>
       <Button onClick={() => setPage(0)} disabled={page === 0} css="paging">

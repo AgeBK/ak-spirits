@@ -1,0 +1,5 @@
+.logoHdr {
+  margin-top: 15px;
+  font-size: 32px;
+  transform: rotate(-5deg); /* Slants text to the right */
+}

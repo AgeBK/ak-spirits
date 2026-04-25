@@ -5,13 +5,16 @@ import Link from "next/link";
 import Img from "./image";
 import ImageThemed from "./image-themed";
 import Cart from "./cart";
-import styles from "@/app/css/Header.module.css";
 import ThemeToggle from "./toggle";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import ImageSwitcher from "./image-switcher";
+import { SpiritProps } from "../lib/definitions";
+import Search from "./search";
+import JSXEl from "../lib/DancingScriptElement";
+import styles from "@/app/css/Header.module.css";
 
-export default function Header() {
+export default function Header({ data }: SpiritProps[]) {
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
@@ -26,8 +29,12 @@ export default function Header() {
           </Link>
         </div>
         <h1 className={styles.hdr}>
-          <span>SPIRITS</span>
+          {/* <div>SPIRITS</div> */}
+          <JSXEl text="Your spirits shop" css="logoHdr"></JSXEl>
         </h1>
+      </div>
+      <div className={styles.search}>
+        <Search data={data} />
       </div>
       <div className={styles.items}>
         <Cart />

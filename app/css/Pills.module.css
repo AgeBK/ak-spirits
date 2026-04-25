@@ -1,5 +1,5 @@
 .container {
-  /* border: 1px solid #850303; */
+  /* border: 1px solid var(--spirits-red); */
 }
 
 .pill {

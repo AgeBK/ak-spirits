@@ -69,11 +69,22 @@ export const filterBrand = (arr: string[], filter: string) => {
 };
 
 export const filterByBrand = (arr: SpiritProps[], brand: string) => {
+  // TODO: check this fn and above
   // return items starting with search term
   // console.log("Filter BY Brand function (return item):");
   // console.log(arr);
   arr = arr.filter((val) =>
     val.brand.toLowerCase().startsWith(brand.toLowerCase()),
+  );
+  return arr;
+};
+
+export const filterBySearch = (arr: SpiritProps[], filter: string) => {
+  // console.log("filter Search function");
+  arr = arr.filter(
+    ({ name, brand }) =>
+      name.toLowerCase().indexOf(filter) > -1 ||
+      brand.toLowerCase().indexOf(filter) > -1,
   );
   return arr;
 };
@@ -87,3 +98,5 @@ export const formatCurrency = (amount: number) => {
     currency: "USD",
   });
 };
+
+export const hyphenateSpace = (str: string) => str.replace(" ", "-");

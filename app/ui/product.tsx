@@ -1,4 +1,4 @@
-import { CategoryProps, SpiritProps } from "../lib/definitions";
+import { CategoryProps, SpiritProps, StringPair } from "../lib/definitions";
 import appData from "../lib/appData.json";
 import ImgFill from "./image-fill";
 import ProductCart from "./productCart";
@@ -12,6 +12,8 @@ import Review from "./review";
 // TODO: update readme, product descriptions (only have main spirits)
 // TODO: Theme switcher?
 // TODO: page length
+// TODO: TypeError: Cannot destructure property 'id' of 'productObj' as it is undefined. at Product (app\ui\product.tsx:24:5)
+// TODO: http://localhost:3000/spirits/other%20spirits/7016257_ea - %20?
 
 export default async function Product({
   productObj,
@@ -38,14 +40,18 @@ export default async function Product({
   }: SpiritProps = productObj;
 
   const subCatLow: string = sub_category.toLowerCase();
-  const spiritType: string = appData[subCatLow];
-  const spiritReview: string = appData[`${subCatLow}Review`];
-  const productDesc: string = spiritType
+  const spiritType =
+    appData[subCatLow as keyof typeof appData] ||
+    appData["generic" as keyof typeof appData];
+  // const spiritReview =
+  //   appData[`${subCatLow}Review` as keyof typeof appData] ||
+  //   appData["genericReview" as keyof typeof appData];
+  const productDesc = spiritType
     ? spiritType.replaceAll("[xxxx]", brand)
     : "";
-  const productReview: string = spiritReview
-    ? spiritReview.replaceAll("[xxxx]", brand)
-    : "";
+  // const productReview = spiritReview
+  //   ? spiritReview.replaceAll("[xxxx]", brand)
+  //   : "";
 
   return (
     <div className={styles.container}>

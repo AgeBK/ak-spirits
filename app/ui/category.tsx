@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CategoryProps, FilterStateProps } from "../lib/definitions";
 import {
   filterByCat,
   filterByBrand,
   filterByPrice,
   filterByOffer,
+  filterBySearch,
 } from "../lib/utils";
 // import appData from "../lib/appData.json";
 
@@ -29,47 +31,57 @@ export default function Category({ arr }: CategoryProps) {
     category: "",
     brand: "",
     price: 0,
+    // search: location,
   });
   const [page, setPage] = useState<number>(0);
   const [perPage, setPerPage] = useState<number>(40);
-  // console.log(appData);
-
   let totalPages = Math.ceil(arr.length / perPage);
   let totalFiltered = arr.length;
   let pagedArr = [...arr];
-  // console.log("filter Category: " + filters);
+  const searchParams = useSearchParams();
+  console.log(searchParams);
+  const search = searchParams.get("search");
 
   const keys: string[] = Object.keys(filters);
-
   keys.map((key) => {
     const value = filters[key as keyof typeof filters];
     if (value) {
       switch (key) {
         case "offer":
           pagedArr = filterByOffer(pagedArr, value as string[]);
-          totalFiltered = pagedArr.length;
-          totalPages = Math.ceil(pagedArr.length / perPage);
+          // totalFiltered = pagedArr.length;
+          // totalPages = Math.ceil(pagedArr.length / perPage);
           break;
         case "category":
           pagedArr = filterByCat(pagedArr, value as string);
-          totalFiltered = pagedArr.length;
-          totalPages = Math.ceil(pagedArr.length / perPage);
+          // totalFiltered = pagedArr.length;
+          // totalPages = Math.ceil(pagedArr.length / perPage);
           break;
         case "brand":
           pagedArr = filterByBrand(pagedArr, value as string);
-          totalFiltered = pagedArr.length;
-          totalPages = Math.ceil(pagedArr.length / perPage);
+          // totalFiltered = pagedArr.length;
+          // totalPages = Math.ceil(pagedArr.length / perPage);
           break;
         case "price":
           pagedArr = filterByPrice(pagedArr, value as string);
-          totalFiltered = pagedArr.length;
-          totalPages = Math.ceil(pagedArr.length / perPage);
           break;
         default:
           break;
       }
     }
+    totalFiltered = pagedArr.length;
+    totalPages = Math.ceil(pagedArr.length / perPage);
   });
+  console.log("Search");
+  console.log(search);
+
+  if (search) {
+    console.log("Search term exists:");
+
+    pagedArr = filterBySearch(pagedArr, search as string);
+    totalFiltered = pagedArr.length;
+    totalPages = Math.ceil(pagedArr.length / perPage);
+  }
 
   // if (filters) {
   //   pagedArr = filterByCat(arr, filters);

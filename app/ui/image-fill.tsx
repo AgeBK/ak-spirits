@@ -16,7 +16,7 @@ export default function ImgFill({ src, alt, css, priority }) {
         alt={alt}
         fill
         style={{ objectFit: "contain" }}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        sizes="(max-width: 100px) 100vw, (max-width: 1200px) 50vw, 33vw"
         priority={priority || false}
       />
     </div>

@@ -19,7 +19,8 @@
   --button-border: #5e4b56;
   --background: #fff;
   --light-text: #fff;
-  --spirits-red: #850303;
+  /* --spirits-red: var(--spirits-red); */
+  --spirits-red: #6b1818;
   --light-display: block;
   --dark-display: none;
   --filter-invert: invert(0%);
@@ -36,7 +37,8 @@
   --button-border: #b8dbd9;
   --background: #000;
   --light-text: #fff;
-  --spirits-red: #850303;
+  --spirits-red: #888;
+  /* --spirits-red: var(--spirits-red); */
   --light-display: none;
   --dark-display: block;
   --filter-invert: invert(100%);
@@ -76,7 +78,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #850303;
+  color: var(--spirits-red);
 }
 
 ul {
@@ -102,7 +104,7 @@ h3 {
 }
 
 h3 {
-  color: #850303;
+  color: var(--spirits-red);
   margin-bottom: 10px;
 }
 

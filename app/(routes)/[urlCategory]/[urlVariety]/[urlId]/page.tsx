@@ -1,4 +1,5 @@
 import { fetchSpiritById, fetch6BotBySubCategory } from "@/app/lib/data";
+import { hyphenateSpace } from "@/app/lib/utils";
 import Product from "@/app/ui/product";
 
 // The 'params' object contains dynamic segments from the URL
@@ -11,7 +12,10 @@ export default async function Page({
   console.log(p);
   const { urlId, urlVariety } = p;
   const productObj = await fetchSpiritById(urlId); // TODO: change to data
-  const similarArr = await fetch6BotBySubCategory(urlVariety, urlId);
+  const similarArr = await fetch6BotBySubCategory(
+    hyphenateSpace(urlVariety),
+    urlId,
+  );
 
   return <Product productObj={productObj} similarArr={similarArr} />;
 }

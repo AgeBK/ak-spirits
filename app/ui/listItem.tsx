@@ -3,14 +3,15 @@
 import { ListItemProps } from "../lib/definitions";
 import { useCartStore } from "../store";
 import { Dancing_Script } from "next/font/google";
-import { imgHeightListItem } from "@/app/lib/appData.json";
-import ImgAutoWidth from "./image-auto-width";
+// import { imgHeightListItem } from "@/app/lib/appData.json";
+// import ImgAutoWidth from "./image-auto-width";
 import Link from "next/link";
 import Button from "./button";
 import Price from "./price";
 import Img from "./image";
 import styles from "@/app/css/ListItem.module.css";
 import ImgFill from "./image-fill";
+import { hyphenateSpace } from "../lib/utils";
 const dancingScript = Dancing_Script({
   variable: "--font-dancing-script",
   subsets: ["latin"],
@@ -19,7 +20,8 @@ const dancingScript = Dancing_Script({
 export default function ListItem({ arr, css, hdr }: ListItemProps) {
   const addCartItem = useCartStore((state) => state.addCartItem);
   // TODO: SEO, articles, sections, check box/gift images
-
+  // TODO: http://localhost:3000/spirits/soft%20drink/3029790 - Similar items?
+  // TODO: bookmark on page 2 etc of category page (Url)
   return (
     <section className={styles[css]}>
       {hdr && <h3 className={styles.hdr}>{hdr}:</h3>}
@@ -46,7 +48,7 @@ export default function ListItem({ arr, css, hdr }: ListItemProps) {
           return (
             <div className={styles.item} key={id}>
               <Link
-                href={`/${category.toLowerCase()}/${sub_category.toLowerCase()}/${id}`}
+                href={`/${category.toLowerCase()}/${hyphenateSpace(sub_category).toLowerCase()}/${id}`}
                 className={styles.itemCont}
                 // {price_special && <div >On special</div>}
               >
