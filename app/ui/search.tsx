@@ -109,7 +109,7 @@ export default function Search({ data }) {
                     <ImgFill
                       src={`spirits/${id}.webp`}
                       alt={short_name}
-                      css="product30h"
+                      css="product50h"
                       priority={false} // priority = max in view onload
                     />
                   </div>

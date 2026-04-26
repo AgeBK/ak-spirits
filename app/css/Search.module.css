@@ -39,7 +39,7 @@
 .itemImg {
   min-width: 60px;
   width: 60px;
-  text-align: center;
+  /* text-align: center; */
   overflow: hidden;
 }
 

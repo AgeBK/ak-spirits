@@ -92,6 +92,13 @@ export const filterBySearch = (arr: SpiritProps[], filter: string) => {
 export const capitalizeFirstLetter = (val: string) =>
   val.charAt(0).toUpperCase() + val.slice(1);
 
+export const toTitleCase = (str: string) => {
+  return str
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
 export const formatCurrency = (amount: number) => {
   return amount.toLocaleString("en-US", {
     style: "currency",
@@ -99,4 +106,11 @@ export const formatCurrency = (amount: number) => {
   });
 };
 
-export const hyphenateSpace = (str: string) => str.replace(" ", "-");
+export const hyphenateSpace = (str: string) =>
+  str ? str.replaceAll(" ", "-") : str;
+
+export const removeHyphen = (str: string) =>
+  str ? str.replaceAll("-", " ") : str;
+
+export const notEmptyObj = (obj: SpiritProps) =>
+  Object.keys(obj).length > 0 ? true : false;

@@ -1,5 +1,5 @@
 import { fetchSpiritById, fetch6BotBySubCategory } from "@/app/lib/data";
-import { hyphenateSpace } from "@/app/lib/utils";
+import { removeHyphen, toTitleCase } from "@/app/lib/utils";
 import Product from "@/app/ui/product";
 
 // The 'params' object contains dynamic segments from the URL
@@ -8,14 +8,12 @@ export default async function Page({
 }: {
   params: { urlCategory: string; urlVariety: string; urlId: string };
 }) {
-  const p = await params; // TODO:
-  console.log(p);
-  const { urlId, urlVariety } = p;
-  const productObj = await fetchSpiritById(urlId); // TODO: change to data
-  const similarArr = await fetch6BotBySubCategory(
-    hyphenateSpace(urlVariety),
-    urlId,
-  );
+  const urlParams = await params; // TODO:
+  const { urlId, urlVariety } = urlParams;
+  const [productObj = {}, relatedProducts] = await Promise.all([
+    fetchSpiritById(urlId),
+    fetch6BotBySubCategory(toTitleCase(removeHyphen(urlVariety)), urlId),
+  ]);
 
-  return <Product productObj={productObj} similarArr={similarArr} />;
+  return <Product productObj={productObj} relatedProducts={relatedProducts} />;
 }
