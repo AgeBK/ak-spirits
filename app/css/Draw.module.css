@@ -1,0 +1,49 @@
+.accordion {
+  position: relative;
+}
+
+.toggleList {
+  display: none;
+}
+
+.accordion input[type="checkbox"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+}
+
+.accordion .open,
+.accordion .close {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+.accordion .close {
+  display: none;
+}
+
+.accordion input[type="checkbox"]:checked ~ .open {
+  display: none;
+}
+
+.accordion input[type="checkbox"]:checked ~ .close {
+  display: block;
+}
+
+.accordion input[type="checkbox"]:checked ~ .toggleList {
+  display: block;
+}
+
+.accordion svg[data-ico] {
+  height: 0.9em;
+  fill: none;
+  stroke: var(--spirits-red);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.accordion hr {
+  margin: 20px 0;
+}

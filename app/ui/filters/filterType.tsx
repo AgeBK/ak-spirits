@@ -1,17 +1,17 @@
-import React, { ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 import { SpiritProps, FilterArrProps } from "@/app/lib/definitions";
 import Button from "../button";
 import styles from "@/app/css/FilterType.module.css";
 
 // TODO: similar styles in price?
 // TODO: need to unselect radio button when handleClick handleClick/delete pill
+// TODO: create UL component
 
 export default function FilterType({
   arr,
   setFilters,
   filters,
 }: FilterArrProps) {
-  
   const distinctSpirits: string[] = arr.reduce(
     (acc: string[], val: SpiritProps) => {
       const subCat: string = val.sub_category;
@@ -28,9 +28,7 @@ export default function FilterType({
 
   return (
     <div className={styles.container}>
-      <hr />
-      <h3 className={styles.filterHdr}>Category:</h3>
-      <ul className={styles.category}>
+      <ul className={`${styles.toggleList} ${styles.category}`}>
         {distinctSpirits.map((val) => (
           <li key={val}>
             <input

@@ -43,7 +43,7 @@ export type FilterStateProps = {
   offer: string[];
   category: string;
   brand: string;
-  price: number;
+  price: string;
   // search: string;
 };
 

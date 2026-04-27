@@ -14,6 +14,10 @@
   position: relative;
 }
 
+.inputCont input {
+  padding: 5px;
+}
+
 .clearInput {
   position: absolute;
   right: 5px;

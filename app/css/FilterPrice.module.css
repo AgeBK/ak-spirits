@@ -1,3 +1,5 @@
+/* @import "./FilterToggle.module.css"; */
+
 .container {
   /* padding-right: 20px; */
 }
@@ -41,3 +43,23 @@
   display: inline-block;
   margin-left: 5px;
 }
+
+/*.price,
+ .show,
+.hide:target {
+  display: none;
+}
+.hide:target + .show,
+.hide:target ~ .price {
+  display: block;
+}
+
+.down {
+  width: 10px;
+  height: 10px;
+  border-right: 0.2em solid black;
+  border-top: 0.2em solid black;
+  transform: rotate(135deg);
+  width: 10px;
+  display: inline-block;
+} */

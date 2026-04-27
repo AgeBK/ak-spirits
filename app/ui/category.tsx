@@ -30,7 +30,7 @@ export default function Category({ arr }: CategoryProps) {
     offer: [],
     category: "",
     brand: "",
-    price: 0,
+    price: "",
     // search: location,
   });
   const [page, setPage] = useState<number>(0);

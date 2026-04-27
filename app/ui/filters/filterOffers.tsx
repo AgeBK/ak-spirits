@@ -10,10 +10,6 @@ export default function FilterOffers({ setFilters, filters }: FilterProps) {
     Specials: false,
     "Multi Buy": false,
   });
-  console.log("isChecked: ");
-  console.log(isChecked);
-
-  console.log(filters.offer);
 
   const { offers } = appData;
 
@@ -46,8 +42,7 @@ export default function FilterOffers({ setFilters, filters }: FilterProps) {
 
   return (
     <div className={styles.filterOffers}>
-      <h3 className={styles.filterHdr}>Offers:</h3>
-      <ul className={styles.offer}>
+      <ul className={`${styles.offer}`}>
         {offers.map((val) => {
           const v: keyof typeof isChecked = val as keyof typeof isChecked;
           return (

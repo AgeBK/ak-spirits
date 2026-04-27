@@ -56,7 +56,6 @@ export default function FilterBrand({
 
   return (
     <div className={styles.container}>
-      <hr />
       <h3 className={styles.filterHdr}>Brand:</h3>
       <div className={styles.inputCont}>
         <input
@@ -89,14 +88,3 @@ export default function FilterBrand({
   );
 }
 
-// const handleClick = (e: { currentTarget: { id: string } }) => {
-//   console.log(e);
-
-//   const brand: string = e.currentTarget.id;
-//   const brandArr: string[] = filterBrand(distinctBrands.brands, brand);
-//   setFilteredBrands(brandArr);
-//   setText(brand);
-//   setFilters({ ...filters, brand });
-
-//   console.log(brand);
-// };

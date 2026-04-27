@@ -13,6 +13,7 @@ import { notEmptyObj } from "../lib/utils";
 // TODO: update readme
 // TODO: page length
 // TODO: TypeError: Cannot destructure property 'id' of 'productObj' as it is undefined. at Product (app\ui\product.tsx:24:5)
+// TODO: maybe hide paging/imems per page if less than 20 products?  
 
 export default async function Product({
   productObj,
@@ -42,7 +43,7 @@ export default async function Product({
     // const spiritReview =
     //   appData[`${subCatLow}Review` as keyof typeof appData] ||
     //   appData["genericReview" as keyof typeof appData];
-    const productDesc : string = spiritType
+    const productDesc: string = spiritType
       ? spiritType.replaceAll("[xxxx]", brand)
       : "";
     // const productReview = spiritReview
