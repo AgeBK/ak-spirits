@@ -1,10 +1,4 @@
-@import "./FilterToggle.module.css";
-
-/* .filterOffers hr {
-  margin: 20px 0;
-} */
-
-.container h3 {
+.filterOffers h3 {
   font-size: 18px;
 }
 
@@ -40,8 +34,10 @@
   margin-left: 5px;
 }
 
-/* .accordion input[type="checkbox"] {
-  position: static;
-  height: auto;
+.filterOffers input[type="checkbox"] {
   width: auto;
-} */
+  height: auto;
+  position: static;
+  top: 0;
+  right: 0;
+}

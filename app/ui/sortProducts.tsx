@@ -20,7 +20,7 @@ export default function SortProducts({
 
   const rating = () => {};
 
-  const sortBy = ["--- Select ---", "$", "$$$", "rating", "A-Z", "Z-A"];
+  const sortBy = ["--- Select ---", "$", "$$$", "Rating", "A-Z", "Z-A"];
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -35,20 +35,16 @@ export default function SortProducts({
       case "$$$":
         price();
         break;
-      case "rating":
-        console.log("Sorting by rating");
+      case "Rating":
         arr.sort((a, b) => b.ratings_avg - a.ratings_avg);
         break;
       case "A-Z":
-        console.log("Sorting by name ascending");
         arr.sort((a, b) => a.brand.localeCompare(b.brand));
         break;
       case "Z-A":
-        console.log("Sorting by name descending ");
         arr.sort((a, b) => b.brand.localeCompare(a.brand));
         break;
       default:
-        console.log("No sorting applied");
     }
   };
 

@@ -36,7 +36,7 @@ export default function Category({ arr }: CategoryProps) {
   const [page, setPage] = useState<number>(0);
   const [perPage, setPerPage] = useState<number>(40);
   let totalPages = Math.ceil(arr.length / perPage);
-  let totalFiltered = arr.length;
+  let totalItems = arr.length;
   let pagedArr = [...arr];
   const searchParams = useSearchParams();
   console.log(searchParams);
@@ -49,18 +49,12 @@ export default function Category({ arr }: CategoryProps) {
       switch (key) {
         case "offer":
           pagedArr = filterByOffer(pagedArr, value as string[]);
-          // totalFiltered = pagedArr.length;
-          // totalPages = Math.ceil(pagedArr.length / perPage);
           break;
         case "category":
           pagedArr = filterByCat(pagedArr, value as string);
-          // totalFiltered = pagedArr.length;
-          // totalPages = Math.ceil(pagedArr.length / perPage);
           break;
         case "brand":
           pagedArr = filterByBrand(pagedArr, value as string);
-          // totalFiltered = pagedArr.length;
-          // totalPages = Math.ceil(pagedArr.length / perPage);
           break;
         case "price":
           pagedArr = filterByPrice(pagedArr, value as string);
@@ -69,7 +63,7 @@ export default function Category({ arr }: CategoryProps) {
           break;
       }
     }
-    totalFiltered = pagedArr.length;
+    totalItems = pagedArr.length;
     totalPages = Math.ceil(pagedArr.length / perPage);
   });
   console.log("Search");
@@ -79,13 +73,13 @@ export default function Category({ arr }: CategoryProps) {
     console.log("Search term exists:");
 
     pagedArr = filterBySearch(pagedArr, search as string);
-    totalFiltered = pagedArr.length;
+    totalItems = pagedArr.length;
     totalPages = Math.ceil(pagedArr.length / perPage);
   }
 
   // if (filters) {
   //   pagedArr = filterByCat(arr, filters);
-  //   totalFiltered = pagedArr.length;
+  //   totalItems = pagedArr.length;
   //   totalPages = Math.ceil(pagedArr.length / perPage);
   // }
 
@@ -102,9 +96,7 @@ export default function Category({ arr }: CategoryProps) {
           <div className={styles.pillsCont}>
             <Pills setFilters={setFilters} filters={filters} />
           </div>
-          <div className={styles.productsTotal}>
-            ({totalFiltered}) Available:
-          </div>
+          <div className={styles.productsTotal}>({totalItems}) Available:</div>
           <SortProducts arr={arr} setSortOrder={setSortOrder} />
         </div>
         <ProductItem arr={pagedArr} css="" />
@@ -120,7 +112,7 @@ export default function Category({ arr }: CategoryProps) {
 /* {filters ? (
           <h3 className={styles.filterType}>
             {filters}
-            <span className={styles.results}>({totalFiltered} results)</span>
+            <span className={styles.results}>({totalItems} results)</span>
           </h3>
         ) : null} */
 

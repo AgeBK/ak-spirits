@@ -1,4 +1,4 @@
-import { CategoryProps, SpiritProps, StringPair } from "../lib/definitions";
+import { CategoryProps, SpiritProps } from "../lib/definitions";
 import appData from "../lib/appData.json";
 import ImgFill from "./image-fill";
 import ProductCart from "./productCart";
@@ -11,9 +11,8 @@ import { notEmptyObj } from "../lib/utils";
 
 // TODO: 2 for??
 // TODO: update readme
-// TODO: page length
 // TODO: TypeError: Cannot destructure property 'id' of 'productObj' as it is undefined. at Product (app\ui\product.tsx:24:5)
-// TODO: maybe hide paging/imems per page if less than 20 products?  
+// TODO: search results like fine wines (check 1 product result)
 
 export default async function Product({
   productObj,

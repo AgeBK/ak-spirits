@@ -30,7 +30,7 @@
 .toggle + label span.sw:before {
   content: "";
   position: absolute;
-  background-color: var(--spirits-red);
+  background-color: var(--spirits-text);
   margin-top: 1px;
   margin-left: 3px;
   height: 11px;
@@ -40,7 +40,7 @@
 }
 
 .toggle:checked + label span.sw {
-  background-color: var(--spirits-red);
+  background-color: var(--spirits-text);
   border-color: #999;
 }
 

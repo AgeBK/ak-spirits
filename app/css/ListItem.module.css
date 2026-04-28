@@ -15,7 +15,7 @@
   width: 175px;
   max-width: 230px;
   height: 320px;
-  border: 1px solid var(--spirits-red);
+  border: 1px solid var(--spirits-text);
   padding: 10px;
   position: relative;
   background-color: #fff;
@@ -64,7 +64,7 @@
   top: 0;
   left: 0;
   padding: 10px;
-  background-color: var(--spirits-red);
+  background-color: var(--spirits-text);
   color: #fff;
   font-weight: bold;
   font-size: 18px;

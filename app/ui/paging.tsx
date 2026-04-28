@@ -4,7 +4,7 @@ import styles from "@/app/css/Paging.module.css";
 export default function Paging({
   totalPages,
   setPage,
-  page,
+  page,totalItems
 }: {
   totalPages: number;
   setPage: (value: number) => void;

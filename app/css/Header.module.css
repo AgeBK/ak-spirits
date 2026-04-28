@@ -22,7 +22,7 @@
 
 .hdr {
   /* flex-grow: 1; */
-  color: var(--spirits-red);
+  color: var(--spirits-text);
 }
 
 .logo {

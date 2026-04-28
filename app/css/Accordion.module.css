@@ -39,7 +39,7 @@
 .accordion svg[data-ico] {
   height: 0.9em;
   fill: none;
-  stroke: var(--spirits-red);
+  stroke: var(--spirits-text);
   stroke-width: 2;
   stroke-linecap: round;
 }

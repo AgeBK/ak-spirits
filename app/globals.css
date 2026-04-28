@@ -1,53 +1,23 @@
-/* @import "tailwindcss"; */
-/* :root {
-  --background: red;
-  --foreground: black;
-  --display: block;
-  --border: yellow;
-  --pad: 10px;
-}
-[data-theme="light"] {
-  --background: black;
-  --foreground: red;
-  --display: none;
-  --border: red;
-  --pad: 2px;
-} */
-/* TODO: Check vars below */
 .light {
   --filter-text: #333;
   --button-border: #5e4b56;
   --background: #fff;
   --light-text: #fff;
-  /* --spirits-red: var(--spirits-red); */
-  --spirits-red: #6b1818;
+  --spirits-text: #6b1818;
   --light-display: block;
   --dark-display: none;
   --filter-invert: invert(0%);
-  /* --toggle-bg: linear-gradient(
-    90deg,
-    rgba(80, 80, 80, 1) 0%,
-    rgba(255, 255, 255, 1) 50%
-  ); */
 }
 
-/* --light-text is fine on on the first 3, --dark-text is fine on all of them, --dark-text and dark-background are fine as text on --accent */
 .dark {
   --filter-text: #999;
   --button-border: #b8dbd9;
   --background: #000;
   --light-text: #fff;
-  --spirits-red: #888;
-  /* --spirits-red: var(--spirits-red); */
+  --spirits-text: #888;
   --light-display: none;
   --dark-display: block;
   --filter-invert: invert(100%);
-
-  /* --toggle-bg: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(255, 255, 255, 1) 49%
-  ); */
 }
 
 body {
@@ -57,28 +27,11 @@ body {
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: var(--background);
-  color: var(--light-text); */
 }
-
-/* Styles for users who prefer a dark scheme */
-/* @media (color-scheme: light) {
-  body {
-    background-color: #000000;
-    color: #ffffff;
-  }
-}
-
-@media (color-scheme: dark) {
-  body {
-    background-color: #fff;
-    color: #000;
-  }
-} */
 
 a {
   text-decoration: none;
-  color: var(--spirits-red);
+  color: var(--spirits-text);
 }
 
 ul {
@@ -100,11 +53,10 @@ h2,
 h3 {
   margin: 0;
   padding: 0;
-  /* color: #fff; */
 }
 
 h3 {
-  color: var(--spirits-red);
+  color: var(--spirits-text);
   margin-bottom: 10px;
 }
 
@@ -118,6 +70,8 @@ button {
   outline: inherit;
 }
 
-/* img {
-  pointer-events: none;
-} */
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}

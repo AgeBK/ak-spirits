@@ -1,8 +1,9 @@
 // "use client";
-import styles from "@/app/css/Draw.module.css";
+import { KeyStringProps } from "../lib/definitions";
+import styles from "@/app/css/Accordion.module.css";
 
-export default function Draw({ children, name }) {
-  //   const data = await fetchSpirits();
+export default function Accordion({ children, name }: KeyStringProps) {
+  // Accordion component: runs purely on CSS based on the checkbox value (no state)
 
   return (
     <div className={styles.accordion}>

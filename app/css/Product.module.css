@@ -1,6 +1,6 @@
 .container {
   padding: 20px;
-  border: 1px solid var(--spirits-red);
+  border: 1px solid var(--spirits-text);
 }
 
 .product {
@@ -31,7 +31,7 @@
 
 .hdr {
   font-size: 28px;
-  color: var(--spirits-red);
+  color: var(--spirits-text);
 }
 
 .name {
