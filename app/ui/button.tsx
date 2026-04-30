@@ -12,23 +12,3 @@ export default function Button({ children, css, ...rest }: ButtonProps) {
   );
 }
 
-// export default function Button({
-//   children,
-//   onClick,
-//   id,
-//   css,
-//   disabled,
-//   type = "button",
-// }: ButtonProps) {
-//   return (
-//     <button
-//       type={type}
-//       id={id}
-//       className={styles[className]}
-//       onClick={onClick}
-//       disabled={disabled}
-//     >
-//       {children}
-//     </button>
-//   );
-// }

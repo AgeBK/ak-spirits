@@ -48,22 +48,20 @@ export type FilterStateProps = {
 };
 
 export type FilterProps = {
-  //arr?: SpiritProps[];
+  arr?: SpiritProps[];
   setFilters: Dispatch<
     SetStateAction<{
-      // arr: string[];
       offer: string[];
       category: string;
       brand: string;
-      price: number;
+      price: string;
     }>
   >; // Dispatch<SetStateAction<{ category: string; brand: string; price: string; }>>'
   filters: {
-    // arr: string[];
     offer: string[];
     category: string;
     brand: string;
-    price: number;
+    price: string;
   };
 };
 

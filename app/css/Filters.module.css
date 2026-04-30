@@ -1,3 +1,20 @@
-.filterCont {
+.filterCont,
+.filterContSml {
   color: var(--filter-text);
+}
+
+.filterCont {
+  text-transform: capitalize;
+  min-width: 170px;
+  padding: 0 20px 0 10px;
+}
+
+.hdr {
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+@media screen and (max-width: 650px) {
+  .filterContSml {
+    display: none;
+  }
 }

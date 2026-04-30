@@ -12,6 +12,7 @@
 
 .inputCont {
   position: relative;
+  width: 170px;
 }
 
 .inputCont input {
@@ -24,4 +25,5 @@
   cursor: pointer;
   color: #000;
   top: 0px;
+  font-size: 18px;
 }
