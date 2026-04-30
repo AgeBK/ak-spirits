@@ -12,11 +12,11 @@
 
 .inputCont {
   position: relative;
-  width: 170px;
 }
 
 .inputCont input {
   padding: 5px;
+  box-sizing: border-box;
 }
 
 .clearInput {

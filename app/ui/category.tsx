@@ -44,7 +44,7 @@ export default function Category({ arr }: CategoryProps) {
   let totalItems = arr.length;
   let pagedArr = [...arr];
   const searchParams = useSearchParams();
-  const isSmallScreenShowItems = usePageWidth(maxSmallScreen) && showFilters;
+  const filtersSmallScreen = usePageWidth(maxSmallScreen) && showFilters;
   const search = searchParams.get("search");
 
   const keys: string[] = Object.keys(filters);
@@ -87,14 +87,10 @@ export default function Category({ arr }: CategoryProps) {
         {showFilters ? "X" : "Filters"}
       </Button>
       <div className={styles.container}>
-        <div
-          className={isSmallScreenShowItems ? styles.products : styles.filters}
-        >
+        <div className={filtersSmallScreen ? styles.products : styles.filters}>
           <Filters arr={arr} setFilters={setFilters} filters={filters} />
         </div>
-        <div
-          className={isSmallScreenShowItems ? styles.filters : styles.products}
-        >
+        <div className={filtersSmallScreen ? styles.filters : styles.products}>
           <div className={styles.productsHdr}>
             <div className={styles.pillsCont}>
               <Pills setFilters={setFilters} filters={filters} />
@@ -106,8 +102,17 @@ export default function Category({ arr }: CategoryProps) {
           </div>
           <ProductItem arr={pagedArr} css="" />
           <div className={styles.pageCont}>
-            <Paging totalPages={totalPages} setPage={setPage} page={page} />
-            <ItemsPerPage setPerPage={setPerPage} perPage={perPage} />
+            <Paging
+              totalPages={totalPages}
+              setPage={setPage}
+              page={page}
+              totalItems={totalItems}
+            />
+            <ItemsPerPage
+              setPerPage={setPerPage}
+              perPage={perPage}
+              totalItems={totalItems}
+            />
           </div>
           <ScrollTop />
         </div>
