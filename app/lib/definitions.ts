@@ -144,6 +144,15 @@ export type distinctBrandsProps = {
   items: SpiritProps[];
 };
 
+export type PagingProps = { page: number; pageSize: number };
+
+export type CategoryPagingProps = {
+  totalPages: number;
+  updatePaging: (page: number, pageSize: number) => void;
+  paging: PagingProps;
+  totalItems: number;
+};
+
 export type accBrandProps = { brands: string[]; items: SpiritProps[] };
 
 export type KeyStringProps = { [key: string]: string };

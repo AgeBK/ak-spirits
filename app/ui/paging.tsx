@@ -3,44 +3,51 @@ import styles from "@/app/css/Paging.module.css";
 
 export default function Paging({
   totalPages,
-  setPage,
-  page,
+  updatePaging,
+  paging,
   totalItems,
 }: {
   totalPages: number;
-  setPage: (value: number) => void;
-  page: number;
+  updatePaging: (page: number, pageSize: number) => void;
+  paging: { page: number; pageSize: number };
   totalItems: number;
 }) {
   // TODO: need to attach to bottom when minimal products
-  console.log("total items: " + totalItems);
+  const { page, pageSize } = paging;
 
-  if (totalItems >= 20) {
+  console.log(totalItems);
+  console.log(pageSize);
+
+  if (totalItems > pageSize) {
     return (
       <div className={styles.container}>
-        <Button onClick={() => setPage(0)} disabled={page === 0} css="paging">
+        <Button
+          onClick={() => updatePaging(0, pageSize)}
+          disabled={page === 0}
+          css="paging"
+        >
           &lt;&lt;
         </Button>
         <Button
-          onClick={() => setPage(page - 1)}
+          onClick={() => updatePaging(page - 1, pageSize)}
           disabled={page === 0}
           css="paging"
         >
           &lt;
         </Button>
-        <div className={styles.currentPage}>{page + 1}</div>{" "}
+        <div className={styles.currentPage}>{page + 1}</div>
         {totalPages > 1 && (
           <span className={styles.total}>of {totalPages}</span>
         )}
         <Button
-          onClick={() => setPage(page + 1)}
+          onClick={() => updatePaging(page + 1, pageSize)}
           disabled={page === totalPages - 1}
           css="paging"
         >
           &gt;
         </Button>
         <Button
-          onClick={() => setPage(totalPages - 1)}
+          onClick={() => updatePaging(totalPages - 1, pageSize)}
           disabled={page === totalPages - 1}
           css="paging"
         >

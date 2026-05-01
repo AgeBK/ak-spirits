@@ -2,15 +2,17 @@ import styles from "@/app/css/ItemsPerPage.module.css";
 import Button from "./button";
 
 export default function ItemsPerPage({
-  setPerPage,
-  perPage,
+  updatePaging,
+  paging,
   totalItems,
 }: {
-  setPerPage: (value: number) => void;
-  perPage: number;
+  updatePaging: (page: number, pageSize: number) => void;
+  paging: { page: number; pageSize: number };
   totalItems: number;
 }) {
   const itemsArr = [20, 40, 60, 80];
+  const { page, pageSize } = paging;
+
   // TODO: need a way to pass 2 styles
 
   if (totalItems >= 20) {
@@ -20,9 +22,9 @@ export default function ItemsPerPage({
         {itemsArr.map((val) => (
           <Button
             key={val}
-            css={val === perPage ? "itemsPPSelected" : "itemsPP"}
+            css={val === pageSize ? "itemsPPSelected" : "itemsPP"}
             // css={`${styles.itemsPerPage} ${val === perPage ? styles.selected : ""}`}
-            onClick={() => setPerPage(val)}
+            onClick={() => updatePaging(page, val)}
           >
             {val}
           </Button>

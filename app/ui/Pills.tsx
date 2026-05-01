@@ -4,21 +4,12 @@ import Img from "./image";
 import styles from "@/app/css/Pills.module.css";
 
 export default function Pills({ filters, setFilters }: PillsProps) {
-  // console.log("Pills");
-  // console.log(filters);
-
   const handleClick = ({ currentTarget: { id } }: { id: string }) => {
     setFilters({ ...filters, [id]: "" });
   };
 
-  console.log("Pills");
-  console.log(filters);
-  // : [string, boolean], index: number
-
   const checkValue = (val: string[] | string | number) => {
     let validated = false;
-    console.log("checkValue");
-    console.log(val);
     const valType = typeof val;
 
     if (val) {
@@ -30,8 +21,6 @@ export default function Pills({ filters, setFilters }: PillsProps) {
         validated = Boolean(Object.keys.length);
       }
     }
-    console.log(validated);
-
     return validated;
   };
 

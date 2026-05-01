@@ -2,7 +2,6 @@ import { useState, SyntheticEvent } from "react";
 import { useRouter } from "next/navigation";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import { Chip, InputAdornment } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import { SpiritProps } from "../lib/definitions";
 import parse from "autosuggest-highlight/parse";
@@ -21,9 +20,11 @@ export default function Search({ data }) {
 
   if (data) {
     // data used by the auto complete component
-    const ACData = data.map(({ name, id, category, variety, packaging }) => {
-      return { name, id, category, variety, packaging };
-    });
+    const ACData = data.map(
+      ({ name, id, short_name, category, variety, packaging }) => {
+        return { name, id, short_name, category, variety, packaging };
+      },
+    );
 
     const handleClick = (): void => setOverlay(true); // apply overlay when auto complete is focused
 
@@ -46,15 +47,8 @@ export default function Search({ data }) {
         defaultMuiPrevented?: boolean | undefined;
       },
     ): void => {
-      console.log("handleKeyDown");
-
       const { key } = e;
-      // console.log(key);
-      // console.log(searchTerm);
-
       if (key === "Enter" && searchTerm) {
-        // console.log("key === Enter && searchTerm");
-
         // if entered press, display results on category page
         setOverlay(false);
         setOpen(false);
@@ -67,12 +61,8 @@ export default function Search({ data }) {
       val: string,
     ): void => {
       console.log("handleInputChange");
-
       // store user input in searchTerm state var
       // only show results if 2 or more characters are entered
-      // console.log("      setSearchTerm(val)");
-      // console.log(val);
-
       setSearchTerm(val);
       if (val.length <= 1) {
         if (open) setOpen(false); // TODO: ??

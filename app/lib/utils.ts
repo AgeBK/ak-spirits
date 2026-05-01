@@ -80,11 +80,15 @@ export const filterByBrand = (arr: SpiritProps[], brand: string) => {
 };
 
 export const filterBySearch = (arr: SpiritProps[], filter: string) => {
-  // console.log("filter Search function");
+  const searchTerm = filter.toLowerCase();
+  console.log("filterBySearch");
+  console.log(arr);
+  console.log(filter);
+
   arr = arr.filter(
     ({ name, brand }) =>
-      name.toLowerCase().indexOf(filter) > -1 ||
-      brand.toLowerCase().indexOf(filter) > -1,
+      name.toLowerCase().indexOf(searchTerm) > -1 ||
+      brand.toLowerCase().indexOf(searchTerm) > -1,
   );
   return arr;
 };

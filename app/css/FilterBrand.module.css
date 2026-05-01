@@ -17,6 +17,7 @@
 .inputCont input {
   padding: 5px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .clearInput {

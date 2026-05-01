@@ -96,7 +96,7 @@ export async function fetchDistinctSpirits() {
 
 //   try {
 //     const [product, relatedProducts] = await Promise.all([
-//       sql` 
+//       sql`
 //       SELECT
 //           id,
 //           brand,
@@ -115,7 +115,7 @@ export async function fetchDistinctSpirits() {
 //           price_special
 //       FROM spirits
 //       WHERE id=${id}`,
-//       sql`      
+//       sql`
 //       SELECT *
 //         FROM spirits
 //         WHERE sub_category=${subCat}
@@ -162,9 +162,6 @@ export async function fetch6BotBySubCategory(query: string, id: string) {
         ORDER BY RANDOM()
         LIMIT 6
       `;
-    console.log("6 Bot");
-    console.log("6 Bot");
-    console.log(data);
 
     return data; // convert db column names to camel case (eg: price_normal to priceNormal)
   } catch (err) {

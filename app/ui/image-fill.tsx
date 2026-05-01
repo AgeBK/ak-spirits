@@ -8,6 +8,8 @@ export default function ImgFill({ src, alt, css, priority }) {
 
   // console.log(imgPath);
   // console.log(src);
+  console.log("ImgFill");
+  console.log(alt);
 
   return (
     <div className={styles[css]}>

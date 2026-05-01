@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { CategoryProps, FilterStateProps } from "../lib/definitions";
+import {
+  CategoryProps,
+  FilterStateProps,
+  PagingProps,
+} from "../lib/definitions";
 import {
   filterByCat,
   filterByBrand,
@@ -11,23 +15,21 @@ import {
   filterBySearch,
 } from "../lib/utils";
 import { maxSmallScreen } from "../lib/appData.json";
-
+import { pagingSettings } from "../lib/appData.json";
 import Pills from "./pills";
 import SortProducts from "./sortProducts";
-import Paging from "./paging";
-import ItemsPerPage from "./itemsPerPage";
-import styles from "@/app/css/Category.module.css";
 import ProductItem from "./listItem";
 import Filters from "./filters/filters";
 import ScrollTop from "./scrollTop";
-import usePageWidth from "../hooks/usePageWidth";
 import Button from "./button";
+import CategoryPaging from "./category-paging";
+import usePageWidth from "../hooks/usePageWidth";
+import styles from "@/app/css/Category.module.css";
 
 // TODO: category? products?
 // TODO: need to reset paging when you click a new filter
 // TODO: http://localhost:3000/spirits/brandy/462280 (brandy styling on cat page?)
 // TODO: search header like wines?
-// TODO: hide paging less than 20
 
 export default function Category({ arr }: CategoryProps) {
   const [, setSortOrder] = useState<string>("");
@@ -38,14 +40,14 @@ export default function Category({ arr }: CategoryProps) {
     brand: "",
     price: "",
   });
-  const [page, setPage] = useState<number>(0);
-  const [perPage, setPerPage] = useState<number>(40);
-  let totalPages = Math.ceil(arr.length / perPage);
+  const [paging, setPaging] = useState<PagingProps>(pagingSettings);
+  let totalPages = Math.ceil(arr.length / paging.pageSize);
   let totalItems = arr.length;
   let pagedArr = [...arr];
   const searchParams = useSearchParams();
   const filtersSmallScreen = usePageWidth(maxSmallScreen) && showFilters;
   const search = searchParams.get("search");
+  const { page, pageSize } = paging;
 
   const keys: string[] = Object.keys(filters);
   keys.map((key) => {
@@ -69,17 +71,26 @@ export default function Category({ arr }: CategoryProps) {
       }
     }
     totalItems = pagedArr.length;
-    totalPages = Math.ceil(pagedArr.length / perPage);
+    totalPages = Math.ceil(pagedArr.length / paging.pageSize);
   });
 
   if (search) {
-    console.log("Search term exists:");
+    console.log("search");
+    console.log(pagedArr);
+
     pagedArr = filterBySearch(pagedArr, search as string);
     totalItems = pagedArr.length;
-    totalPages = Math.ceil(pagedArr.length / perPage);
+    totalPages = Math.ceil(pagedArr.length / pageSize);
   }
 
-  pagedArr = pagedArr.slice(page * perPage, page * perPage + perPage);
+  const updatePaging = (page: number, pageSize: number) => {
+    if (window) {
+      window.scrollTo(0, 0);
+      setPaging({ page, pageSize });
+    }
+  };
+
+  pagedArr = pagedArr.slice(page * pageSize, page * pageSize + pageSize);
 
   return (
     <div className={styles.categoryCont}>
@@ -102,15 +113,10 @@ export default function Category({ arr }: CategoryProps) {
           </div>
           <ProductItem arr={pagedArr} css="" />
           <div className={styles.pageCont}>
-            <Paging
+            <CategoryPaging
               totalPages={totalPages}
-              setPage={setPage}
-              page={page}
-              totalItems={totalItems}
-            />
-            <ItemsPerPage
-              setPerPage={setPerPage}
-              perPage={perPage}
+              updatePaging={updatePaging}
+              paging={paging}
               totalItems={totalItems}
             />
           </div>

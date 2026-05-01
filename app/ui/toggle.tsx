@@ -8,7 +8,6 @@ export default function ThemeToggle() {
   // 'mounted' state helps avoid hydration mismatches
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-  console.log(theme);
 
   // useEffect runs only on the client side after hydration TODO:
   useEffect(() => setMounted(true), []);

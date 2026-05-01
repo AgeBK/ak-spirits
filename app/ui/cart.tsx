@@ -4,10 +4,10 @@ import { useCartStore } from "../store";
 import Img from "./image";
 import Button from "./button";
 import { CartProps } from "../lib/definitions";
-import styles from "@/app/css/Cart.module.css";
 import { useState } from "react";
 import { formatCurrency } from "../lib/utils";
 import ImgFill from "./image-fill";
+import styles from "@/app/css/Cart.module.css";
 
 export default function Cart() {
   const { cartItems, removeItem, deleteItem, addCartItem, total } =
@@ -15,10 +15,6 @@ export default function Cart() {
   const [showCart, setShowCart] = useState(false);
   const itemCnt = cartItems.length;
   const cartTotal = total();
-  console.log("Cart");
-  console.log(cartTotal);
-
-  // console.log(showCart);
 
   return (
     <div className={styles.container}>
@@ -38,13 +34,8 @@ export default function Cart() {
           const {
             id,
             brand,
-            category,
-            sub_category,
-            // name,
             short_name,
-            // price_normal,
             price_current,
-            price_2_for,
             qty,
           } = item;
           return (
@@ -83,7 +74,6 @@ export default function Cart() {
                   <Img
                     imgSrc={`close4.png`}
                     imgAlt={"close"}
-                    // imgWidth={packaging === "Cask" ? 40 : 20}
                     imgWidth={22}
                     imgHeight={22}
                   />
