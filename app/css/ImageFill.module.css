@@ -22,7 +22,7 @@
   height: 160px;
 }
 
-.product520h {
+.productMain {
   position: relative;
   height: 520px;
 }
@@ -42,4 +42,10 @@
 .sixBot {
   /* position: relative;
   height: 160px; */
+}
+
+@media screen and (max-width: 600px) {
+  .productMain {
+    height: 330px;
+  }
 }

@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { useCartStore } from "../store";
-import { CategoryProps } from "../lib/definitions";
+import { CategoryProps, SpiritProps } from "../lib/definitions";
 import Img from "@/app/ui/image";
 import Button from "./button";
 import styles from "@/app/css/ProductCart.module.css";
 
-export default function ProductCart({ productObj }: CategoryProps) {
+export default function ProductCart({ productObj }: SpiritProps) {
   // product page cart
   const [count, setCount] = useState<number>(1);
   const { cartItems, removeItem, deleteItem, addCartItem, total } =
@@ -90,6 +90,9 @@ export default function ProductCart({ productObj }: CategoryProps) {
           </Button>
         </div>
       </div>
+      {price_2_for > 0 && (
+        <div className={styles.twoFor}>2 for ${price_2_for}</div>
+      )}
     </div>
   );
 }

@@ -4,6 +4,7 @@
   justify-content: center;
   gap: 20px;
   margin-bottom: 20px;
+  padding: 10px;
 }
 
 .item {
@@ -19,11 +20,9 @@
   padding: 10px;
   position: relative;
   background-color: #fff;
-  /* color: #000; */
 }
 
 .hdr {
-  /* margin-bottom: 15px; */
 }
 
 .btnCart {
@@ -55,7 +54,7 @@
 }
 
 .similar {
-  height: 380px;
+  height: 400px;
   overflow: hidden;
 }
 

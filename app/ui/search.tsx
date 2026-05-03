@@ -3,12 +3,12 @@ import { useRouter } from "next/navigation";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import { Chip, InputAdornment } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { SpiritProps } from "../lib/definitions";
+import { KeyStringProps, SpiritProps } from "../lib/definitions";
 import parse from "autosuggest-highlight/parse";
 import match from "autosuggest-highlight/match";
 import ImgFill from "./image-fill";
-import styles from "../css/Search.module.css";
 import Img from "./image";
+import styles from "../css/Search.module.css";
 
 export default function Search({ data }) {
   const [overlay, setOverlay] = useState<boolean>(false);
@@ -21,8 +21,12 @@ export default function Search({ data }) {
   if (data) {
     // data used by the auto complete component
     const ACData = data.map(
-      ({ name, id, short_name, category, variety, packaging }) => {
-        return { name, id, short_name, category, variety, packaging };
+      ({ id, name, short_name, sub_category }: KeyStringProps) => {
+        // TODO: ??
+        // console.log("ACData");
+        // console.log(id, short_name, sub_category);
+
+        return { id, name, short_name, sub_category };
       },
     );
 
@@ -35,10 +39,11 @@ export default function Search({ data }) {
       val: SpiritProps | null,
     ): void => {
       if (val) {
-        // const { category, variety, id } = val;
+        const { sub_category, id } = val;
         setOverlay(false);
         setOpen(false);
-        // replace(`/${category.toLowerCase()}/${hyphenate(variety)}/${id}`);
+        // replace(`/${category.toLowerCase()}/${hyphenate(sub_category)}/${id}`);
+        replace(`/spirits/${sub_category.toLowerCase()}/${id}`);
       }
     };
 
@@ -77,7 +82,7 @@ export default function Search({ data }) {
           onChange={(e, value) => handleChange(e, value)}
           onInputChange={(_, value) => handleInputChange(_, value)}
           onKeyDown={(e) => handleKeyDown(e)}
-          getOptionLabel={(option: SpiritProps) => option.name}
+          getOptionLabel={(option: SpiritProps) => option.short_name} // TODO: was name? is short_name unique??
           className={`${styles.autoComplete} ${
             overlay ? styles.pageWidth : ""
           }`}

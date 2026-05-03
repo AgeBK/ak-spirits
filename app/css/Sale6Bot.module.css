@@ -63,6 +63,13 @@
 .price {
   font-weight: bold;
   font-size: 24px;
+  /*  background-color: #fff;
+  border: 2px solid var(--spirits-text);
+  height: 45px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  width: 45px; */
 }
 
 .price span {

@@ -4,10 +4,10 @@ import ImgFill from "./image-fill";
 import ProductCart from "./productCart";
 import Price from "./price";
 import ListItem from "./listItem";
-import styles from "@/app/css/Product.module.css";
 import Rating from "./rating";
 import Review from "./review";
 import { notEmptyObj } from "../lib/utils";
+import styles from "@/app/css/Product.module.css";
 
 // TODO: 2 for??
 // TODO: update readme
@@ -37,12 +37,12 @@ export default async function Product({
 
     const subCatLow: string = sub_category.toLowerCase();
     const spiritType =
-      appData[subCatLow as keyof typeof appData] ||
-      appData["generic" as keyof typeof appData];
+      (appData[subCatLow as keyof typeof appData] as string) ||
+      (appData["generic" as keyof typeof appData] as string);
     // const spiritReview =
     //   appData[`${subCatLow}Review` as keyof typeof appData] ||
     //   appData["genericReview" as keyof typeof appData];
-    const productDesc: string = spiritType
+    const productDesc = spiritType
       ? spiritType.replaceAll("[xxxx]", brand)
       : "";
     // const productReview = spiritReview
@@ -56,7 +56,7 @@ export default async function Product({
             <ImgFill
               src={`spirits/${id}.webp`}
               alt={short_name}
-              css="product520h"
+              css="productMain"
               priority={false} // priority = max in view onload
             />
           </div>

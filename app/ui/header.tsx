@@ -1,23 +1,20 @@
 "use client";
 
+import { SpiritProps } from "../lib/definitions";
 import Link from "next/link";
-// import Nav from "./nav";
-import Img from "./image";
-import ImageThemed from "./image-themed";
 import Cart from "./cart";
 import ThemeToggle from "./toggle";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import ImageSwitcher from "./image-switcher";
-import { SpiritProps } from "../lib/definitions";
 import Search from "./search";
 import JSXEl from "../lib/DancingScriptElement";
+import Menu from "./menu";
 import styles from "@/app/css/Header.module.css";
 
 export default function Header({ data }: SpiritProps[]) {
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
+        <Menu data={data} />
         <div className={styles.logo}>
           <Link href="/">
             <ImageSwitcher
@@ -29,7 +26,6 @@ export default function Header({ data }: SpiritProps[]) {
           </Link>
         </div>
         <h1 className={styles.hdr}>
-          {/* <div>SPIRITS</div> */}
           <JSXEl text="Your spirits shop" css="logoHdr"></JSXEl>
         </h1>
       </div>

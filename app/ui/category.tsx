@@ -27,9 +27,7 @@ import usePageWidth from "../hooks/usePageWidth";
 import styles from "@/app/css/Category.module.css";
 
 // TODO: category? products?
-// TODO: need to reset paging when you click a new filter
-// TODO: http://localhost:3000/spirits/brandy/462280 (brandy styling on cat page?)
-// TODO: search header like wines?
+// TODO: other spirits subcat, maybe rename just other?
 
 export default function Category({ arr }: CategoryProps) {
   const [, setSortOrder] = useState<string>("");

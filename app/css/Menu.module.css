@@ -1,0 +1,132 @@
+.burger nav {
+  position: absolute;
+  top: 70px;
+  left: 10px;
+  background: var(--burger-bg);
+  color: var(--filter-text);
+  -webkit-clip-path: circle(24px at 30px 24px);
+  clip-path: circle(24px at 32px 24px);
+  -webkit-transition:
+    -webkit-clip-path 0.5625s,
+    clip-path 0.375s;
+  transition:
+    -webkit-clip-path 0.5625s,
+    clip-path 0.375s;
+  padding: 10px;
+  border-radius: 0 0 60% 0 / 10%;
+}
+
+.burger nav:hover {
+  /* width: 200px; */
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.75s;
+  transition-duration: 0.75s;
+  -webkit-clip-path: circle(690px at 225px 24px);
+  clip-path: circle(690px at 150px 24px);
+  background-color: #fff;
+  border: 5px solid black;
+  border-bottom: 5px solid var(--spirits-text);
+  border-top: 5px solid var(--spirits-text);
+}
+
+.burger ul {
+  /* column-count: 3;*/
+  /* column-gap: 10px; */
+}
+.burger li {
+  /* column-count: 3;
+  column-gap: 20px; */
+  padding: 5px;
+}
+
+.burger a {
+  display: block;
+  /* line-height: 50px; */
+  padding: 0 10px;
+  color: inherit;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.burger a:hover {
+  background: var(--spirits-text);
+  color: #fff;
+}
+
+.burger a:active {
+  background: #ffca28;
+}
+
+.navicon {
+  padding: 14px;
+  cursor: pointer;
+  -webkit-transform-origin: 32px 24px;
+  -ms-transform-origin: 32px 24px;
+  transform-origin: 32px 24px;
+}
+
+.navicon div {
+  position: relative;
+  width: 20px;
+  height: 2px;
+  background: var(--spirits-text);
+}
+
+.navicon div:before,
+.navicon div:after {
+  display: block;
+  content: "";
+  width: 20px;
+  height: 2px;
+  background: var(--spirits-text);
+  position: absolute;
+}
+
+.navicon div:before {
+  top: -7px;
+}
+
+.navicon div:after {
+  top: 7px;
+}
+
+/* or use padding instead of border: */
+/* padding: 10px; */
+.wrapper {
+  position: relative;
+  width: fit-content;
+  margin: auto;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    60% 90%,
+    50% 100%,
+    40% 90%,
+    0 100%
+  );
+  background: black;
+  width: 300px;
+
+  border: 10px solid black;
+}
+.test {
+  position: absolute;
+  bottom: 0;
+  left: -20px;
+  height: 50px;
+  margin: auto;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    60% 90%,
+    50% 100%,
+    40% 90%,
+    0 100%
+  );
+}

@@ -1,12 +1,11 @@
 .container,
 .categoryCont {
   display: flex;
-  flex-grow: 1;
 }
 
 .filters {
-  min-width: 170px;
-  padding: 0 20px 0 10px;
+  /* min-width: 170px;
+  padding: 0 20px 0 10px; */
   text-transform: capitalize;
 }
 
@@ -29,6 +28,7 @@
 
 .productsTotal {
   flex-grow: 1;
+  padding: 0 5px;
 }
 
 .results {
@@ -69,6 +69,9 @@
 }
 
 @media screen and (max-width: 650px) {
+  .categoryCont {
+    flex-direction: column;
+  }
   .categoryCont button {
     display: block;
   }

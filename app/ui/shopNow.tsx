@@ -1,10 +1,9 @@
-import appData from "../lib/appData.json";
+import { shopNow } from "../lib/appData.json";
 import Img from "./image";
 import Link from "next/link";
 import styles from "@/app/css/ShopNow.module.css";
 
 export default function ShopNow() {
-  const { shopNow } = appData;
   // TODO: Image ratios (4:3ish)
   return (
     <div className={styles.shopContainer}>

@@ -8,7 +8,7 @@
 }
 
 .normal:before {
-  background: #918f8f;
+  background: #777;
   content: "";
   display: block;
   height: 2px;
@@ -17,7 +17,11 @@
   top: 54%;
   -webkit-transform: translate(-50%, -50%) rotate(-15deg);
   transform: translate(-50%, -50%) rotate(-15deg);
-  width: 35px;
+  width: 40px;
+}
+
+.product .normal:before {
+  width: 60px;
 }
 
 .normal {
@@ -28,7 +32,7 @@
 
 .current {
   font-weight: bold;
-  color: #000;
+  /* color: #000; */
 }
 
 .product .normal {
@@ -41,7 +45,7 @@
 .product .current {
   font-weight: bold;
   font-size: 36px;
-  color: #fff;
+  /* color: #fff; */
 }
 
 /* .cart .normal {

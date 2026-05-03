@@ -4,10 +4,10 @@ import { useCartStore } from "../store";
 import Img from "./image";
 import Button from "./button";
 import { CartProps } from "../lib/definitions";
+import styles from "@/app/css/Cart.module.css";
 import { useState } from "react";
 import { formatCurrency } from "../lib/utils";
 import ImgFill from "./image-fill";
-import styles from "@/app/css/Cart.module.css";
 
 export default function Cart() {
   const { cartItems, removeItem, deleteItem, addCartItem, total } =
@@ -29,15 +29,8 @@ export default function Cart() {
             </Button>
           </span>
         </div>
-
         {cartItems.map((item: CartProps) => {
-          const {
-            id,
-            brand,
-            short_name,
-            price_current,
-            qty,
-          } = item;
+          const { id, brand, short_name, price_current, qty } = item;
           return (
             <div className={styles.cartItem} key={id}>
               <div className={styles.imgCont}>
@@ -83,14 +76,13 @@ export default function Cart() {
             </div>
           );
         })}
-        {/* {cartDetails > 0 && (
-            <div className={styles.total}>
-              <b>Items: {cartDetails}</b>
-              <b>Total: ${cartTotal}</b>
-            </div>
-          )} */}
+        {cartTotal > 0 && (
+          <div className={styles.total}>
+            <b>Items: {itemCnt}</b>
+            <b>Total: ${cartTotal}</b>
+          </div>
+        )}
       </div>
-      {/* ) : ( */}
       <>
         <div
           className={styles.cartCont}
@@ -102,7 +94,6 @@ export default function Cart() {
                 <Img
                   imgSrc={`icons/cart.jpg`}
                   imgAlt="cart"
-                  // imgWidth={packaging === "Cask" ? 40 : 20}
                   imgWidth={30}
                   imgHeight={30}
                 />
@@ -111,7 +102,6 @@ export default function Cart() {
                 <Img
                   imgSrc={`icons/cartEmptyD.jpg`}
                   imgAlt="cart"
-                  // imgWidth={packaging === "Cask" ? 40 : 20}
                   imgWidth={30}
                   imgHeight={30}
                 />
@@ -123,7 +113,6 @@ export default function Cart() {
                 <Img
                   imgSrc={`icons/cartEmpty.jpg`}
                   imgAlt="cart empty"
-                  // imgWidth={packaging === "Cask" ? 40 : 20}
                   imgWidth={30}
                   imgHeight={30}
                 />
@@ -132,7 +121,6 @@ export default function Cart() {
                 <Img
                   imgSrc={`icons/cartD.jpg`}
                   imgAlt="cart empty"
-                  // imgWidth={packaging === "Cask" ? 40 : 20}
                   imgWidth={30}
                   imgHeight={30}
                 />
