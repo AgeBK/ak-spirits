@@ -5,6 +5,10 @@
   color: #fff;
 }
 
+.btn:hover {
+  background-color: #555;
+}
+
 .cartAdd {
   background: url("/img/btn/plus1.png") no-repeat;
   width: 30px;

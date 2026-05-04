@@ -27,7 +27,7 @@
   background-color: #fff;
   border: 5px solid black;
   border-bottom: 5px solid var(--spirits-text);
-  border-top: 5px solid var(--spirits-text);
+  border-bottom: 5px solid var(--spirits-text);
 }
 
 .burger ul {

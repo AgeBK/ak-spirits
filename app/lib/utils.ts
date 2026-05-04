@@ -1,5 +1,5 @@
 // import { fetchSpirits } from "./data";
-import { SpiritProps } from "./definitions";
+import { FilterStateProps, SpiritProps } from "./definitions";
 
 export const addToCart = (id: string, name: string, price_current: string) => {
   console.log(id, name, price_current);
@@ -62,8 +62,6 @@ export const filterBrand = (arr: string[], filter: string) => {
     filtered = arr.filter((val) =>
       val.toLowerCase().startsWith(filter.toLowerCase()),
     );
-  // console.log("filtered:");
-  // console.log(filtered);
 
   return filtered;
 };
@@ -79,17 +77,50 @@ export const filterByBrand = (arr: SpiritProps[], brand: string) => {
   return arr;
 };
 
-export const filterBySearch = (arr: SpiritProps[], filter: string) => {
-  const searchTerm = filter.toLowerCase();
-  console.log("filterBySearch");
-  console.log(arr);
-  console.log(filter);
+export const checkSearch = (urlCategory: string) => {
+  const param = "search%3D";
+  let searchTerm = "";
+  if (urlCategory.startsWith(param)) {
+    searchTerm = urlCategory.replace(param, "");
+  }
+  return searchTerm;
+};
 
-  arr = arr.filter(
-    ({ name, brand }) =>
-      name.toLowerCase().indexOf(searchTerm) > -1 ||
-      brand.toLowerCase().indexOf(searchTerm) > -1,
-  );
+export const filterBySearch = (arr: SpiritProps[], filter: string) => {
+  const searchTerm = checkSearch(filter);
+  if (searchTerm) {
+    arr = arr.filter(
+      ({ name, brand }) =>
+        name.toLowerCase().indexOf(searchTerm) > -1 ||
+        brand.toLowerCase().indexOf(searchTerm) > -1,
+    );
+  }
+  return arr;
+};
+
+export const checkFilters = (arr: SpiritProps[], filters: FilterStateProps) => {
+  const keys: string[] = Object.keys(filters);
+  keys.map((key) => {
+    const value = filters[key as keyof typeof filters];
+    if (value) {
+      switch (key) {
+        case "offer":
+          arr = filterByOffer(arr, value as string[]);
+          break;
+        case "category":
+          arr = filterByCat(arr, value as string);
+          break;
+        case "brand":
+          arr = filterByBrand(arr, value as string);
+          break;
+        case "price":
+          arr = filterByPrice(arr, value as string);
+          break;
+        default:
+          break;
+      }
+    }
+  });
   return arr;
 };
 

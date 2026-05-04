@@ -39,6 +39,8 @@ export type CategoryProps = {
   similarArr?: SpiritProps[];
 };
 
+export type CategoryPageProps = { arr: Record<string, SpiritProps>[] };
+
 export type FilterStateProps = {
   offer: string[];
   category: string;

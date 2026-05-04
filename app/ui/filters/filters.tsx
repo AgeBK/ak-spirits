@@ -6,7 +6,12 @@ import FilterType from "./filterType";
 import Accordion from "../accordion";
 import styles from "@/app/css/Filters.module.css";
 
-export default function Filters({ arr, setFilters, filters }: FilterProps) {
+export default function Filters({
+  arr,
+  setFilters,
+  filters,
+  urlVariety,
+}: FilterProps) {
   return (
     <>
       <div className={styles.filterCont}>
@@ -15,7 +20,7 @@ export default function Filters({ arr, setFilters, filters }: FilterProps) {
         <Accordion name="Offers">
           <FilterOffers setFilters={setFilters} filters={filters} />
         </Accordion>
-        <Accordion name="Category">
+        <Accordion name="Category" render={!urlVariety}>
           <FilterType arr={arr} setFilters={setFilters} filters={filters} />
         </Accordion>
         <Accordion name="Price">

@@ -4,13 +4,6 @@ import styles from "@/app/css/ImageFill.module.css";
 
 // Created this because product images are all different sizes (doesn't look good with set height/width)
 export default function ImgFill({ src, alt, css, priority }) {
-  // const imgPath = "/img/"; // TODO: imgPath in mulitple places
-
-  // console.log(imgPath);
-  // console.log(src);
-  console.log("ImgFill");
-  console.log(alt);
-
   return (
     <div className={styles[css]}>
       <Image

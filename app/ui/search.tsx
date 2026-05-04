@@ -57,7 +57,7 @@ export default function Search({ data }) {
         // if entered press, display results on category page
         setOverlay(false);
         setOpen(false);
-        replace(`/spirtis?search=${searchTerm}`);
+        replace(`/search=${searchTerm}`);
       }
     };
 

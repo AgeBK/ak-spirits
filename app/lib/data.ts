@@ -35,6 +35,37 @@ export async function fetchSpirits() {
   }
 }
 
+export async function fetchSpiritsBySubCat(query: string) {
+  // noStore() prevents the response from being cached. (good for dev) TODO
+  noStore();
+
+  try {
+    // const data: Record<string, string | number>[] = await sql`
+    const data: Record<string, SpiritProps>[] = await sql`
+      SELECT   
+          id,
+          brand,
+          category, 
+          sub_category,
+          name,
+          short_name,
+          price_normal,
+          price_current,
+          price_2_for,
+          price_special,
+          ratings_avg,
+          packaging
+      FROM spirits
+      WHERE sub_category=${query}
+      `;
+
+    return data;
+  } catch (err) {
+    console.error("Database Error:", err);
+    throw new Error("Failed to fetch spirits.");
+  }
+}
+
 export async function fetchSpiritById(query: string) {
   noStore();
 

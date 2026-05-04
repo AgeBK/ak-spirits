@@ -13,6 +13,8 @@ import {
   filterByPrice,
   filterByOffer,
   filterBySearch,
+  productSearch,
+  checkFilters,
 } from "../lib/utils";
 import { maxSmallScreen } from "../lib/appData.json";
 import { pagingSettings } from "../lib/appData.json";
@@ -28,8 +30,13 @@ import styles from "@/app/css/Category.module.css";
 
 // TODO: category? products?
 // TODO: other spirits subcat, maybe rename just other?
+// TODO: error page wine
 
-export default function Category({ arr }: CategoryProps) {
+export default function Category({
+  arr,
+  urlCategory,
+  urlVariety,
+}: CategoryProps) {
   const [, setSortOrder] = useState<string>("");
   const [showFilters, setShowFilters] = useState<boolean>(false);
   const [filters, setFilters] = useState<FilterStateProps>({
@@ -42,44 +49,10 @@ export default function Category({ arr }: CategoryProps) {
   let totalPages = Math.ceil(arr.length / paging.pageSize);
   let totalItems = arr.length;
   let pagedArr = [...arr];
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   const filtersSmallScreen = usePageWidth(maxSmallScreen) && showFilters;
-  const search = searchParams.get("search");
+  // const search = searchParams.get("search");
   const { page, pageSize } = paging;
-
-  const keys: string[] = Object.keys(filters);
-  keys.map((key) => {
-    const value = filters[key as keyof typeof filters];
-    if (value) {
-      switch (key) {
-        case "offer":
-          pagedArr = filterByOffer(pagedArr, value as string[]);
-          break;
-        case "category":
-          pagedArr = filterByCat(pagedArr, value as string);
-          break;
-        case "brand":
-          pagedArr = filterByBrand(pagedArr, value as string);
-          break;
-        case "price":
-          pagedArr = filterByPrice(pagedArr, value as string);
-          break;
-        default:
-          break;
-      }
-    }
-    totalItems = pagedArr.length;
-    totalPages = Math.ceil(pagedArr.length / paging.pageSize);
-  });
-
-  if (search) {
-    console.log("search");
-    console.log(pagedArr);
-
-    pagedArr = filterBySearch(pagedArr, search as string);
-    totalItems = pagedArr.length;
-    totalPages = Math.ceil(pagedArr.length / pageSize);
-  }
 
   const updatePaging = (page: number, pageSize: number) => {
     if (window) {
@@ -88,6 +61,10 @@ export default function Category({ arr }: CategoryProps) {
     }
   };
 
+  pagedArr = checkFilters(pagedArr, filters);
+  pagedArr = filterBySearch(pagedArr, urlCategory);
+  totalItems = pagedArr.length;
+  totalPages = Math.ceil(pagedArr.length / pageSize);
   pagedArr = pagedArr.slice(page * pageSize, page * pageSize + pageSize);
 
   return (
@@ -97,7 +74,12 @@ export default function Category({ arr }: CategoryProps) {
       </Button>
       <div className={styles.container}>
         <div className={filtersSmallScreen ? styles.products : styles.filters}>
-          <Filters arr={arr} setFilters={setFilters} filters={filters} />
+          <Filters
+            arr={arr}
+            setFilters={setFilters}
+            filters={filters}
+            urlVariety={urlVariety}
+          />
         </div>
         <div className={filtersSmallScreen ? styles.filters : styles.products}>
           <div className={styles.productsHdr}>

@@ -24,7 +24,7 @@ export default function FilterType({
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void =>
     setFilters({ ...filters, category: e.target.value });
 
-  const handleClick = () => setFilters({ ...filters, category: "" });
+  const handleClick = () => setFilters({ ...filters, category: "" }); // TODO: category??
 
   return (
     <div className={styles.container}>

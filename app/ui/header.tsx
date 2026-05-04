@@ -9,12 +9,14 @@ import Search from "./search";
 import JSXEl from "../lib/DancingScriptElement";
 import Menu from "./menu";
 import styles from "@/app/css/Header.module.css";
+import Test from "./test";
 
 export default function Header({ data }: SpiritProps[]) {
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
-        <Menu data={data} />
+        {/* <Menu data={data} /> */}
+        <Test data={data} />
         <div className={styles.logo}>
           <Link href="/">
             <ImageSwitcher

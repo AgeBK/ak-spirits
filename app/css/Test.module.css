@@ -1,0 +1,105 @@
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+.container {
+}
+
+.container:hover .nav {
+  display: block;
+  animation-name: animate-pop;
+  animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+  animation-duration: 0.5s;
+  position: absolute;
+  top: 55px;
+  left: 0;
+}
+
+.nav {
+  margin-top: 20px;
+  padding: 10px;
+  display: none;
+  font-size: 16px;
+  width: 300px;
+  height: 150px;
+  position: relative;
+}
+
+.burger {
+  width: 80px;
+  height: 35px;
+}
+
+.burger div {
+  background-color: currentColor;
+  width: 25px;
+  height: 2px;
+  margin-top: 4px;
+  box-shadow:
+    0 7px currentColor,
+    0 14px currentColor;
+}
+
+.nav ul {
+  transition: all 0.5s ease;
+  columns: 2;
+}
+
+.nav li {
+  padding: 5px;
+}
+
+.nav a {
+  font-size: 18px;
+  display: block;
+  padding: 0 10px;
+}
+
+.nav a:hover {
+  color: #000;
+  transition: color 0.5s ease-in;
+}
+
+/* =================== */
+.wrapper {
+  width: fit-content;
+  margin: auto;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    60% 90%,
+    50% 100%,
+    40% 90%,
+    0 100%
+  );
+  background: black;
+  border: 5px solid black;
+  z-index: 999;
+
+  /* or use padding instead of border: */
+  /* padding: 10px; */
+}
+.test {
+  width: 300px;
+  margin: auto;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    60% 90%,
+    50% 100%,
+    40% 90%,
+    0 100%
+  );
+  background: #fff;
+  padding-bottom: 70px;
+}

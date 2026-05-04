@@ -78,8 +78,12 @@ export default function Cart() {
         })}
         {cartTotal > 0 && (
           <div className={styles.total}>
-            <b>Items: {itemCnt}</b>
-            <b>Total: ${cartTotal}</b>
+            <span>
+              Total Items: <b>{itemCnt}</b>
+            </span>
+            <span>
+              Total: <b>${cartTotal}</b>
+            </span>
           </div>
         )}
       </div>
