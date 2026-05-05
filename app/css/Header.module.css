@@ -1,5 +1,4 @@
 .header {
-  /* position: fixed; */
   width: 100%;
   max-width: 1400px;
   border-bottom: 1px solid #d3d3d3;
@@ -22,12 +21,11 @@
 }
 
 .hdr {
-  /* flex-grow: 1; */
   color: var(--spirits-text);
 }
 
 .logo {
-  margin: 5px 0 0px 15px;
+  margin: 5px 0 0px 0px;
 }
 
 .logoLight {

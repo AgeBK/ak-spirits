@@ -10,10 +10,13 @@
   }
 }
 
-.container {
+.menu {
+  position: relative;
+  width: 80px;
+  height: 80px;
 }
 
-.container:hover .nav {
+.menu:hover .nav {
   display: block;
   animation-name: animate-pop;
   animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
@@ -36,6 +39,9 @@
 .burger {
   width: 80px;
   height: 35px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .burger div {

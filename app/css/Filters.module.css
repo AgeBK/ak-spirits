@@ -9,10 +9,15 @@
   padding: 0 20px 0 10px;
 }
 
+.filterCont hr {
+  margin: 20px 0;
+}
+
 .hdr {
   margin-bottom: 30px;
   font-size: 22px;
 }
+
 @media screen and (max-width: 650px) {
   .filterContSml {
     display: none;

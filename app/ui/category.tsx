@@ -29,7 +29,6 @@ import usePageWidth from "../hooks/usePageWidth";
 import styles from "@/app/css/Category.module.css";
 
 // TODO: category? products?
-// TODO: other spirits subcat, maybe rename just other?
 // TODO: error page wine
 
 export default function Category({

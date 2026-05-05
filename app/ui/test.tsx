@@ -6,10 +6,9 @@ import Link from "next/link";
 export default function Test({ data }) {
   const spirits = data.map((val: SpiritProps) => val.sub_category);
   const menuItems: string[] = [...new Set(spirits)].sort();
-  console.log(menuItems);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.menu}>
       <div className={styles.burger}>
         <div></div>
       </div>

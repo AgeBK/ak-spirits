@@ -5,7 +5,6 @@ import styles from "@/app/css/Sale6Bot.module.css";
 
 export default function Sale6Bot({ data }) {
   const dataArr = [data.slice(0, 3), data.slice(3)]; // split into 2 arrays of 3 products
-  console.log(dataArr);
 
   return (
     <div className={styles.sale3Cont}>
