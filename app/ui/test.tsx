@@ -1,4 +1,3 @@
-import React from "react";
 import { SpiritProps } from "../lib/definitions";
 import styles from "@/app/css/Test.module.css";
 import Link from "next/link";
@@ -16,9 +15,12 @@ export default function Test({ data }) {
         <div className={styles.wrapper}>
           <div className={styles.test}>
             <ul>
+              <li className={styles.menuItem} key="All">
+                <Link href={`/spirits`}>All</Link>
+              </li>
               {menuItems.map((val: string) => (
                 <li className={styles.menuItem} key={val}>
-                  <Link href={`/spirts/${val.toLowerCase()}`}>{val}</Link>
+                  <Link href={`/spirits/${val.toLowerCase()}`}>{val}</Link>
                 </li>
               ))}
             </ul>

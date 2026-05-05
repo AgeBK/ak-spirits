@@ -10,7 +10,7 @@ export default async function Page({
 }) {
   const urlParams = await params; // TODO:
   const { urlId, urlVariety } = urlParams;
-  const [productObj = {}, relatedProducts] = await Promise.all([
+  const [productObj, relatedProducts] = await Promise.all([
     fetchSpiritById(urlId),
     fetch6BotBySubCategory(toTitleCase(removeHyphen(urlVariety)), urlId),
   ]);

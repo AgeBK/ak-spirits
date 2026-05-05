@@ -1,12 +1,13 @@
 .container {
   padding: 20px;
-  border: 1px solid var(--spirits-text);
+  /* border: 10px solid #000; */
 }
 
 .product {
   display: flex;
   position: relative;
   gap: 80px;
+  margin-bottom: 50px;
 }
 
 .imgCont {

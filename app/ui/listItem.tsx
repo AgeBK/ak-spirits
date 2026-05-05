@@ -30,19 +30,12 @@ export default function ListItem({ arr, css, hdr }: ListItemProps) {
           const {
             id,
             brand,
-            // name,
             short_name,
             category,
             sub_category,
             price_normal,
             price_current,
             price_2_for,
-            // volume,
-            // unit,
-            // ratings_avg,
-            // ratings_tot,
-            packaging,
-            // price_special,
           } = item;
 
           return (
@@ -65,7 +58,7 @@ export default function ListItem({ arr, css, hdr }: ListItemProps) {
                   src={`spirits/${id}.webp`}
                   alt={short_name}
                   css="product160h"
-                  priority={false} // priority = max in view onload
+                  priority={true} // priority = max in view onload
                 />
                 <h2 className={styles.brand}>{brand}</h2>
                 <h3 className={styles.sName}>{short_name}</h3>

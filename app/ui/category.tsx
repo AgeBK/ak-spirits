@@ -30,6 +30,7 @@ import styles from "@/app/css/Category.module.css";
 
 // TODO: category? products?
 // TODO: error page wine
+// TODO: Image with src "/img/spirits/195355.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold. Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
 
 export default function Category({
   arr,

@@ -1,4 +1,5 @@
 import { CategoryProps, SpiritProps } from "../lib/definitions";
+import { notFound } from "next/navigation";
 import appData from "../lib/appData.json";
 import ImgFill from "./image-fill";
 import ProductCart from "./productCart";
@@ -6,7 +7,6 @@ import Price from "./price";
 import ListItem from "./listItem";
 import Rating from "./rating";
 import Review from "./review";
-import { notEmptyObj } from "../lib/utils";
 import styles from "@/app/css/Product.module.css";
 
 // TODO: 2 for??
@@ -18,12 +18,8 @@ export default async function Product({
   productObj,
   relatedProducts,
 }: CategoryProps) {
-  // console.log(relatedProducts);
-  // console.log(appData);
-  // console.log("productObj");
-  // console.log(productObj);
-
-  if (notEmptyObj(productObj)) {
+  // if (notEmptyObj(productObj)) {
+  if (productObj) {
     const {
       id,
       brand,
@@ -81,5 +77,5 @@ export default async function Product({
     );
   }
 
-  return null; // TODO: notfound() ?
+  notFound();
 }
