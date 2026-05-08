@@ -44,5 +44,30 @@
     "Weekend Events",
     "Events and Celebrations",
     "Lets Get Wrecked"
+  ],
+  "productKeys": {
+    "id": "",
+    "brand": "",
+    "name": "",
+    "short_name": "",
+    "category": "",
+    "sub_category": "",
+    "price_normal": 0,
+    "price_current": 0,
+    "price_2_for": 0,
+    "volume": 0,
+    "unit": "",
+    "ratings_avg": 0,
+    "ratings_tot": 0,
+    "packaging": ""
+  },
+  "isRequired": [
+    "id",
+    "name",
+    "brand",
+    "short_name",
+    "price_normal",
+    "price_current",
+    "volume"
   ]
 }

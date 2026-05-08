@@ -1,0 +1,21 @@
+.main {
+  background: linear-gradient(to bottom, #999, #000, #999);
+  /* height: 100vh; */
+}
+
+.container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.product {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.hdr {
+  padding: 15px;
+  background-color: #000;
+  color: #777;
+  text-transform: capitalize;
+}
