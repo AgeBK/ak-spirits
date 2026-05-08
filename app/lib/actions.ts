@@ -53,6 +53,8 @@ const FormSchema = z.object({
   packaging: minStr3,
 });
 
+const UpdateSchema = FormSchema.omit({ id: true });
+
 const validateFormData = (Schema: SchemaProps, formData: FormData) => {
   return Schema.safeParse({
     id: formData.get("id"),
@@ -156,6 +158,72 @@ export async function addProduct(
     return {
       message: "Database Error - Failed to add new product: \n" + error,
       errors: JSON.parse(JSON.stringify(error)),
+    };
+  }
+  return {
+    success: true,
+  };
+}
+
+export async function updateProduct(
+  id: string,
+  prevState: { message: unknown },
+  formData: FormData,
+) {
+  console.log("updateProduct fn");
+  console.log(id);
+  console.log(formData);
+
+  const validatedFields = validateFormData(UpdateSchema, formData); // TODO: update schema vs add??
+  if (!validatedFields.success) {
+    console.log("NOT VALIDATED - UPDATE");
+
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Failed to update product. Please check the fields above",
+    };
+  }
+  const {
+    brand,
+    name,
+    short_name,
+    category,
+    sub_category,
+    price_normal,
+    price_current,
+    price_2_for,
+    volume,
+    unit,
+    ratings_avg,
+    ratings_tot,
+    packaging,
+  } = validatedFields.data;
+
+  // Insert data into the database
+  try {
+    await sql`
+      UPDATE spirits
+        SET 
+          brand = ${brand},
+          name = ${name},
+          short_name = ${short_name},
+          category = ${category},
+          sub_category = ${sub_category},
+          price_normal = ${price_normal},
+          price_current = ${price_current},
+          price_2_for = ${price_2_for},
+          volume= ${volume},
+          unit = ${unit},
+          ratings_tot = ${ratings_tot},
+          ratings_avg = ${ratings_avg},
+          packaging = ${packaging}
+      WHERE id = ${id}
+    `;
+  } catch (error) {
+    console.log("Failed to update product: " + error);
+    return {
+      message: "Database Error - Failed to update product: \n" + error,
+      // errors: JSON.parse(JSON.stringify(error)),
     };
   }
   return {

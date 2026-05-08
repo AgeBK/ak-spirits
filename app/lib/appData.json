@@ -57,9 +57,9 @@
     "price_2_for": 0,
     "volume": 0,
     "unit": "",
+    "packaging": "",
     "ratings_avg": 0,
-    "ratings_tot": 0,
-    "packaging": ""
+    "ratings_tot": 0
   },
   "isRequired": [
     "id",
@@ -69,5 +69,6 @@
     "price_normal",
     "price_current",
     "volume"
-  ]
+  ],
+  "readOnlyFields": ["id", "price_special", "ratings_avg", "ratings_tot"]
 }

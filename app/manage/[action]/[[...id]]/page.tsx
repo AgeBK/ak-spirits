@@ -17,6 +17,8 @@ export default async function ManagePage({ params }: ManagePageProps) {
     ? await fetchSpiritById(id[0])
     : { ...productKeys }; // fetch product or product shape
 
+  console.log(product);
+
   if (product) {
     // remove properties from product obj for other components
     const pickObjItems = (obj: SpiritsProps, arr: string[]) =>

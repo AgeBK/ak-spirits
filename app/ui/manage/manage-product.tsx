@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, useEffect, useState } from "react";
 // import { useFormState } from "react-dom";
-import { useActionState } from 'react';
+import { useActionState } from "react";
 // import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
 // import { FormStateProps, ManageProductProps } from '@/app/lib/definitions';
 import data from "@/app/lib/appData.json";
@@ -14,7 +14,7 @@ import ManageDBMessages from "./manage-db-messages";
 import ModalDelete from "./manage-modal-delete";
 import ManageImage from "./manage-image";
 import styles from "@/app/css/manage/Form.module.css";
-import { addProduct } from "@/app/lib/actions";
+import { addProduct, updateProduct } from "@/app/lib/actions";
 
 const initialState: FormStateProps = {
   message: null,
@@ -37,25 +37,25 @@ export default function ManageProduct({
   // eslint-disable-next-line
   let currentActionFn: any = null;
 
-  // switch (action) {
-  //   case "add":
-  //     currentActionFn = addProduct;
-  //     break;
-  //   case "edit":
-  //     currentActionFn = updateProduct.bind(null, id);
-  //     break;
-  //   case "delete":
-  //     currentActionFn = deleteProduct.bind(null, id);
-  //     break;
-  //   default:
-  //     break;
-  // }
+  switch (action) {
+    case "add":
+      currentActionFn = addProduct;
+      break;
+    case "update":
+      currentActionFn = updateProduct.bind(null, id);
+      break;
+    // case "delete":
+    //   currentActionFn = deleteProduct.bind(null, id);
+    //   break;
+    default:
+      break;
+  }
 
   // useFormState first arg expects a function that takes 2 arguments (state, formdata)
   // state is the initial state, formData is automatically added
   // const [state, dispatch] = useActionState(currentActionFn, initialState);
   const [state, formAction, isPending] = useActionState(
-    addProduct,
+    currentActionFn,
     initialState,
   );
 
@@ -93,6 +93,7 @@ export default function ManageProduct({
         isDelete={isDelete}
         handleChange={handleChange}
       />
+      {/* <hr /> */}
       {/* <SelectWine ddlWineItems={ddlWineItems} isDelete={isDelete} />
       <SelectLists ddlWineItems={ddlItems} isDelete={isDelete} /> */}
       {/* <ManageImage
@@ -101,8 +102,8 @@ export default function ManageProduct({
         action={action}
         isDelete={isDelete}
       /> */}
-      {/* <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
-      <ManageDBMessages errorMessages={state} />
+      <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
+      {/* <ManageDBMessages errorMessages={state} />
       {showModal && (
         <ModalDelete
           id={id}
@@ -111,9 +112,7 @@ export default function ManageProduct({
           setShowModal={setShowModal}
         />
       )} */}
-      <button type="submit" disabled={isPending}>
-        {isPending ? "Submitting..." : "Submit"}
-      </button>
+
       {state.error && <p>{state.error}</p>}
     </form>
   );
