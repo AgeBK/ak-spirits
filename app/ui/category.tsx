@@ -37,6 +37,10 @@ export default function Category({
   urlCategory,
   urlVariety,
 }: CategoryProps) {
+  console.log("Category");
+  console.log(urlCategory);
+  console.log(urlVariety);
+
   const [, setSortOrder] = useState<string>("");
   const [showFilters, setShowFilters] = useState<boolean>(false);
   const [filters, setFilters] = useState<FilterStateProps>({

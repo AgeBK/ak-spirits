@@ -1,0 +1,14 @@
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: grid;
+  /* min-height: 100%; */
+  grid-template-rows: 1fr auto;
+  background-color: linear-gradient(to bottom, #999, #000, #999);
+}
+
+@media screen and (max-width: 650px) {
+  .container {
+    display: block;
+  }
+}

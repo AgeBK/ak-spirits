@@ -13,18 +13,18 @@ export async function fetchSpirits() {
     // const data: Record<string, string | number>[] = await sql`
     const data: Record<string, SpiritProps>[] = await sql`
       SELECT   
-          id,
-          brand,
-          category, 
-          sub_category,
-          name,
-          short_name,
-          price_normal,
-          price_current,
-          price_2_for,
-          price_special,
-          ratings_avg,
-          packaging
+        id,
+        brand,
+        category, 
+        sub_category,
+        name,
+        short_name,
+        price_normal,
+        price_current,
+        price_2_for,
+        price_special,
+        ratings_avg,
+        packaging
       FROM spirits
       `;
 
