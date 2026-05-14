@@ -1,5 +1,4 @@
 import Link from "next/link";
-// import { hyphenate } from "@/app/lib/utils";
 import { ManageProductsProps, SpiritProps } from "@/app/lib/definitions";
 import Img from "@/app/ui/image";
 import styles from "@/app/css/manage/ManageProducts.module.css";
@@ -9,13 +8,10 @@ export default function ManageProducts({ arr }: ManageProductsProps) {
   return (
     <div className={styles.list}>
       <div className={styles.table}>
-        {" "}
         <header className={styles.row}>
           <div className={styles.col}>Id</div>
           <div className={styles.col}>Name</div>
           <div className={`${styles.col} ${styles.brand}`}>Brand</div>
-          {/* <div className={`${styles.col} ${styles.category}`}>Spirit</div> */}
-          {/* <div className={`${styles.col} ${styles.variety}`}>Variety</div> */}
           <div className={`${styles.col} ${styles.price}`}>Price</div>
           <div className={styles.col}></div>
         </header>
@@ -24,6 +20,7 @@ export default function ManageProducts({ arr }: ManageProductsProps) {
             id,
             category,
             sub_category,
+            short_name,
             name,
             brand,
             price_normal,
@@ -34,10 +31,7 @@ export default function ManageProducts({ arr }: ManageProductsProps) {
               <div className={styles.col}>{id}</div>
               <div className={`${styles.col} ${styles.name}`}>{name}</div>
               <div className={`${styles.col} ${styles.brand}`}>{brand}</div>
-              {/* <div className={`${styles.col} ${styles.category}`}>
-                {category}
-              </div> */}
-              <div className={`${styles.col} ${styles.sub_category}`}>
+              <div className={`${styles.col} ${styles.subCat}`}>
                 {sub_category}
               </div>
               <div className={`${styles.col} ${styles.price}`}>

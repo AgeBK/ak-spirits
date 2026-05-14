@@ -1,11 +1,15 @@
-.main {
-  background: linear-gradient(to bottom, #999, #000, #999);
+body {
+  /* background: linear-gradient(to bottom, #999, #000, #999); */
+  --spirits-text: #000;
+
   /* height: 100vh; */
 }
 
-.container {
-  max-width: 750px;
+.main {
+  background-color: #fff;
+  /* max-width: 750px; */
   margin: 0 auto;
+  padding: 20px;
 }
 
 .product {

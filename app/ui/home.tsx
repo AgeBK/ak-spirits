@@ -1,6 +1,6 @@
 import { DataProps, SpiritProps } from "../lib/definitions";
 import Sale3Bot from "./sale6Bot";
-import ListItem from "./listItem";
+import ListItem from "./list-item";
 import HomeBanner from "./home-banner";
 import styles from "@/app/css/Home.module.css";
 import ShopNow from "./shopNow";

@@ -8,7 +8,7 @@ export default function CategoryPaging({
   updatePaging,
   paging,
   totalItems,
-} : CategoryPagingProps) {
+}: CategoryPagingProps) {
   return (
     <>
       <Paging

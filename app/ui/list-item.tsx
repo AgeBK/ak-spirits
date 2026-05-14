@@ -20,7 +20,6 @@ const dancingScript = Dancing_Script({
 export default function ListItem({ arr, css, hdr }: ListItemProps) {
   const addCartItem = useCartStore((state) => state.addCartItem);
   // TODO: SEO, articles, sections, check box/gift images
-  // TODO: http://localhost:3000/spirits/soft%20drink/3029790 - Similar items?
   // TODO: bookmark on page 2 etc of category page (Url)
   return (
     <section className={styles[css]}>

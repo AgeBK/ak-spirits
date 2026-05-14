@@ -1,10 +1,11 @@
 .container {
-  max-width: 1500px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: grid;
   /* min-height: 100%; */
   grid-template-rows: 1fr auto;
-  background-color: linear-gradient(to bottom, #999, #000, #999);
+  /* background-color: linear-gradient(to bottom, #999, #000, #999); */
 }
 
 @media screen and (max-width: 650px) {

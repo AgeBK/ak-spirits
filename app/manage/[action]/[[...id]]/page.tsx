@@ -37,8 +37,9 @@ export default async function ManagePage({ params }: ManagePageProps) {
 
     return (
       <div className={styles.container}>
-        <h1 className={styles.hdr}> {`${action} Product`}</h1>
+        <h1 className={styles.hdr}>{`${action} Product`}</h1>
         <div className={styles.product}>
+          <div>test</div>
           <ManageProduct
             product={product}
             action={action}
@@ -49,5 +50,4 @@ export default async function ManagePage({ params }: ManagePageProps) {
       </div>
     );
   }
-  return <Error />;
 }

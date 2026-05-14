@@ -4,7 +4,7 @@ import appData from "../lib/appData.json";
 import ImgFill from "./image-fill";
 import ProductCart from "./productCart";
 import Price from "./price";
-import ListItem from "./listItem";
+import ListItem from "./list-item";
 import Rating from "./rating";
 import Review from "./review";
 import styles from "@/app/css/Product.module.css";

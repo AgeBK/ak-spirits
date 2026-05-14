@@ -43,19 +43,19 @@
 }
 
 .row:nth-of-type(odd) {
-  background-color: #fff;
+  background-color: #d3d3d3;
 }
 
 .row:nth-of-type(even) {
-  background-color: #d3d3d3;
+  background-color: #999;
   /* color: #fff; */
 }
 
-.col {
+/* .col {
   display: table-cell;
   vertical-align: top;
   padding: 5px;
-}
+} */
 
 .col {
   display: table-cell;
@@ -74,8 +74,9 @@
 /* ===================================== */
 
 .list {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
+  min-width: 70%; */
 }
 
 .table {
@@ -98,12 +99,12 @@ div.table header:nth-of-type(odd) {
 
 .col {
   display: table-cell;
-  padding: 5px;
+  padding: 5px 10px;
 }
 
 @media screen and (max-width: 1150px) {
   .category,
-  .sub_category {
+  .subCat {
     display: none;
   }
 }

@@ -20,7 +20,7 @@ import { maxSmallScreen } from "../lib/appData.json";
 import { pagingSettings } from "../lib/appData.json";
 import Pills from "./pills";
 import SortProducts from "./sortProducts";
-import ProductItem from "./listItem";
+import CategoryList from "./category-list";
 import Filters from "./filters/filters";
 import ScrollTop from "./scrollTop";
 import Button from "./button";
@@ -53,6 +53,7 @@ export default function Category({
   let totalPages = Math.ceil(arr.length / paging.pageSize);
   let totalItems = arr.length;
   let pagedArr = [...arr];
+  const isManage = urlCategory === "manage";
   // const searchParams = useSearchParams();
   const filtersSmallScreen = usePageWidth(maxSmallScreen) && showFilters;
   // const search = searchParams.get("search");
@@ -95,7 +96,7 @@ export default function Category({
             </div>
             <SortProducts arr={arr} setSortOrder={setSortOrder} />
           </div>
-          <ProductItem arr={pagedArr} css="" />
+          <CategoryList arr={pagedArr} css="" isManage={isManage} />
           <div className={styles.pageCont}>
             <CategoryPaging
               totalPages={totalPages}

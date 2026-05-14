@@ -7,7 +7,7 @@
   display: table;
   width: 99%;
   text-align: left;
-  padding: 5px;
+  /* padding: 5px; */
   background-color: #000;
   border-radius: 6px;
 }

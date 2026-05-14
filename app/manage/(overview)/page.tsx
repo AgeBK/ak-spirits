@@ -13,11 +13,7 @@ export default async function Page() {
 
   return (
     <div className={styles.container}>
-      {/* <ManageSideNav /> */}
-      {/* <CategoryMain arr={arr} urlCategory="" urlVariety="" isManage={true} /> */}
-      {/* <ManageProducts arr={arr} /> */}
-      {/* return{" "} */}
-      <Category arr={arr} urlCategory="" urlVariety="" />;
+      <Category arr={arr} urlCategory="manage" />
     </div>
   );
 }
