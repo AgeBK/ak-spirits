@@ -14,7 +14,7 @@ import ManageDBMessages from "./manage-db-messages";
 import ModalDelete from "./manage-modal-delete";
 import ManageImage from "./manage-image";
 import styles from "@/app/css/manage/Form.module.css";
-import { addProduct, updateProduct } from "@/app/lib/actions";
+import { addProduct, deleteProduct, updateProduct } from "@/app/lib/actions";
 
 const initialState: FormStateProps = {
   message: null,
@@ -22,16 +22,10 @@ const initialState: FormStateProps = {
   success: false,
 };
 
-export default function ManageProduct({
-  product,
-  action,
-  // ddlWineItems,
-  // ddlItems,
-}: ManageProductProps) {
+export default function ManageProduct({ product, action }: ManageProductProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [productId, setProductId] = useState<string>("");
   const { id, name } = product;
-  //  const { MIN_PRODUCT_ID_LENGTH } = data;
   const isDelete = action === "delete";
 
   // eslint-disable-next-line
@@ -44,9 +38,9 @@ export default function ManageProduct({
     case "update":
       currentActionFn = updateProduct.bind(null, id);
       break;
-    // case "delete":
-    //   currentActionFn = deleteProduct.bind(null, id);
-    //   break;
+    case "delete":
+      currentActionFn = deleteProduct.bind(null, id);
+      break;
     default:
       break;
   }
@@ -60,8 +54,6 @@ export default function ManageProduct({
   );
 
   useEffect(() => {
-    console.log("UE");
-
     if (state.success) {
       window.location.href = "/manage";
     }

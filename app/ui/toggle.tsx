@@ -19,7 +19,7 @@ export default function ThemeToggle() {
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
   return (
-    <>
+    <div className={styles.toggleCont}>
       <input
         type="checkbox"
         className={styles.toggle}
@@ -30,6 +30,6 @@ export default function ThemeToggle() {
         <span className={styles.sw}></span>
         <span className={styles.small}></span>
       </label>
-    </>
+    </div>
   );
 }

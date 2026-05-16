@@ -20,7 +20,7 @@ export default function CategoryList({
 
   return arr.length > 0 ? (
     <div className={styles[style]}>
-      <JSX arr={arr} css={css} isManage={isManage} />
+      <JSX arr={arr} css={css} />
     </div>
   ) : (
     <div>Loading...</div>

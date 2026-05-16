@@ -1,10 +1,13 @@
 import Link from "next/link";
-import { ManageProductsProps, SpiritProps } from "@/app/lib/definitions";
+import {
+  DataProps,
+  SpiritProps,
+} from "@/app/lib/definitions";
 import Img from "@/app/ui/image";
 import styles from "@/app/css/manage/ManageProducts.module.css";
 
 // renders each row products main manage page (uses CategoryList)
-export default function ManageProducts({ arr }: ManageProductsProps) {
+export default function ManageProducts({ arr }: DataProps) {
   return (
     <div className={styles.list}>
       <div className={styles.table}>
@@ -12,15 +15,15 @@ export default function ManageProducts({ arr }: ManageProductsProps) {
           <div className={styles.col}>Id</div>
           <div className={styles.col}>Name</div>
           <div className={`${styles.col} ${styles.brand}`}>Brand</div>
-          <div className={`${styles.col} ${styles.price}`}>Price</div>
-          <div className={styles.col}></div>
+          <div className={`${styles.col} ${styles.spirit}`}>Spirit</div>
+          <div className={styles.col}>Price</div>
+          <div className={styles.col}>Actions</div>
         </header>
         {arr.map((val: SpiritProps) => {
           const {
             id,
             category,
             sub_category,
-            short_name,
             name,
             brand,
             price_normal,
@@ -31,7 +34,7 @@ export default function ManageProducts({ arr }: ManageProductsProps) {
               <div className={styles.col}>{id}</div>
               <div className={`${styles.col} ${styles.name}`}>{name}</div>
               <div className={`${styles.col} ${styles.brand}`}>{brand}</div>
-              <div className={`${styles.col} ${styles.subCat}`}>
+              <div className={`${styles.col} ${styles.spirit}`}>
                 {sub_category}
               </div>
               <div className={`${styles.col} ${styles.price}`}>

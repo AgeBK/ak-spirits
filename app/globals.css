@@ -8,26 +8,34 @@ body {
 }
 .light {
   --filter-text: #333;
+  --table-row: #999;
   --button-border: #5e4b56;
   --background: #fff;
   --light-text: #fff;
+  --table-row: #fff;
+  --table-row-odd: #888;
   --spirits-text: #6b1818;
   --light-display: block;
   --dark-display: none;
   --filter-invert: invert(0%);
   --burger-bg: #fff;
+  --invert: #000;
 }
 
 .dark {
   --filter-text: #999;
+  --table-row: #222;
   --button-border: #b8dbd9;
   --background: #000;
   --light-text: #fff;
+  --table-row: #000;
+  --table-row-odd: #222;
   --spirits-text: #888;
   --light-display: none;
   --dark-display: block;
   --filter-invert: invert(100%);
   --burger-bg: #000;
+  --invert: #fff;
 }
 
 a {

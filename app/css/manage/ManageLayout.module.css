@@ -1,15 +1,14 @@
-.container {
+.layout {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   display: grid;
-  /* min-height: 100%; */
   grid-template-rows: 1fr auto;
-  /* background-color: linear-gradient(to bottom, #999, #000, #999); */
+  padding: 20px 0;
 }
 
 @media screen and (max-width: 650px) {
-  .container {
+  .layout {
     display: block;
   }
 }

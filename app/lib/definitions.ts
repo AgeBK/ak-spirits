@@ -18,6 +18,10 @@ export type SpiritProps = {
   price_special: boolean;
 };
 
+export type ArrSpirtsProps = {
+  arr: SpiritProps;
+};
+
 export interface DataProps extends SpiritProps {
   data: SpiritProps[];
 }

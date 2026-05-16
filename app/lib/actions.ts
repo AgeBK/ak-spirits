@@ -230,3 +230,18 @@ export async function updateProduct(
     success: true,
   };
 }
+
+export async function deleteProduct(id: string) {
+  try {
+    await sql`DELETE FROM products WHERE id = ${id}`;
+    return {
+      success: true,
+    };
+  } catch (error) {
+    console.log("Failed to delete product: " + error);
+    return {
+      message: "Database Error - Failed to delete product:" + error,
+      // errors: JSON.parse(JSON.stringify(error)),
+    };
+  }
+}
