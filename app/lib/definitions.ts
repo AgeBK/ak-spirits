@@ -39,8 +39,9 @@ export type ImgProps = {
 };
 
 export type CategoryProps = {
-  data: SpiritProps;
-  similarArr?: SpiritProps[];
+  arr: Record<string, SpiritProps>[];
+  urlCategory: string;
+  urlVariety: string;
 };
 
 export type CategoryPageProps = { arr: Record<string, SpiritProps>[] };

@@ -1,0 +1,64 @@
+.container {
+  max-width: 400px;
+}
+
+.sideNav {
+  min-width: 160px;
+  background-color: #555;
+  padding: 5px 20px;
+  margin-bottom: 20px;
+}
+
+.sideNav h1 {
+  font-size: 24px;
+  font-family: cursive;
+  padding: 20px 0;
+}
+
+.sideNav li {
+  flex-grow: 1;
+}
+
+.sideNav li a {
+  padding: 10px;
+  cursor: pointer;
+  display: block;
+  color: #fff;
+}
+
+.sideNav li a:hover {
+  color: #d3d3d3;
+}
+
+.row,
+.navItems {
+  display: flex;
+}
+
+.navItems {
+  justify-content: space-evenly;
+}
+
+.burger {
+  cursor: pointer;
+  position: absolute;
+  background-color: var(--background);
+  color: var(--filter-text);
+  padding: 2px;
+  font-size: 1rem;
+  font-weight: normal;
+  width: 180px;
+  text-align: center;
+}
+
+@media screen and (max-width: 650px) {
+  .burger {
+    position: static;
+    display: block;
+    width: 100%;
+  }
+
+  .sideNav {
+    text-align: center;
+  }
+}

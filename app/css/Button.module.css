@@ -156,6 +156,10 @@
   border: 2px solid #f00;
 }
 
+.closeNav {
+  color: #fff;
+}
+
 @media screen and (max-width: 650px) {
   .filterBtn {
     display: block;

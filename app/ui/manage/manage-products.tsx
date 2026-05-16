@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+  ArrSpirtsProps,
   DataProps,
   SpiritProps,
 } from "@/app/lib/definitions";
@@ -7,7 +8,7 @@ import Img from "@/app/ui/image";
 import styles from "@/app/css/manage/ManageProducts.module.css";
 
 // renders each row products main manage page (uses CategoryList)
-export default function ManageProducts({ arr }: DataProps) {
+export default function ManageProducts({ arr }: ArrSpirtsProps) {
   return (
     <div className={styles.list}>
       <div className={styles.table}>

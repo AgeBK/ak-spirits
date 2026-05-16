@@ -25,23 +25,16 @@ export default function Pills({ filters, setFilters }: PillsProps) {
   };
 
   return (
-    <div className={styles.container}>
+    <>
       {Object.entries(filters).map(([key, value], index) =>
         checkValue(value) ? (
           <div className={styles.pill} key={index}>
             <Button id={key} onClick={handleClick} css="pillDel">
-              {/* {key}  */}
               {value}
-              <Img
-                imgSrc={`close2.png`}
-                imgAlt={"close"}
-                imgWidth={18}
-                imgHeight={18}
-              />
             </Button>
           </div>
         ) : null,
       )}
-    </div>
+    </>
   );
 }
