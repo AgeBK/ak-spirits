@@ -5,38 +5,18 @@ const sql = neon(process.env.DATABASE_URL);
 // const sql = neon(process.env.NEON_DATABASE_URL!); TODO:?? https://www.freecodecamp.org/news/nextjs-clerk-neon-fullstack-development/
 import { z } from "zod";
 
-const minStr3 = z
-  .string()
-  .min(3, { message: "Must be 3 or more characters long" });
 const minStr2 = z
   .string()
   .min(2, { message: "Must be 2 or more characters long" });
+const minStr3 = z
+  .string()
+  .min(3, { message: "Must be 3 or more characters long" });
 const gt0 = z
   .number()
   .gt(0, { message: "Please enter an amount greater than 0." });
 const nonNeg = z.coerce.number().nonnegative();
 
 const FormSchema = z.object({
-  // id: z.string().min(5, { message: "Id must be 5 or more characters long" }),
-  // brand: minStr3,
-  // name: minStr3,
-  // shortName: minStr3,
-  // category: minStr3,
-  // variety: minStr3,
-  // region: minStr3,
-  // packaging: minStr3,
-  // promotionCalloutText: z.string(),
-  // promotionDiscountCode: z.string(),
-  // priceNormal: gt0,
-  // priceCurrent: gt0,
-  // volumeMl: gt0,
-  // priceTwoFor: nonNeg,
-  // priceTenFor: nonNeg,
-  // pricePercentOff: nonNeg,
-  // ratingsTotal: nonNeg,
-  // ratingsAverage: nonNeg,
-  // unitOfMeasureLabel: z.string(),
-
   id: z.string().min(5, { message: "Id must be 5 or more characters long" }),
   brand: minStr3,
   name: minStr3,
@@ -80,16 +60,7 @@ export async function addProduct(
 ) {
   const validatedFields = validateFormData(FormSchema, formData);
 
-  console.log("validatedFields");
-  console.log(validatedFields);
-
-  console.log("Add Product Fn");
-  console.log(prevState); // initial state
-  console.log(formData); // values entered on form {name: "dbColumnName", value: 1234567}
-
   if (!validatedFields.success) {
-    console.log("NOT VALIDATED");
-
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Failed to add new product. Please check the fields above",
@@ -170,14 +141,8 @@ export async function updateProduct(
   prevState: { message: unknown },
   formData: FormData,
 ) {
-  console.log("updateProduct fn");
-  console.log(id);
-  console.log(formData);
-
   const validatedFields = validateFormData(UpdateSchema, formData); // TODO: update schema vs add??
   if (!validatedFields.success) {
-    console.log("NOT VALIDATED - UPDATE");
-
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: "Failed to update product. Please check the fields above",
@@ -223,7 +188,6 @@ export async function updateProduct(
     console.log("Failed to update product: " + error);
     return {
       message: "Database Error - Failed to update product: \n" + error,
-      // errors: JSON.parse(JSON.stringify(error)),
     };
   }
   return {
@@ -232,8 +196,11 @@ export async function updateProduct(
 }
 
 export async function deleteProduct(id: string) {
+  console.log("delete Product");
+  console.log(id);
+
   try {
-    await sql`DELETE FROM products WHERE id = ${id}`;
+    await sql`DELETE FROM spirits WHERE id = ${id}`;
     return {
       success: true,
     };
@@ -241,7 +208,6 @@ export async function deleteProduct(id: string) {
     console.log("Failed to delete product: " + error);
     return {
       message: "Database Error - Failed to delete product:" + error,
-      // errors: JSON.parse(JSON.stringify(error)),
     };
   }
 }

@@ -147,6 +147,15 @@
   border: 2px solid #008000;
 }
 
+.delete {
+  font-size: 20px;
+  display: flex;
+  border: 1px solid #888;
+  padding: 5px 15px;
+  margin: 0 5px;
+  border: 2px solid #f00;
+}
+
 @media screen and (max-width: 650px) {
   .filterBtn {
     display: block;

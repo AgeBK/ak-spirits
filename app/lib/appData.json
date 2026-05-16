@@ -70,5 +70,5 @@
     "price_current",
     "volume"
   ],
-  "readOnlyFields": ["id", "price_special", "ratings_avg", "ratings_tot"]
+  "readOnlyFields": ["price_special", "ratings_avg", "ratings_tot"]
 }

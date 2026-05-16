@@ -11,13 +11,18 @@ export default function ManageInputFields({
   isDelete,
   handleChange,
 }: InputFieldsProps) {
+  console.log(product);
+
   return (
     <div className={styles.inputContainer}>
       {Object.entries(product).map(
         ([key, value]: [string, string | number]) => {
           const isReq = isRequired.includes(key);
           const dataType = typeof value === "number" ? "number" : "text";
-          const isDisabled = readOnlyFields.indexOf(key) > -1 || isDelete;
+          const isDisabled =
+            readOnlyFields.indexOf(key) > -1 ||
+            (product.id && key === "id") ||
+            isDelete;
           return (
             <div key={key}>
               <label htmlFor={key} id={`lbl${key}`}>

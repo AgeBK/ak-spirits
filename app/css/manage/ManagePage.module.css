@@ -1,11 +1,14 @@
 .product {
   padding: 20px;
-  background-color: #fff;
+  border: 1px solid #555;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hdr {
   padding: 15px;
-  background-color: #000;
-  color: #777;
+  color: #555;
   text-transform: capitalize;
+  margin: 0 auto;
+  max-width: 800px;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@teispace/next-themes";
 import styles from "../css/Toggle.module.css";
 
 export default function ThemeToggle() {

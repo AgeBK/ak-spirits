@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ChangeEvent, useEffect, useState } from "react";
-// import { useFormState } from "react-dom";
+import { addProduct, deleteProduct, updateProduct } from "@/app/lib/actions";
 import { useActionState } from "react";
 // import { addProduct, updateProduct, deleteProduct } from '@/app/lib/actions';
 // import { FormStateProps, ManageProductProps } from '@/app/lib/definitions';
@@ -14,7 +14,6 @@ import ManageDBMessages from "./manage-db-messages";
 import ModalDelete from "./manage-modal-delete";
 import ManageImage from "./manage-image";
 import styles from "@/app/css/manage/Form.module.css";
-import { addProduct, deleteProduct, updateProduct } from "@/app/lib/actions";
 
 const initialState: FormStateProps = {
   message: null,
@@ -35,7 +34,7 @@ export default function ManageProduct({ product, action }: ManageProductProps) {
     case "add":
       currentActionFn = addProduct;
       break;
-    case "update":
+    case "edit":
       currentActionFn = updateProduct.bind(null, id);
       break;
     case "delete":
@@ -95,7 +94,7 @@ export default function ManageProduct({ product, action }: ManageProductProps) {
         isDelete={isDelete}
       /> */}
       <ManageProductActions isDelete={isDelete} enableModal={enableModal} />
-      {/* <ManageDBMessages errorMessages={state} />
+      <ManageDBMessages errorMessages={state} />
       {showModal && (
         <ModalDelete
           id={id}
@@ -103,8 +102,7 @@ export default function ManageProduct({ product, action }: ManageProductProps) {
           initialState={initialState}
           setShowModal={setShowModal}
         />
-      )} */}
-
+      )}
       {state.error && <p>{state.error}</p>}
     </form>
   );

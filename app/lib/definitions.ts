@@ -159,6 +159,20 @@ export type CategoryPagingProps = {
   totalItems: number;
 };
 
+export type FormStateProps = {
+  message: string | null;
+  // errors: Record<string, any>;
+  errors: KeyStringProps;
+  success: boolean | null;
+};
+
+export type ModalDeleteProps = {
+  id: string;
+  name: string;
+  initialState: FormStateProps;
+  setShowModal: (show: boolean) => void;
+};
+
 export type accBrandProps = { brands: string[]; items: SpiritProps[] };
 
 export type KeyStringProps = { [key: string]: string };
