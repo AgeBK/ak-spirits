@@ -70,5 +70,6 @@
     "price_current",
     "volume"
   ],
-  "readOnlyFields": ["price_special", "ratings_avg", "ratings_tot"]
+  "readOnlyFields": ["price_special", "ratings_avg", "ratings_tot"],
+  "sortBy": ["--- Select ---", "$", "$$$", "Sale", "A-Z", "Z-A"]
 }

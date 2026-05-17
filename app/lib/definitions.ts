@@ -18,6 +18,10 @@ export type SpiritProps = {
   price_special: boolean;
 };
 
+// export type ProductProps = {
+//   arr: Record<string, SpiritProps>[];
+// };
+
 export type ArrSpirtsProps = {
   arr: SpiritProps;
 };
@@ -51,11 +55,10 @@ export type FilterStateProps = {
   category: string;
   brand: string;
   price: string;
-  // search: string;
 };
 
 export type FilterProps = {
-  arr?: SpiritProps[];
+  arr?: Record<string, SpiritProps>[];
   setFilters: Dispatch<
     SetStateAction<{
       offer: string[];
@@ -63,17 +66,18 @@ export type FilterProps = {
       brand: string;
       price: string;
     }>
-  >; // Dispatch<SetStateAction<{ category: string; brand: string; price: string; }>>'
+  >;
   filters: {
     offer: string[];
     category: string;
     brand: string;
     price: string;
   };
+  urlVariety: string;
 };
 
 export interface FilterArrProps extends FilterProps {
-  arr: SpiritProps[];
+  arr: Record<string, SpiritProps>[];
 }
 
 export type CartProps = {
@@ -98,7 +102,7 @@ export type CartProps = {
 
 export type ButtonProps = {
   children?: ReactNode;
-  onClick: (e: React.MouseEvent<Element, MouseEvent>) => void;
+  onClick?: (e: React.MouseEvent<Element, MouseEvent>) => void;
   id?: string;
   css?: string;
   disabled?: boolean;
@@ -137,7 +141,7 @@ export type PillsProps = {
     // arr: string[];
     category: string;
     brand: string;
-    price: number;
+    price: string;
   };
   setFilters: Dispatch<SetStateAction<FilterStateProps>>;
   // arr: string[];
@@ -174,7 +178,10 @@ export type ModalDeleteProps = {
   setShowModal: (show: boolean) => void;
 };
 
-export type accBrandProps = { brands: string[]; items: SpiritProps[] };
+export type accBrandProps = {
+  brands: string[];
+  items: Record<string, SpiritProps>[];
+};
 
 export type KeyStringProps = { [key: string]: string };
 

@@ -61,4 +61,8 @@
   .sideNav {
     text-align: center;
   }
+
+  .sideNav li:first-child {
+    flex-grow: 0;
+  }
 }

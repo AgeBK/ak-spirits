@@ -1,10 +1,9 @@
 "use client";
 
-import React, { MouseEvent, KeyboardEvent } from "react";
+import { MouseEvent, KeyboardEvent } from "react";
 import Link from "next/link";
 import Button from "../button";
 import Img from "../image";
-// import ImgFill from "../image-fill";
 import { ModalDeleteProps } from "@/app/lib/definitions";
 import styles from "@/app/css/manage/ManageModalDelete.module.css";
 

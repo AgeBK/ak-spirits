@@ -1,33 +1,32 @@
 "use client";
 
 import { SpiritProps } from "@/app/lib/definitions";
+import { sortBy } from "@/app/lib/appData.json";
 import styles from "@/app/css/SortProducts.module.css";
 
 export default function SortProducts({
   arr,
   setSortOrder,
 }: {
-  arr: SpiritProps[];
+  arr: Record<string, SpiritProps>[]; // TODO:
   setSortOrder: (value: string) => void;
 }) {
   const price = (value?: string) => {
     arr.sort((a, b) => {
-      const priceA = a.price_current;
-      const priceB = b.price_current;
+      const priceA = Number(a.price_current);
+      const priceB = Number(b.price_current);
       return value ? priceA - priceB : priceB - priceA;
     });
   };
 
-  const rating = () => {};
+  const saleItemsFirst = () => {
+    arr.sort(({ price_special }) => (price_special ? -1 : 1));
+    return arr;
+  };
 
-  const sortBy = ["--- Select ---", "$", "$$$", "Rating", "A-Z", "Z-A"];
-
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { value: string } }) => {
     const { value } = e.target;
     setSortOrder(value);
-    console.log("Selection changed to:", value);
-    // TODO: rating??
-
     switch (value) {
       case "$":
         price(value);
@@ -35,14 +34,22 @@ export default function SortProducts({
       case "$$$":
         price();
         break;
-      case "Rating":
-        arr.sort((a, b) => b.ratings_avg - a.ratings_avg);
+      case "Sale":
+        saleItemsFirst();
         break;
       case "A-Z":
-        arr.sort((a, b) => a.brand.localeCompare(b.brand));
+        arr.sort((a, b) => {
+          const brandA = String(a.brand);
+          const brandB = String(b.brand);
+          return brandA.localeCompare(brandB);
+        });
         break;
       case "Z-A":
-        arr.sort((a, b) => b.brand.localeCompare(a.brand));
+        arr.sort((a, b) => {
+          const brandA = String(a.brand);
+          const brandB = String(b.brand);
+          return brandB.localeCompare(brandA);
+        });
         break;
       default:
     }

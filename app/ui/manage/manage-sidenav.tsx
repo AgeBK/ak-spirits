@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Button from "../button";
 import styles from "@/app/css/manage/ManageSidneNav.module.css";
+import Img from "../image";
 
 export default function ManageSideNav() {
   const [isShow, setIsShow] = useState(false);
@@ -15,7 +16,12 @@ export default function ManageSideNav() {
           <ul className={styles.navItems}>
             <li>
               <Button css="closeNav" onClick={() => setIsShow(false)}>
-                <span className={styles.close}>X</span>
+                <Img
+                  imgSrc={`icons/close.svg`}
+                  imgAlt="close"
+                  imgWidth={24}
+                  imgHeight={24}
+                />
               </Button>
             </li>
             <li>

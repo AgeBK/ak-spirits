@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { SpiritProps, FilterArrProps } from "@/app/lib/definitions";
+import { FilterArrProps } from "@/app/lib/definitions";
 import Button from "../button";
 import styles from "@/app/css/FilterType.module.css";
 
@@ -12,14 +12,11 @@ export default function FilterType({
   setFilters,
   filters,
 }: FilterArrProps) {
-  const distinctSpirits: string[] = arr.reduce(
-    (acc: string[], val: SpiritProps) => {
-      const subCat: string = val.sub_category;
-      if (acc.indexOf(subCat) === -1) acc.push(subCat);
-      return acc;
-    },
-    [],
-  );
+  const distinctSpirits = arr.reduce((acc: string[], val) => {
+    const subCat = String(val.sub_category);
+    if (acc.indexOf(subCat) === -1) acc.push(subCat);
+    return acc;
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void =>
     setFilters({ ...filters, category: e.target.value });

@@ -4,6 +4,7 @@ import {
   accBrandProps,
   distinctBrandsProps,
   FilterArrProps,
+  KeyStringProps,
   SpiritProps,
 } from "@/app/lib/definitions";
 import Button from "../button";
@@ -17,9 +18,9 @@ export default function FilterBrand({
   const [filteredBrands, setFilteredBrands] = useState<string[]>([]);
   const [text, setText] = useState("");
 
-  const distinctBrands: distinctBrandsProps = arr.reduce(
-    (acc: accBrandProps, val: SpiritProps) => {
-      const brand: string = val.brand;
+  const distinctBrands = arr.reduce(
+    (acc: accBrandProps, val) => {
+      const brand = String(val.brand);
       // && val.brand.indexOf(brand) > -1
       if (acc.brands.indexOf(brand) === -1) {
         acc.brands.push(brand);

@@ -1,21 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import {
   CategoryProps,
   FilterStateProps,
   PagingProps,
 } from "../lib/definitions";
-import {
-  filterByCat,
-  filterByBrand,
-  filterByPrice,
-  filterByOffer,
-  filterBySearch,
-  productSearch,
-  checkFilters,
-} from "../lib/utils";
+import { filterBySearch, checkFilters } from "../lib/utils";
 import { maxSmallScreen } from "../lib/appData.json";
 import { pagingSettings } from "../lib/appData.json";
 import Pills from "./pills";
@@ -28,7 +19,6 @@ import CategoryPaging from "./category-paging";
 import usePageWidth from "../hooks/usePageWidth";
 import styles from "@/app/css/Category.module.css";
 
-// TODO: category? products?
 // TODO: error page wine
 // TODO: Image with src "/img/spirits/195355.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold. Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
 
@@ -37,10 +27,6 @@ export default function Category({
   urlCategory,
   urlVariety,
 }: CategoryProps) {
-  console.log("Category");
-  console.log(urlCategory);
-  console.log(urlVariety);
-
   const [, setSortOrder] = useState<string>("");
   const [showFilters, setShowFilters] = useState<boolean>(false);
   const [filters, setFilters] = useState<FilterStateProps>({
@@ -54,9 +40,7 @@ export default function Category({
   let totalItems = arr.length;
   let pagedArr = [...arr];
   const isManage = urlCategory === "manage";
-  // const searchParams = useSearchParams();
   const filtersSmallScreen = usePageWidth(maxSmallScreen) && showFilters;
-  // const search = searchParams.get("search");
   const { page, pageSize } = paging;
 
   const updatePaging = (page: number, pageSize: number) => {
@@ -89,7 +73,7 @@ export default function Category({
         <div className={filtersSmallScreen ? styles.filters : styles.products}>
           <div className={styles.productsHdr}>
             <div className={styles.pillsCont}>
-              <Pills setFilters={setFilters} filters={filters} />
+              <Pills filters={filters} setFilters={setFilters} />
             </div>
             <div className={styles.productsTotal}>
               ({totalItems}) Available:

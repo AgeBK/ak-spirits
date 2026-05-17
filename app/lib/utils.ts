@@ -86,7 +86,10 @@ export const checkSearch = (urlCategory: string) => {
   return searchTerm;
 };
 
-export const filterBySearch = (arr: SpiritProps[], filter: string) => {
+export const filterBySearch = (
+  arr: Record<string, SpiritProps>[],
+  filter: string,
+) => {
   const searchTerm = checkSearch(filter);
   if (searchTerm) {
     arr = arr.filter(
@@ -98,7 +101,10 @@ export const filterBySearch = (arr: SpiritProps[], filter: string) => {
   return arr;
 };
 
-export const checkFilters = (arr: SpiritProps[], filters: FilterStateProps) => {
+export const checkFilters = (
+  arr: Record<string, SpiritProps>[],
+  filters: FilterStateProps,
+) => {
   const keys: string[] = Object.keys(filters);
   keys.map((key) => {
     const value = filters[key as keyof typeof filters];
